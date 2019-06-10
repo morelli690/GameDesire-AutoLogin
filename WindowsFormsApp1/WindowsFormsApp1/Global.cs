@@ -17,5 +17,8 @@ namespace WindowsFormsApp1
         public static bool restartStopwatch = false;
 
         public static Int64 valueOfAMillionInEuro = 100;
+
+        public static List<Hand> Hands = new List<Hand>();
+
     }
 }

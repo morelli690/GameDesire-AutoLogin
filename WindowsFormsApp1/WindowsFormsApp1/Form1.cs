@@ -37,98 +37,11 @@ namespace WindowsFormsApp1
             WindowState = FormWindowState.Minimized;
         }
 
-        private void deinitialize()
-        {
-
-            label21.Text = "0";
-            label22.Text = "0";
-            label23.Text = "0";
-            label24.Text = "0";
-            label25.Text = "0";
-            label26.Text = "0";
-            label27.Text = "0";
-            label28.Text = "0";
-            label29.Text = "0";
-            label30.Text = "0";
-            label31.Text = "0";
-            label32.Text = "0";
-            label33.Text = "0";
-            label34.Text = "0";
-            label35.Text = "0";
-            label36.Text = "0";
-            label37.Text = "0";
-            label38.Text = "0";
-            label39.Text = "0";
-            label40.Text = "0";
-            label41.Text = "0";
-            label42.Text = "0";
-            label43.Text = "0";
-            label44.Text = "0";
-            label45.Text = "0";
-            label46.Text = "0";
-            label47.Text = "0";
-            label48.Text = "0";
-            label49.Text = "0";
-            label50.Text = "0";
-            label51.Text = "0";
-            label52.Text = "0";
-
-
-            //
-            label57.Text = "";
-            label70.Text = "";
-            label72.Text = "";
-            label91.Text = "";
-
-            label60.Text = "";
-            label73.Text = "";
-            label74.Text = "";
-            label93.Text = "";
-            label61.Text = "";
-            label75.Text = "";
-            label76.Text = "";
-            label94.Text = "";
-            label62.Text = "";
-            label77.Text = "";
-            label78.Text = "";
-            label95.Text = "";
-            label63.Text = "";
-            label79.Text = "";
-            label80.Text = "";
-            label96.Text = "";
-            label64.Text = "";
-            label81.Text = "";
-            label82.Text = "";
-            label97.Text = "";
-            label65.Text = "";
-            label83.Text = "";
-            label84.Text = "";
-            label98.Text = "";
-            label66.Text = "";
-            label85.Text = "";
-            label86.Text = "";
-            label99.Text = "";
-            label67.Text = "";
-            label87.Text = "";
-            label88.Text = "";
-            label100.Text = "";
-            label68.Text = "";
-            label89.Text = "";
-            label92.Text = "";
-            label101.Text = "";
-
-            label105.Text = "0";
-            label51.Text = "0 (0 per hour)";
-            label52.Text = "0";
-            label115.Text = "€0.00 (€0.00 per hour)";
-            label108.Text = "0";
-            label109.Text = "0";
-
-        }
-
         private void Parse()
         {
-            deinitialize();
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
 
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\GameDesire";
 
@@ -137,6 +50,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            //reads all files into hands 
             l = new ArrayList();
 
             foreach (var file in new DirectoryInfo(filepath).GetFiles("*.txt"))
@@ -149,6 +63,9 @@ namespace WindowsFormsApp1
                     {
                         if (line.Contains("GameDesire Game #"))
                         {
+                            //string id = line.Split(' ')[2].Replace("#","").Replace(":", "");
+                           // bool containsItem = Global.Hands.Any(Hand => Hand.ID == id);
+
                             if (h.Lines.Count == 0)
                             {
                                 h.Lines.Add(line);
@@ -168,6 +85,14 @@ namespace WindowsFormsApp1
                     l.Add(h);
                 }
             }
+
+
+
+
+
+
+
+
 
             players = new ArrayList();
 
@@ -196,6 +121,9 @@ namespace WindowsFormsApp1
                 }
             }
 
+
+
+
             ArrayList temp = new ArrayList();
             foreach (Hand h in l)
             {
@@ -205,6 +133,13 @@ namespace WindowsFormsApp1
                 }
             }
             l = temp;
+
+
+
+
+
+
+
 
             foreach (Hand h in l)
             {
@@ -317,19 +252,12 @@ namespace WindowsFormsApp1
                             when = "R";
                         }
 
-                        //Guest2190139551 calls $31, and is all-in
                         string[] split = s.Split(' ');
                         Action a = new Action();
                         a.Street = when;
                         a.Type = "CALL";
 
-
-                        if (!s.Contains(", and is all-in")) {
-                            a.Amount = Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
-                        } else
-                        {
-                            a.Amount = Convert.ToInt64(split[split.Length - 4].Replace("$", "").Replace(",", ""));
-                        }
+                        a.Amount = !s.Contains(", and is all-in") ? Convert.ToInt64(split[split.Length - 1].Replace("$", "")) : Convert.ToInt64(split[split.Length - 4].Replace("$", "").Replace(",", ""));
 
                         h.investments = h.investments + a.Amount;
 
@@ -466,16 +394,7 @@ namespace WindowsFormsApp1
 
                             Action o = (Action)h.Actions[h.Actions.Count - 1];
 
-                            Int64 Difference = 0;
-
-                            if (o.Street == a.Street && o.Type == "BLIND")
-                            {
-                                Difference = Math.Abs(a.Amount - o.Amount);
-                            }
-                            else
-                            {
-                                Difference = a.Amount;
-                            }
+                            Int64 Difference = (o.Street == a.Street && o.Type == "BLIND") ? Math.Abs(a.Amount - o.Amount) : a.Amount;
 
                             h.investments = h.investments + Difference;
 
@@ -553,7 +472,6 @@ namespace WindowsFormsApp1
 
                         h.winnings = h.winnings + Convert.ToInt64(dd);
                     }
-
                 }
             }
 
@@ -563,22 +481,23 @@ namespace WindowsFormsApp1
             }
 
             Int64 totalResult = 0;
+
             foreach (Hand h in l)
             {
                 totalResult = totalResult + h.result;
             }
 
+            if (totalResult != 16006)
+            {
+                Console.WriteLine("FAIL");
+            }
+            else
+            {
+                Console.WriteLine("PASS");
+            }
+            Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
+
             InitializeElements();
-        }
-
-        private Int64 StringToNumber(string number)
-        {
-            Int64 n = 0;
-
-            number = number.Replace(",", "");
-
-            n = Convert.ToInt64(number);
-            return n;
         }
 
         private void InitializeElements()
@@ -669,7 +588,6 @@ namespace WindowsFormsApp1
                         break;
                 }
             }
-
             //set
             label49.Text = Stake1.Hands.ToString("N0");
             label50.Text = Stake1.Result.ToString("N0");
@@ -728,7 +646,6 @@ namespace WindowsFormsApp1
             {
                 label42.ForeColor = System.Drawing.Color.Maroon;
             }
-
 
             label39.Text = Stake6.Hands.ToString("N0");
             label40.Text = Stake6.Result.ToString("N0");
@@ -848,6 +765,8 @@ namespace WindowsFormsApp1
                 label52.ForeColor = System.Drawing.Color.Maroon;
             }
 
+
+
             var list = l.Cast<Hand>().ToList();
             var sortedList = list.OrderByDescending(si => si.dt).ToList();
 
@@ -875,8 +794,6 @@ namespace WindowsFormsApp1
                                 {
                                     label91.ForeColor = System.Drawing.Color.Maroon;
                                 }
-
-
                             }
                         }
                         catch (Exception ex)
@@ -1311,6 +1228,7 @@ namespace WindowsFormsApp1
         private async void loadingInProgress()
         {
             panel2.Visible = true;
+
             bool cont = true;
             while (cont)
             {
@@ -1371,15 +1289,11 @@ namespace WindowsFormsApp1
             {
                 Directory.Delete(filepath, true);
             }
-
-            deinitialize();
-
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             Global.valueOfAMillionInEuro = Convert.ToInt64(textBox1.Text);
         }
-
     }
 }
