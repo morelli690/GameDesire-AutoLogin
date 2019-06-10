@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -1213,10 +1211,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Label51_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private async void Refresh()
         {
@@ -1305,286 +1300,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label54_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label38_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label49_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label47_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label52_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label50_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label48_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label46_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label44_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label42_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label40_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label45_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label43_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label34_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label41_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label35_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label37_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label39_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label33_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label36_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label30_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label61_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label60_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            Global.Refresh = true;
-        }
-
         private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             Global.restartStopwatch = true;
@@ -1632,15 +1347,6 @@ namespace WindowsFormsApp1
             Global.restartStopwatch = true;
         }
 
-        private void TableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -1675,44 +1381,5 @@ namespace WindowsFormsApp1
             Global.valueOfAMillionInEuro = Convert.ToInt64(textBox1.Text);
         }
 
-        private void Label107_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label109_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label106_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TableLayoutPanel8_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void TableLayoutPanel179_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Label95_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label113_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
