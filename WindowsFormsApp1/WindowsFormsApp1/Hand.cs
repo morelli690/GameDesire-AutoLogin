@@ -5,6 +5,7 @@ namespace WindowsFormsApp1
 {
     public class Hand
     {
+        public bool isTakingPartInHand { get; set; }
         public string Player { get; set; }
         public string Table { get; set; }
         public string ID { get; set; }
@@ -23,5 +24,9 @@ namespace WindowsFormsApp1
         public Int64 result { get; set; }
         public ArrayList Actions { get; set; } = new ArrayList();
 
+        public Hand(string id = "")
+        {
+            ID = id;
+        }
     }
 }

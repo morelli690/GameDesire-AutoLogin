@@ -39,9 +39,8 @@ namespace WindowsFormsApp1
 
         private void Parse()
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
+            Parser.Parse();
+            Console.ReadLine();
 
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\GameDesire";
 
@@ -50,7 +49,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            //reads all files into hands 
             l = new ArrayList();
 
             foreach (var file in new DirectoryInfo(filepath).GetFiles("*.txt"))
@@ -63,9 +61,6 @@ namespace WindowsFormsApp1
                     {
                         if (line.Contains("GameDesire Game #"))
                         {
-                            //string id = line.Split(' ')[2].Replace("#","").Replace(":", "");
-                           // bool containsItem = Global.Hands.Any(Hand => Hand.ID == id);
-
                             if (h.Lines.Count == 0)
                             {
                                 h.Lines.Add(line);
@@ -85,14 +80,6 @@ namespace WindowsFormsApp1
                     l.Add(h);
                 }
             }
-
-
-
-
-
-
-
-
 
             players = new ArrayList();
 
@@ -495,7 +482,6 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine("PASS");
             }
-            Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
 
             InitializeElements();
         }
