@@ -11,11 +11,13 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-          //  Parser.Parse();
-          /*
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Parser.Parse();
+            Parser.Parse();
+
+            /*
+              Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
+              Application.Run(new Form1());*/
         }
     }
 }

@@ -212,28 +212,11 @@ namespace WindowsFormsApp1
                             }
                             else if (act.Contains("wins the main pot ($"))
                             {
-                                int lenght = 5 + hand.Player.Split(' ').Length - 1;
-
-                                string[] splt = line.Split(' ');
-                                string dd = splt[lenght].Replace(" ", "");
-                                dd = dd.Replace("$", "");
-                                dd = dd.Replace("(", "");
-                                dd = dd.Replace(")", "");
-
-                                hand.result = hand.result + Convert.ToInt64(dd);
+                                hand.result = hand.result + Convert.ToInt64(split[(5 + hand.Player.Split(' ').Length - 1)].Replace(" ", "").Replace("$", "").Replace("(", "").Replace(")", ""));
                             }
                             else if (act.Contains("wins the side pot ($"))
                             {
-                                int lenght = 5 + hand.Player.Split(' ').Length - 1;
-
-                                string[] splt = line.Split(' ');
-                                string dd = splt[lenght];
-                                dd = dd.Replace("$", "");
-                                dd = dd.Replace("(", "");
-                                dd = dd.Replace(")", "");
-                                dd = dd.Replace(",", "");
-
-                                hand.result = hand.result + Convert.ToInt64(dd);
+                                hand.result = hand.result + Convert.ToInt64(split[(5 + hand.Player.Split(' ').Length - 1)].Replace("$", "").Replace("(", "").Replace(")", "").Replace(",", ""));
                             }
                             else if (act.Contains("wins the pot ($"))
                             {
@@ -251,25 +234,12 @@ namespace WindowsFormsApp1
                             }
                             else if (act.Contains("wins the side pot #"))
                             {
-                                int lenght = 6 + hand.Player.Split(' ').Length - 1;
-
-                                string[] splt = line.Split(' ');
-                                string dd = splt[lenght];
-                                dd = dd.Replace("$", "");
-                                dd = dd.Replace("(", "");
-                                dd = dd.Replace(")", "");
-                                dd = dd.Replace(",", "");
-
-                                hand.result = hand.result + Convert.ToInt64(dd);
+                                hand.result = hand.result + Convert.ToInt64(split[(6 + hand.Player.Split(' ').Length - 1)].Replace("$", "").Replace("(", "").Replace(")", "").Replace(",", ""));
                             }
                         }
-                        else if (line.Contains("Uncalled bet of $") && line.Contains(hand.Player))
+                        else if (line.Length > 16 && line.Substring(0,17) == "Uncalled bet of $" && line.Contains(hand.Player))
                         {
-                            string[] splt = line.Split(' ');
-                            string dd = splt[3];
-                            dd = dd.Replace("$", "");
-
-                            hand.result = hand.result + Convert.ToInt64(dd);
+                            hand.result = hand.result + Convert.ToInt64(line.Split(' ')[3].Replace("$", ""));
                         }
                     } 
 
@@ -290,6 +260,7 @@ namespace WindowsFormsApp1
 
             Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
             Console.ReadLine();
+            Hands.Clear();
         }
     }
 }
