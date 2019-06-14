@@ -20,5 +20,6 @@ namespace WindowsFormsApp1
 
         public static List<Hand> Hands = new List<Hand>();
 
+
     }
 }

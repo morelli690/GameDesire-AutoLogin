@@ -39,9 +39,6 @@ namespace WindowsFormsApp1
 
         private void Parse()
         {
-            Parser.Parse();
-            Console.ReadLine();
-
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\GameDesire";
 
             if (!Directory.Exists(filepath))
@@ -127,7 +124,7 @@ namespace WindowsFormsApp1
 
 
 
-
+            //HERE
             foreach (Hand h in l)
             {
                 bool isFlop = false;
@@ -169,6 +166,19 @@ namespace WindowsFormsApp1
                         h.riverCard = splitted[splitted.Length - 1].Replace("[", "").Replace("]", "");
                     }
 
+
+
+
+
+
+
+
+
+
+
+
+                    //HERE
+
                     //blinds
                     //  Vit_M posts the big blind of $10
                     // Vit_M posts the small blind of $5
@@ -183,11 +193,11 @@ namespace WindowsFormsApp1
                         a.Street = "PF";
                         a.Type = "BLIND";
                         a.Amount = Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
-
                         h.Actions.Add(a);
                     }
                     else if (s.Contains(h.Player + " posts the small blind of $") || s.Contains(h.Player + " posts a dead small blind of $"))
                     {
+                         
                         string[] split = s.Split(' ');
                         h.investments = h.investments + Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
 
@@ -195,7 +205,6 @@ namespace WindowsFormsApp1
                         a.Street = "PF";
                         a.Type = "BLIND";
                         a.Amount = Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
-
                         h.Actions.Add(a);
                     }
                     else if (s.Contains(h.Player + " posts $"))
@@ -209,6 +218,12 @@ namespace WindowsFormsApp1
                         a.Amount = Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
                         h.Actions.Add(a);
                     }
+
+
+
+
+
+                    //TODO
 
 
                     //actions
@@ -304,7 +319,6 @@ namespace WindowsFormsApp1
                             h.investments = h.investments + a.Amount;
                             h.Actions.Add(a);
                         }
-
                     }
                     else if (s.Contains(h.Player + " checks"))
                     {
@@ -353,7 +367,6 @@ namespace WindowsFormsApp1
                             a.Type = "BET";
                             a.Amount = Convert.ToInt64(split[split.Length - 1].Replace("$", ""));
 
-
                             Action o = (Action)h.Actions[h.Actions.Count - 1];
 
                             Int64 Difference = 0;
@@ -390,6 +403,11 @@ namespace WindowsFormsApp1
 
                     }
 
+
+
+
+                    //HERE
+
                     //WINNINGS
                     //Guest2190139551 wins the main pot ($363) with a straight, Ten high
                     //vulcano- wins the side pot ($1344) with a pair of Treys
@@ -412,7 +430,6 @@ namespace WindowsFormsApp1
                     }
                     else if (s.Contains(h.Player + " wins the side pot ($"))
                     {
-                        //SaoPaolo wins the side pot ($3706) with a flush, Ace high
                         int lenght = 5 + h.Player.Split(' ').Length - 1;
 
                         string[] splt = s.Split(' ');
