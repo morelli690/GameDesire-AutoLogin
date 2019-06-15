@@ -69,5 +69,15 @@ namespace WindowsFormsApp1.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] poker_gd_sa_install_1_0_3_18 {
+            get {
+                object obj = ResourceManager.GetObject("poker_gd_sa_install_1_0_3_18", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
