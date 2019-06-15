@@ -8,15 +8,46 @@ namespace WindowsFormsApp1
 {
     static class Program
     {
+
+        class MyApplicationContext : ApplicationContext
+        {
+            private void onFormClosed(object sender, EventArgs e)
+            {
+                if (Application.OpenForms.Count == 0)
+                {
+                    ExitThread();
+                }
+            }
+
+            public MyApplicationContext()
+            {
+                var forms = new List<Form>() {
+                    //new Form1(),
+                    new Stakes()
+                };
+
+                foreach (var form in forms)
+                {
+                    //form.FormClosed += onFormClosed;
+                }
+
+                foreach (var form in forms)
+                {
+                    form.Show();
+                }
+            }
+        }
+
         [STAThread]
         static void Main()
         {
-            Parser.Parse();
+            //Parser.Parse();
 
-            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Application.Run(new MyApplicationContext());
+
+            //Console.ReadLine();
         }
     }
 }

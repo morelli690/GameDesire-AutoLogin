@@ -60,7 +60,6 @@ namespace WindowsFormsApp1
         public static List<Hand2> Hands = new List<Hand2>();
         public class Hand2
         {
-            public bool isTakingPartInHand { get; set; }
             public string Player { get; set; }
             public string Table { get; set; }
             public string ID { get; set; }
@@ -102,6 +101,7 @@ namespace WindowsFormsApp1
                     Hand2 hand = new Hand2();
                     string street2 = "PF";
                     ArrayList Actions = new ArrayList();
+                    bool takingPart = false;
 
                     foreach (string line in File.ReadLines(FileInformation.FullName))
                     {
@@ -109,10 +109,15 @@ namespace WindowsFormsApp1
                         {
                             if (hand.ID != null)
                             {
-                                Hands.Add(hand);
+                                if (takingPart)
+                                {
+                                    Hands.Add(hand);
+                                }
+
                                 hand = new Hand2();
                                 street2 = "PF";
                                 Actions = new ArrayList();
+                                takingPart = false;
                             }
 
                             hand.ID = line.Split(' ')[2].Replace("#", "").Replace(":", "");
@@ -129,7 +134,7 @@ namespace WindowsFormsApp1
 
                             hand.Card1 = splitted[splitted.Length - 2].Replace("[", "");
                             hand.Card2 = splitted[splitted.Length - 1].Replace("]", "");
-                            hand.isTakingPartInHand = true;
+                            takingPart = true;
                         }
                         else if (line.Length > 3 && line.Substring(0, 4) == "*** ")
                         {
@@ -237,16 +242,20 @@ namespace WindowsFormsApp1
 
                     if(hand.ID != null)
                     {
-                        Hands.Add(hand);
+                        if (takingPart)
+                        {
+                            Hands.Add(hand);
+                        }
                         hand = new Hand2();
                         street2 = "PF";
                         Actions = new ArrayList();
+                        takingPart = false;
                     }
                 }
             }
 
-            Console.WriteLine(Hands.Count(h => h.isTakingPartInHand));
-            Int64 total = Hands.Where(item => item.isTakingPartInHand).Sum(item => item.result);
+            Console.WriteLine(Hands.Count);
+            Int64 total = Hands.Sum(item => item.result);
             Console.WriteLine("TOTAL: " + total);
 
             Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
