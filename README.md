@@ -1,3 +1,2 @@
-Program which analyses poker texas hold'em hand history on the GameDesire-poker website
-and displays different kind of statistics such as chips/hands played on different stakes...
+Parser for Poker Texas Hold'em hand history on the GameDesire-poker website
 ![Screenshot](UI.png)
