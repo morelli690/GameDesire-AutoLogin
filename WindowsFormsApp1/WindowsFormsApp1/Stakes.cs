@@ -47,7 +47,15 @@ namespace WindowsFormsApp1
                     try
                     {
                         Int64 count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count.ToString("N0");
+
+                        if (count > 0)
+                        {
+                            return ("+") + count.ToString("N0");
+                        } else
+                        {
+                            return count.ToString("N0");
+
+                        }
                     }
                     catch (Exception ex)
                     {
