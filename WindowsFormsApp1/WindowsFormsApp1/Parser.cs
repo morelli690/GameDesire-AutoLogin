@@ -173,11 +173,10 @@ namespace WindowsFormsApp1
                             else if (act.Contains("raises to $"))
                             {
                                 Int64 nr = ((!act.Contains(", and is all-in")) ? Convert.ToInt64(split[split.Length - 1].Replace("$", "")) : Convert.ToInt64(split[split.Length - 4].Replace("$", "").Replace(",", "")));
+                                hand.result = hand.result - nr;
 
                                 if (Actions.Count > 0)
                                 {
-                                    hand.result = hand.result - nr;
-
                                     Int64 amount = 0;
 
                                     foreach (Action2 b in Actions)
@@ -187,15 +186,9 @@ namespace WindowsFormsApp1
                                             amount = b.Amount;
                                         }
                                     }
-
                                     hand.result = hand.result + amount;
-                                    Actions.Add(new Action2(type: "RAISE", street: street2, amount: nr));
                                 }
-                                else
-                                {
-                                    hand.result = hand.result - nr;
-                                    Actions.Add(new Action2(type: "RAISE", street: street2, amount: nr));
-                                }
+                                Actions.Add(new Action2(type: "RAISE", street: street2, amount: nr));
                             }
                             else if (act.Contains("bets $"))
                             {
@@ -204,8 +197,7 @@ namespace WindowsFormsApp1
                                 if (Actions.Count > 0)
                                 {
                                     Action2 o = (Action2)Actions[Actions.Count - 1];
-                                    Int64 Difference = (o.Street == street2 && o.Type == "BLIND") ? Math.Abs(nr - o.Amount) : nr;
-                                    hand.result = hand.result - Difference;
+                                    hand.result = hand.result - ((o.Street == street2 && o.Type == "BLIND") ? Math.Abs(nr - o.Amount) : nr);
                                 }
 
                                 Actions.Add(new Action2(type: "BET", street: street2, amount: nr));
@@ -256,7 +248,6 @@ namespace WindowsFormsApp1
             Console.WriteLine(Hands.Count(h => h.isTakingPartInHand));
             Int64 total = Hands.Where(item => item.isTakingPartInHand).Sum(item => item.result);
             Console.WriteLine("TOTAL: " + total);
-
 
             Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
             Console.ReadLine();
