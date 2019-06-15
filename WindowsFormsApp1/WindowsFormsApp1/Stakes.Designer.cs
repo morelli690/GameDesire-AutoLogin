@@ -154,6 +154,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.tableLayoutPanel1.RowCount = 16;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -171,7 +172,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 329);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 339);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // label50
@@ -180,7 +181,7 @@
             this.label50.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label50.Location = new System.Drawing.Point(217, 309);
+            this.label50.Location = new System.Drawing.Point(217, 314);
             this.label50.Margin = new System.Windows.Forms.Padding(0);
             this.label50.Name = "label50";
             this.label50.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -196,7 +197,7 @@
             this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label48.Location = new System.Drawing.Point(217, 289);
+            this.label48.Location = new System.Drawing.Point(217, 294);
             this.label48.Margin = new System.Windows.Forms.Padding(0);
             this.label48.Name = "label48";
             this.label48.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -211,7 +212,7 @@
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label47.Location = new System.Drawing.Point(117, 289);
+            this.label47.Location = new System.Drawing.Point(117, 294);
             this.label47.Margin = new System.Windows.Forms.Padding(0);
             this.label47.Name = "label47";
             this.label47.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -227,7 +228,7 @@
             this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label46.Location = new System.Drawing.Point(217, 269);
+            this.label46.Location = new System.Drawing.Point(217, 274);
             this.label46.Margin = new System.Windows.Forms.Padding(0);
             this.label46.Name = "label46";
             this.label46.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -242,7 +243,7 @@
             this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label45.Location = new System.Drawing.Point(117, 269);
+            this.label45.Location = new System.Drawing.Point(117, 274);
             this.label45.Margin = new System.Windows.Forms.Padding(0);
             this.label45.Name = "label45";
             this.label45.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -257,7 +258,7 @@
             this.label44.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label44.Location = new System.Drawing.Point(217, 249);
+            this.label44.Location = new System.Drawing.Point(217, 254);
             this.label44.Margin = new System.Windows.Forms.Padding(0);
             this.label44.Name = "label44";
             this.label44.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -272,7 +273,7 @@
             this.label43.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label43.Location = new System.Drawing.Point(117, 249);
+            this.label43.Location = new System.Drawing.Point(117, 254);
             this.label43.Margin = new System.Windows.Forms.Padding(0);
             this.label43.Name = "label43";
             this.label43.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -288,7 +289,7 @@
             this.label42.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label42.Location = new System.Drawing.Point(217, 229);
+            this.label42.Location = new System.Drawing.Point(217, 234);
             this.label42.Margin = new System.Windows.Forms.Padding(0);
             this.label42.Name = "label42";
             this.label42.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -303,7 +304,7 @@
             this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label41.Location = new System.Drawing.Point(117, 229);
+            this.label41.Location = new System.Drawing.Point(117, 234);
             this.label41.Margin = new System.Windows.Forms.Padding(0);
             this.label41.Name = "label41";
             this.label41.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -319,7 +320,7 @@
             this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label40.Location = new System.Drawing.Point(217, 209);
+            this.label40.Location = new System.Drawing.Point(217, 214);
             this.label40.Margin = new System.Windows.Forms.Padding(0);
             this.label40.Name = "label40";
             this.label40.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -334,7 +335,7 @@
             this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label39.Location = new System.Drawing.Point(117, 209);
+            this.label39.Location = new System.Drawing.Point(117, 214);
             this.label39.Margin = new System.Windows.Forms.Padding(0);
             this.label39.Name = "label39";
             this.label39.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -350,7 +351,7 @@
             this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label38.Location = new System.Drawing.Point(217, 189);
+            this.label38.Location = new System.Drawing.Point(217, 194);
             this.label38.Margin = new System.Windows.Forms.Padding(0);
             this.label38.Name = "label38";
             this.label38.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -365,7 +366,7 @@
             this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label37.Location = new System.Drawing.Point(117, 189);
+            this.label37.Location = new System.Drawing.Point(117, 194);
             this.label37.Margin = new System.Windows.Forms.Padding(0);
             this.label37.Name = "label37";
             this.label37.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -381,7 +382,7 @@
             this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label36.Location = new System.Drawing.Point(217, 169);
+            this.label36.Location = new System.Drawing.Point(217, 174);
             this.label36.Margin = new System.Windows.Forms.Padding(0);
             this.label36.Name = "label36";
             this.label36.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -396,7 +397,7 @@
             this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label35.Location = new System.Drawing.Point(117, 169);
+            this.label35.Location = new System.Drawing.Point(117, 174);
             this.label35.Margin = new System.Windows.Forms.Padding(0);
             this.label35.Name = "label35";
             this.label35.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -412,7 +413,7 @@
             this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label34.Location = new System.Drawing.Point(217, 149);
+            this.label34.Location = new System.Drawing.Point(217, 154);
             this.label34.Margin = new System.Windows.Forms.Padding(0);
             this.label34.Name = "label34";
             this.label34.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -427,7 +428,7 @@
             this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label33.Location = new System.Drawing.Point(117, 149);
+            this.label33.Location = new System.Drawing.Point(117, 154);
             this.label33.Margin = new System.Windows.Forms.Padding(0);
             this.label33.Name = "label33";
             this.label33.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -443,7 +444,7 @@
             this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label32.Location = new System.Drawing.Point(217, 129);
+            this.label32.Location = new System.Drawing.Point(217, 134);
             this.label32.Margin = new System.Windows.Forms.Padding(0);
             this.label32.Name = "label32";
             this.label32.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -458,7 +459,7 @@
             this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label31.Location = new System.Drawing.Point(117, 129);
+            this.label31.Location = new System.Drawing.Point(117, 134);
             this.label31.Margin = new System.Windows.Forms.Padding(0);
             this.label31.Name = "label31";
             this.label31.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -474,7 +475,7 @@
             this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label30.Location = new System.Drawing.Point(217, 109);
+            this.label30.Location = new System.Drawing.Point(217, 114);
             this.label30.Margin = new System.Windows.Forms.Padding(0);
             this.label30.Name = "label30";
             this.label30.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -489,7 +490,7 @@
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label29.Location = new System.Drawing.Point(117, 109);
+            this.label29.Location = new System.Drawing.Point(117, 114);
             this.label29.Margin = new System.Windows.Forms.Padding(0);
             this.label29.Name = "label29";
             this.label29.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -505,7 +506,7 @@
             this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label28.Location = new System.Drawing.Point(217, 89);
+            this.label28.Location = new System.Drawing.Point(217, 94);
             this.label28.Margin = new System.Windows.Forms.Padding(0);
             this.label28.Name = "label28";
             this.label28.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -520,7 +521,7 @@
             this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label27.Location = new System.Drawing.Point(117, 89);
+            this.label27.Location = new System.Drawing.Point(117, 94);
             this.label27.Margin = new System.Windows.Forms.Padding(0);
             this.label27.Name = "label27";
             this.label27.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -536,7 +537,7 @@
             this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label26.Location = new System.Drawing.Point(217, 69);
+            this.label26.Location = new System.Drawing.Point(217, 74);
             this.label26.Margin = new System.Windows.Forms.Padding(0);
             this.label26.Name = "label26";
             this.label26.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -551,7 +552,7 @@
             this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label25.Location = new System.Drawing.Point(117, 69);
+            this.label25.Location = new System.Drawing.Point(117, 74);
             this.label25.Margin = new System.Windows.Forms.Padding(0);
             this.label25.Name = "label25";
             this.label25.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -567,7 +568,7 @@
             this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label24.Location = new System.Drawing.Point(217, 49);
+            this.label24.Location = new System.Drawing.Point(217, 54);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
             this.label24.Name = "label24";
             this.label24.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -582,7 +583,7 @@
             this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label23.Location = new System.Drawing.Point(117, 49);
+            this.label23.Location = new System.Drawing.Point(117, 54);
             this.label23.Margin = new System.Windows.Forms.Padding(0);
             this.label23.Name = "label23";
             this.label23.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -598,7 +599,7 @@
             this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label22.Location = new System.Drawing.Point(217, 29);
+            this.label22.Location = new System.Drawing.Point(217, 34);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
             this.label22.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -613,7 +614,7 @@
             this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label21.Location = new System.Drawing.Point(117, 29);
+            this.label21.Location = new System.Drawing.Point(117, 34);
             this.label21.Margin = new System.Windows.Forms.Padding(0);
             this.label21.Name = "label21";
             this.label21.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -629,7 +630,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label6.Location = new System.Drawing.Point(0, 29);
+            this.label6.Location = new System.Drawing.Point(0, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -644,7 +645,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label5.Location = new System.Drawing.Point(217, 0);
+            this.label5.Location = new System.Drawing.Point(217, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -659,7 +660,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label4.Location = new System.Drawing.Point(117, 0);
+            this.label4.Location = new System.Drawing.Point(117, 5);
             this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -675,7 +676,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label7.Location = new System.Drawing.Point(0, 49);
+            this.label7.Location = new System.Drawing.Point(0, 54);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -690,7 +691,7 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label8.Location = new System.Drawing.Point(0, 69);
+            this.label8.Location = new System.Drawing.Point(0, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -705,7 +706,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label9.Location = new System.Drawing.Point(0, 89);
+            this.label9.Location = new System.Drawing.Point(0, 94);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -720,7 +721,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label10.Location = new System.Drawing.Point(0, 109);
+            this.label10.Location = new System.Drawing.Point(0, 114);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -735,7 +736,7 @@
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label11.Location = new System.Drawing.Point(0, 129);
+            this.label11.Location = new System.Drawing.Point(0, 134);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -750,7 +751,7 @@
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label12.Location = new System.Drawing.Point(0, 149);
+            this.label12.Location = new System.Drawing.Point(0, 154);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -765,7 +766,7 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label13.Location = new System.Drawing.Point(0, 169);
+            this.label13.Location = new System.Drawing.Point(0, 174);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -780,7 +781,7 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label14.Location = new System.Drawing.Point(0, 189);
+            this.label14.Location = new System.Drawing.Point(0, 194);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -796,7 +797,7 @@
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label15.Location = new System.Drawing.Point(0, 209);
+            this.label15.Location = new System.Drawing.Point(0, 214);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -812,7 +813,7 @@
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label17.Location = new System.Drawing.Point(0, 229);
+            this.label17.Location = new System.Drawing.Point(0, 234);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
             this.label17.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -828,7 +829,7 @@
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label16.Location = new System.Drawing.Point(0, 249);
+            this.label16.Location = new System.Drawing.Point(0, 254);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -844,7 +845,7 @@
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label18.Location = new System.Drawing.Point(0, 269);
+            this.label18.Location = new System.Drawing.Point(0, 274);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -860,7 +861,7 @@
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label19.Location = new System.Drawing.Point(0, 289);
+            this.label19.Location = new System.Drawing.Point(0, 294);
             this.label19.Margin = new System.Windows.Forms.Padding(0);
             this.label19.Name = "label19";
             this.label19.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -876,7 +877,7 @@
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label20.Location = new System.Drawing.Point(0, 309);
+            this.label20.Location = new System.Drawing.Point(0, 314);
             this.label20.Margin = new System.Windows.Forms.Padding(0);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -892,7 +893,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
-            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Location = new System.Drawing.Point(0, 5);
             this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -907,7 +908,7 @@
             this.label49.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label49.Location = new System.Drawing.Point(117, 309);
+            this.label49.Location = new System.Drawing.Point(117, 314);
             this.label49.Margin = new System.Windows.Forms.Padding(0);
             this.label49.Name = "label49";
             this.label49.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -942,7 +943,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(411, 379);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(411, 389);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel3
