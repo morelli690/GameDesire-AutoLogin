@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            Database.Create();
+            Parser.Parse();
 
             /*
             Application.EnableVisualStyles();
