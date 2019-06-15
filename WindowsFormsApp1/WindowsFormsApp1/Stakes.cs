@@ -147,5 +147,110 @@ namespace WindowsFormsApp1
             label1.ForeColor = Color.FromArgb(175, 191, 191);
 
         }
+
+        private void Label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label35_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label39_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label41_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label43_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label47_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label20_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
