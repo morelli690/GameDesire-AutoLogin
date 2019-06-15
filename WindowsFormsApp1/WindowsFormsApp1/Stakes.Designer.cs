@@ -81,10 +81,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label52 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -982,31 +982,13 @@
             this.label52.Location = new System.Drawing.Point(0, 0);
             this.label52.Margin = new System.Windows.Forms.Padding(0);
             this.label52.Name = "label52";
-            this.label52.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label52.Size = new System.Drawing.Size(44, 51);
+            this.label52.Padding = new System.Windows.Forms.Padding(10, 5, 0, 0);
+            this.label52.Size = new System.Drawing.Size(54, 51);
             this.label52.TabIndex = 2;
             this.label52.Text = "≡";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label52.MouseEnter += new System.EventHandler(this.Label52_MouseEnter);
             this.label52.MouseLeave += new System.EventHandler(this.Label52_MouseLeave);
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.label51.Location = new System.Drawing.Point(305, 0);
-            this.label51.Margin = new System.Windows.Forms.Padding(0);
-            this.label51.Name = "label51";
-            this.label51.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
-            this.label51.Size = new System.Drawing.Size(59, 46);
-            this.label51.TabIndex = 0;
-            this.label51.Text = "🛠";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label51.Click += new System.EventHandler(this.Label51_Click);
-            this.label51.MouseEnter += new System.EventHandler(this.Label51_MouseEnter);
-            this.label51.MouseLeave += new System.EventHandler(this.Label51_MouseLeave);
             // 
             // label1
             // 
@@ -1015,10 +997,11 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.label1.Location = new System.Drawing.Point(364, 0);
+            this.label1.Location = new System.Drawing.Point(344, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 51);
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label1.Size = new System.Drawing.Size(67, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "✕";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1033,10 +1016,10 @@
             this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(44, 0);
+            this.panel1.Location = new System.Drawing.Point(54, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 51);
+            this.panel1.Size = new System.Drawing.Size(231, 51);
             this.panel1.TabIndex = 1;
             // 
             // label2
@@ -1048,11 +1031,29 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(261, 51);
+            this.label2.Size = new System.Drawing.Size(231, 51);
             this.label2.TabIndex = 0;
             this.label2.Text = "Breakdown by stake";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label2_MouseMove);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.label51.Location = new System.Drawing.Point(285, 0);
+            this.label51.Margin = new System.Windows.Forms.Padding(0);
+            this.label51.Name = "label51";
+            this.label51.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            this.label51.Size = new System.Drawing.Size(59, 46);
+            this.label51.TabIndex = 0;
+            this.label51.Text = "🛠";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label51.Click += new System.EventHandler(this.Label51_Click);
+            this.label51.MouseEnter += new System.EventHandler(this.Label51_MouseEnter);
+            this.label51.MouseLeave += new System.EventHandler(this.Label51_MouseLeave);
             // 
             // panel5
             // 
