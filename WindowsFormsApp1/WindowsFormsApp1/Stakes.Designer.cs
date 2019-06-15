@@ -924,7 +924,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(320, 0);
+            this.panel3.Size = new System.Drawing.Size(410, 0);
             this.panel3.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -1026,7 +1026,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(320, 377);
+            this.ClientSize = new System.Drawing.Size(410, 376);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel5);
