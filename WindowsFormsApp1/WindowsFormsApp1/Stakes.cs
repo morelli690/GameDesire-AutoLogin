@@ -286,5 +286,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void Label52_Click(object sender, EventArgs e)
+        {
+            tableLayoutPanel4.Visible = !tableLayoutPanel4.Visible;
+        }
     }
 }

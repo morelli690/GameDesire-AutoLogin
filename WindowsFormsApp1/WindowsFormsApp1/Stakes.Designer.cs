@@ -86,10 +86,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -987,6 +991,7 @@
             this.label52.TabIndex = 2;
             this.label52.Text = "≡";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label52.Click += new System.EventHandler(this.Label52_Click);
             this.label52.MouseEnter += new System.EventHandler(this.Label52_MouseEnter);
             this.label52.MouseLeave += new System.EventHandler(this.Label52_MouseLeave);
             // 
@@ -1031,6 +1036,7 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.label2.Size = new System.Drawing.Size(231, 51);
             this.label2.TabIndex = 0;
             this.label2.Text = "Breakdown by stake";
@@ -1065,6 +1071,54 @@
             this.panel5.Size = new System.Drawing.Size(0, 0);
             this.panel5.TabIndex = 14;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.label54, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label53, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 51);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.MinimumSize = new System.Drawing.Size(282, 113);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(282, 113);
+            this.tableLayoutPanel4.TabIndex = 15;
+            this.tableLayoutPanel4.Visible = false;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.ForeColor = System.Drawing.Color.Silver;
+            this.label53.Location = new System.Drawing.Point(0, 0);
+            this.label53.Margin = new System.Windows.Forms.Padding(0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(282, 56);
+            this.label53.TabIndex = 0;
+            this.label53.Text = "label53";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.ForeColor = System.Drawing.Color.Silver;
+            this.label54.Location = new System.Drawing.Point(0, 56);
+            this.label54.Margin = new System.Windows.Forms.Padding(0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(282, 57);
+            this.label54.TabIndex = 1;
+            this.label54.Text = "label54";
+            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Stakes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1072,7 +1126,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(411, 389);
+            this.ClientSize = new System.Drawing.Size(411, 387);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel5);
@@ -1087,6 +1142,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1151,6 +1208,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label53;
     }
 }
 
