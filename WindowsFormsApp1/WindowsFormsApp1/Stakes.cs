@@ -153,8 +153,21 @@ namespace WindowsFormsApp1
         {
             label1.BackColor = Color.FromArgb(82, 138, 140);
             label1.ForeColor = Color.FromArgb(175, 191, 191);
-
         }
+
+
+        public void Label51_MouseEnter(object sender, EventArgs e)
+        {
+            label51.BackColor = Color.FromArgb(48, 48, 186);
+            label51.ForeColor = Color.White;
+        }
+
+        public void Label51_MouseLeave(object sender, EventArgs e)
+        {
+            label51.BackColor = Color.FromArgb(82, 138, 140);
+            label51.ForeColor = Color.FromArgb(175, 191, 191);
+        }
+
 
         private void Label21_Click(object sender, EventArgs e)
         {
@@ -257,6 +270,11 @@ namespace WindowsFormsApp1
         }
 
         private void Label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label51_Click(object sender, EventArgs e)
         {
 
         }
