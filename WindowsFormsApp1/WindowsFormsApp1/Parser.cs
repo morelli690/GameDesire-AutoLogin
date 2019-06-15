@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Data.SQLite;
 
 namespace WindowsFormsApp1
 {
@@ -15,6 +17,16 @@ namespace WindowsFormsApp1
             public string TableName { get; set; }
             public string Stake { get; set; }
         }
+
+        public static async void Run()
+        {
+            while (true)
+            {
+                Parse();
+                Thread.Sleep(2000);
+            }
+        }
+
         public static FileInformation GetFileInformation(string fileName)
         {
             var r = fileName.Split(new string[] { " - " }, StringSplitOptions.None).ToList();
@@ -88,11 +100,47 @@ namespace WindowsFormsApp1
             }
         }
 
+        public static void SaveHandsToDatabase()
+        {
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    foreach(Hand2 hand in Hands)
+                    {
+                        cmd.CommandText = "SELECT Count(*) from Hands where ID = @ID";
+                        cmd.Parameters.Add(new SQLiteParameter("@ID", hand.ID));
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        if (count == 0)
+                        {
+                            cmd.CommandText = "INSERT INTO Hands (ID, Player, Stake, TableName, DateTime, Card1, Card2, FlopCard1, FLopCard2, FlopCard3, TurnCard, RiverCard, Result) values (@ID, @Player, @Stake, @TableName, @DateTime, @Card1, @Card2, @FlopCard1, @FLopCard2, @FlopCard3, @TurnCard, @RiverCard, @Result)";
+                            cmd.Parameters.Add(new SQLiteParameter("@ID", hand.ID));
+                            cmd.Parameters.Add(new SQLiteParameter("@Player", hand.Player));
+                            cmd.Parameters.Add(new SQLiteParameter("@Stake", hand.Stake));
+                            cmd.Parameters.Add(new SQLiteParameter("@TableName", hand.Table));
+                            cmd.Parameters.Add(new SQLiteParameter("@DateTime", hand.dt));
+                            cmd.Parameters.Add(new SQLiteParameter("@Card1", hand.Card1));
+                            cmd.Parameters.Add(new SQLiteParameter("@Card2", hand.Card2));
+                            cmd.Parameters.Add(new SQLiteParameter("@FlopCard1", hand.flopCard1));
+                            cmd.Parameters.Add(new SQLiteParameter("@FlopCard2", hand.flopCard2));
+                            cmd.Parameters.Add(new SQLiteParameter("@FlopCard3", hand.flopCard3));
+                            cmd.Parameters.Add(new SQLiteParameter("@TurnCard", hand.turnCard));
+                            cmd.Parameters.Add(new SQLiteParameter("@RiverCard", hand.riverCard));
+                            cmd.Parameters.Add(new SQLiteParameter("@Result", hand.result));
+
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+                con.Close();
+            }
+        }
+
         public static void Parse()
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
             foreach (FileInfo FileInformation in new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\GameDesire").GetFiles("*.txt"))
             {
                 if (ShouldParseFile(FileInformation.ToString()))
@@ -253,13 +301,7 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-
-            Console.WriteLine(Hands.Count);
-            Int64 total = Hands.Sum(item => item.result);
-            Console.WriteLine("TOTAL: " + total);
-
-            Console.WriteLine(stopWatch.Elapsed.TotalSeconds);
-            Console.ReadLine();
+            SaveHandsToDatabase();
             Hands.Clear();
         }
     }

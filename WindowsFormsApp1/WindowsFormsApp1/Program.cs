@@ -41,13 +41,13 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            //Parser.Parse();
+            Database.Create();
+
+            Task.Factory.StartNew(Parser.Run);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MyApplicationContext());
-
-            //Console.ReadLine();
         }
     }
 }

@@ -97,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -171,7 +171,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(298, 329);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(321, 329);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // label50
@@ -183,11 +183,10 @@
             this.label50.Location = new System.Drawing.Point(157, 309);
             this.label50.Margin = new System.Windows.Forms.Padding(0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(141, 20);
+            this.label50.Size = new System.Drawing.Size(164, 20);
             this.label50.TabIndex = 47;
             this.label50.Text = "0";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label50.Click += new System.EventHandler(this.Label50_Click);
             // 
             // label48
             // 
@@ -198,11 +197,10 @@
             this.label48.Location = new System.Drawing.Point(157, 289);
             this.label48.Margin = new System.Windows.Forms.Padding(0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(141, 20);
+            this.label48.Size = new System.Drawing.Size(164, 20);
             this.label48.TabIndex = 45;
             this.label48.Text = "0";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label48.Click += new System.EventHandler(this.Label48_Click);
             // 
             // label47
             // 
@@ -227,11 +225,10 @@
             this.label46.Location = new System.Drawing.Point(157, 269);
             this.label46.Margin = new System.Windows.Forms.Padding(0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(141, 20);
+            this.label46.Size = new System.Drawing.Size(164, 20);
             this.label46.TabIndex = 43;
             this.label46.Text = "0";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label46.Click += new System.EventHandler(this.Label46_Click);
             // 
             // label45
             // 
@@ -246,7 +243,6 @@
             this.label45.TabIndex = 42;
             this.label45.Text = "0";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label45.Click += new System.EventHandler(this.Label45_Click);
             // 
             // label44
             // 
@@ -257,11 +253,10 @@
             this.label44.Location = new System.Drawing.Point(157, 249);
             this.label44.Margin = new System.Windows.Forms.Padding(0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(141, 20);
+            this.label44.Size = new System.Drawing.Size(164, 20);
             this.label44.TabIndex = 41;
             this.label44.Text = "0";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label44.Click += new System.EventHandler(this.Label44_Click);
             // 
             // label43
             // 
@@ -276,7 +271,6 @@
             this.label43.TabIndex = 40;
             this.label43.Text = "0";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label43.Click += new System.EventHandler(this.Label43_Click);
             // 
             // label42
             // 
@@ -287,11 +281,10 @@
             this.label42.Location = new System.Drawing.Point(157, 229);
             this.label42.Margin = new System.Windows.Forms.Padding(0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(141, 20);
+            this.label42.Size = new System.Drawing.Size(164, 20);
             this.label42.TabIndex = 39;
             this.label42.Text = "0";
             this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label42.Click += new System.EventHandler(this.Label42_Click);
             // 
             // label41
             // 
@@ -306,7 +299,6 @@
             this.label41.TabIndex = 38;
             this.label41.Text = "0";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label41.Click += new System.EventHandler(this.Label41_Click);
             // 
             // label40
             // 
@@ -317,11 +309,10 @@
             this.label40.Location = new System.Drawing.Point(157, 209);
             this.label40.Margin = new System.Windows.Forms.Padding(0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(141, 20);
+            this.label40.Size = new System.Drawing.Size(164, 20);
             this.label40.TabIndex = 37;
             this.label40.Text = "0";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label40.Click += new System.EventHandler(this.Label40_Click);
             // 
             // label39
             // 
@@ -336,7 +327,6 @@
             this.label39.TabIndex = 36;
             this.label39.Text = "0";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label39.Click += new System.EventHandler(this.Label39_Click);
             // 
             // label38
             // 
@@ -347,11 +337,10 @@
             this.label38.Location = new System.Drawing.Point(157, 189);
             this.label38.Margin = new System.Windows.Forms.Padding(0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(141, 20);
+            this.label38.Size = new System.Drawing.Size(164, 20);
             this.label38.TabIndex = 35;
             this.label38.Text = "0";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label38.Click += new System.EventHandler(this.Label38_Click);
             // 
             // label37
             // 
@@ -366,7 +355,6 @@
             this.label37.TabIndex = 34;
             this.label37.Text = "0";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label37.Click += new System.EventHandler(this.Label37_Click);
             // 
             // label36
             // 
@@ -377,11 +365,10 @@
             this.label36.Location = new System.Drawing.Point(157, 169);
             this.label36.Margin = new System.Windows.Forms.Padding(0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(141, 20);
+            this.label36.Size = new System.Drawing.Size(164, 20);
             this.label36.TabIndex = 33;
             this.label36.Text = "0";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label36.Click += new System.EventHandler(this.Label36_Click);
             // 
             // label35
             // 
@@ -396,7 +383,6 @@
             this.label35.TabIndex = 32;
             this.label35.Text = "0";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label35.Click += new System.EventHandler(this.Label35_Click);
             // 
             // label34
             // 
@@ -407,7 +393,7 @@
             this.label34.Location = new System.Drawing.Point(157, 149);
             this.label34.Margin = new System.Windows.Forms.Padding(0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(141, 20);
+            this.label34.Size = new System.Drawing.Size(164, 20);
             this.label34.TabIndex = 31;
             this.label34.Text = "0";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -425,7 +411,6 @@
             this.label33.TabIndex = 30;
             this.label33.Text = "0";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label33.Click += new System.EventHandler(this.Label33_Click);
             // 
             // label32
             // 
@@ -436,7 +421,7 @@
             this.label32.Location = new System.Drawing.Point(157, 129);
             this.label32.Margin = new System.Windows.Forms.Padding(0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(141, 20);
+            this.label32.Size = new System.Drawing.Size(164, 20);
             this.label32.TabIndex = 29;
             this.label32.Text = "0";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -454,7 +439,6 @@
             this.label31.TabIndex = 28;
             this.label31.Text = "0";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label31.Click += new System.EventHandler(this.Label31_Click);
             // 
             // label30
             // 
@@ -465,7 +449,7 @@
             this.label30.Location = new System.Drawing.Point(157, 109);
             this.label30.Margin = new System.Windows.Forms.Padding(0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(141, 20);
+            this.label30.Size = new System.Drawing.Size(164, 20);
             this.label30.TabIndex = 27;
             this.label30.Text = "0";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -483,7 +467,6 @@
             this.label29.TabIndex = 26;
             this.label29.Text = "0";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label29.Click += new System.EventHandler(this.Label29_Click);
             // 
             // label28
             // 
@@ -494,7 +477,7 @@
             this.label28.Location = new System.Drawing.Point(157, 89);
             this.label28.Margin = new System.Windows.Forms.Padding(0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(141, 20);
+            this.label28.Size = new System.Drawing.Size(164, 20);
             this.label28.TabIndex = 25;
             this.label28.Text = "0";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -512,7 +495,6 @@
             this.label27.TabIndex = 24;
             this.label27.Text = "0";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label27.Click += new System.EventHandler(this.Label27_Click);
             // 
             // label26
             // 
@@ -523,7 +505,7 @@
             this.label26.Location = new System.Drawing.Point(157, 69);
             this.label26.Margin = new System.Windows.Forms.Padding(0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(141, 20);
+            this.label26.Size = new System.Drawing.Size(164, 20);
             this.label26.TabIndex = 23;
             this.label26.Text = "0";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -541,7 +523,6 @@
             this.label25.TabIndex = 22;
             this.label25.Text = "0";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label25.Click += new System.EventHandler(this.Label25_Click);
             // 
             // label24
             // 
@@ -552,7 +533,7 @@
             this.label24.Location = new System.Drawing.Point(157, 49);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(141, 20);
+            this.label24.Size = new System.Drawing.Size(164, 20);
             this.label24.TabIndex = 21;
             this.label24.Text = "0";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -570,7 +551,6 @@
             this.label23.TabIndex = 20;
             this.label23.Text = "0";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label23.Click += new System.EventHandler(this.Label23_Click);
             // 
             // label22
             // 
@@ -581,7 +561,7 @@
             this.label22.Location = new System.Drawing.Point(157, 29);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(141, 20);
+            this.label22.Size = new System.Drawing.Size(164, 20);
             this.label22.TabIndex = 19;
             this.label22.Text = "0";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -599,7 +579,6 @@
             this.label21.TabIndex = 18;
             this.label21.Text = "0";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label21.Click += new System.EventHandler(this.Label21_Click);
             // 
             // label6
             // 
@@ -624,9 +603,9 @@
             this.label5.Location = new System.Drawing.Point(157, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 24);
+            this.label5.Size = new System.Drawing.Size(164, 24);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Result (Chips)";
+            this.label5.Text = "Result (in Chips)";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -828,13 +807,13 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(1)))), ((int)(((byte)(137)))), ((int)(((byte)(121)))));
             this.label20.Location = new System.Drawing.Point(0, 309);
             this.label20.Margin = new System.Windows.Forms.Padding(0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(87, 17);
+            this.label20.Size = new System.Drawing.Size(87, 20);
             this.label20.TabIndex = 17;
             this.label20.Text = "5/10";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -876,7 +855,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(299, 0);
+            this.panel3.Size = new System.Drawing.Size(320, 0);
             this.panel3.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -893,7 +872,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(298, 379);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(321, 379);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -912,16 +891,17 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(298, 50);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(321, 50);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(138)))), ((int)(((byte)(140)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(251, 0);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.label1.Location = new System.Drawing.Point(274, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 50);
@@ -929,6 +909,8 @@
             this.label1.Text = "✕";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.Label1_Click_2);
+            this.label1.MouseEnter += new System.EventHandler(this.Label1_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.Label1_MouseLeave);
             // 
             // panel1
             // 
@@ -940,16 +922,19 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(251, 50);
+            this.panel1.Size = new System.Drawing.Size(274, 50);
             this.panel1.TabIndex = 1;
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 50);
+            this.label2.Size = new System.Drawing.Size(274, 50);
             this.label2.TabIndex = 0;
             this.label2.Text = "Stakes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -972,7 +957,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(299, 380);
+            this.ClientSize = new System.Drawing.Size(320, 377);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel5);
