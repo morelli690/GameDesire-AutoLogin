@@ -61,32 +61,12 @@ namespace GameDesire.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap lg_ajax_spinner_gif {
-            get {
-                object obj = ResourceManager.GetObject("lg.ajax-spinner-gif", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] poker_gd_sa_install_1_0_3_18 {
             get {
                 object obj = ResourceManager.GetObject("poker_gd_sa_install_1_0_3_18", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap settings_gears__1_ {
-            get {
-                object obj = ResourceManager.GetObject("settings-gears (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

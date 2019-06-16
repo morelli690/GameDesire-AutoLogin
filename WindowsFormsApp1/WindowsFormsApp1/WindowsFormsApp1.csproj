@@ -110,13 +110,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lg.ajax-spinner-gif.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\poker_gd_sa_install_1_0_3_18.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings-gears %281%29.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
