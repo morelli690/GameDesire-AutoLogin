@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             {
                 var forms = new List<Form>() {
                     //new Form1(),
-                    new Stakes()
+                    new Analyzer()
                 };
 
                 foreach (var form in forms)

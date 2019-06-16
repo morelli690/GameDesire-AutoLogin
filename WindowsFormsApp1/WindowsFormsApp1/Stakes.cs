@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Stakes : Form
+    public partial class Analyzer : Form
     {
-        public Stakes()
+        public Analyzer()
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
@@ -22,12 +22,16 @@ namespace WindowsFormsApp1
         public class View
         {
             public string Stake { get; set; }
+            public string StakeLabel { get; set; }
+
             public string Hands { get; set; }
             public string Result { get; set; }
 
-            public View(string s, string h, string r)
+
+            public View(string s, string sl, string h, string r)
             {
                 Stake = s;
+                StakeLabel = sl;
                 Hands = h;
                 Result = r;
             }
@@ -93,31 +97,53 @@ namespace WindowsFormsApp1
             while (true)
             {
                 ArrayList Views = new ArrayList();
-                Views.Add(new View("5_10", "label49", "label50"));
-                Views.Add(new View("10_20", "label47", "label48"));
-                Views.Add(new View("25_50", "label45", "label46"));
-                Views.Add(new View("50_100", "label43", "label44"));
-                Views.Add(new View("100_200", "label41", "label42"));
-                Views.Add(new View("250_500", "label39", "label40"));
-                Views.Add(new View("500_1K", "label37", "label38"));
-                Views.Add(new View("1K_2K", "label35", "label36"));
-                Views.Add(new View("2.5K_5K", "label33", "label34"));
-                Views.Add(new View("5K_10K", "label31", "label32"));
-                Views.Add(new View("10K_20K", "label29", "label30"));
-                Views.Add(new View("25K_50K", "label27", "label28"));
-                Views.Add(new View("50K_100K", "label25", "label26"));
-                Views.Add(new View("100K_200K", "label23", "label24"));
-                Views.Add(new View("250K_500K", "label21", "label22"));
-
+                Views.Add(new View("5_10", "label20", "label49", "label50"));
+                Views.Add(new View("10_20", "label19", "label47", "label48"));
+                Views.Add(new View("25_50", "label18", "label45", "label46"));
+                Views.Add(new View("50_100", "label16", "label43", "label44"));
+                Views.Add(new View("100_200", "label17", "label41", "label42"));
+                Views.Add(new View("250_500", "label15", "label39", "label40"));
+                Views.Add(new View("500_1K", "label14", "label37", "label38"));
+                Views.Add(new View("1K_2K", "label13", "label35", "label36"));
+                Views.Add(new View("2.5K_5K", "label12", "label33", "label34"));
+                Views.Add(new View("5K_10K", "label11", "label31", "label32"));
+                Views.Add(new View("10K_20K", "label10", "label29", "label30"));
+                Views.Add(new View("25K_50K","label9", "label27", "label28"));
+                Views.Add(new View("50K_100K", "label8", "label25", "label26"));
+                Views.Add(new View("100K_200K", "label7", "label23", "label24"));
+                Views.Add(new View("250K_500K", "label6", "label21", "label22"));
+                Int64 total = 0;
+                Int64 total2 = 0;
                 foreach (View v in Views)
                 {
+                    Label Stake = this.Controls.Find(v.StakeLabel, true).FirstOrDefault() as Label;
+
                     Label Hands = this.Controls.Find(v.Hands, true).FirstOrDefault() as Label;
                     Hands.Text = getHands(v.Stake);
+                    total2 = total2 + Convert.ToInt64(Hands.Text.Replace(",", ""));
 
                     Label Result = this.Controls.Find(v.Result, true).FirstOrDefault() as Label;
                     Result.Text = getResult(v.Stake);
+
+                    Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
+                    total = total + res;
+                    if(res > 0)
+                    {
+                        Stake.BackColor = Color.Green;
+                        Hands.BackColor = Color.DarkGreen;
+                        Result.BackColor = Color.DarkGreen;
+
+                    }
+                    else if(res < 0)
+                    {
+                        Stake.BackColor = Color.Maroon;
+                        Hands.BackColor = Color.DarkRed;
+                        Result.BackColor = Color.DarkRed;
+                    }
                 }
 
+                label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
+                label51.Text = total2.ToString("N0");
                 Thread.Sleep(2000);
             }
         }
@@ -153,143 +179,6 @@ namespace WindowsFormsApp1
         {
             label1.BackColor = Color.FromArgb(35, 84, 84);
             label1.ForeColor = Color.FromArgb(175, 191, 191);
-        }
-
-
-        public void Label51_MouseEnter(object sender, EventArgs e)
-        {
-            label51.ForeColor = Color.White;
-        }
-
-        public void Label51_MouseLeave(object sender, EventArgs e)
-        {
-            label51.ForeColor = Color.FromArgb(175, 191, 191);
-        }
-
-
-        public void Label52_MouseEnter(object sender, EventArgs e)
-        {
-            label52.ForeColor = Color.White;
-        }
-
-        public void Label52_MouseLeave(object sender, EventArgs e)
-        {
-            label52.ForeColor = Color.FromArgb(175, 191, 191);
-        }
-
-        private void Label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label33_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label35_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label37_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label39_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label41_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label43_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label47_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label51_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label52_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel4.Visible = !tableLayoutPanel4.Visible;
         }
     }
 }
