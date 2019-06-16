@@ -77,6 +77,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,9 +87,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(481, 370);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(481, 374);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // label50
@@ -910,6 +910,47 @@
             this.label49.Text = "0";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
+            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
+            this.label51.Location = new System.Drawing.Point(206, 329);
+            this.label51.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.label51.Name = "label51";
+            this.label51.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.label51.Size = new System.Drawing.Size(93, 45);
+            this.label51.TabIndex = 48;
+            this.label51.Text = "0";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
+            this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
+            this.label52.Location = new System.Drawing.Point(299, 329);
+            this.label52.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.label52.Name = "label52";
+            this.label52.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.label52.Size = new System.Drawing.Size(182, 45);
+            this.label52.TabIndex = 49;
+            this.label52.Text = "0";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 328);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panel2.Size = new System.Drawing.Size(200, 43);
+            this.panel2.TabIndex = 50;
+            // 
             // panel3
             // 
             this.panel3.AutoSize = true;
@@ -936,7 +977,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(481, 420);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(481, 424);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -1016,47 +1057,6 @@
             this.panel5.Size = new System.Drawing.Size(0, 0);
             this.panel5.TabIndex = 14;
             // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
-            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label51.Location = new System.Drawing.Point(206, 325);
-            this.label51.Margin = new System.Windows.Forms.Padding(0);
-            this.label51.Name = "label51";
-            this.label51.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.label51.Size = new System.Drawing.Size(93, 45);
-            this.label51.TabIndex = 48;
-            this.label51.Text = "0";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(55)))), ((int)(((byte)(56)))));
-            this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.label52.Location = new System.Drawing.Point(299, 325);
-            this.label52.Margin = new System.Windows.Forms.Padding(0);
-            this.label52.Name = "label52";
-            this.label52.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.label52.Size = new System.Drawing.Size(182, 45);
-            this.label52.TabIndex = 49;
-            this.label52.Text = "0";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 328);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panel2.Size = new System.Drawing.Size(200, 39);
-            this.panel2.TabIndex = 50;
-            // 
             // Analyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1064,7 +1064,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(478, 420);
+            this.ClientSize = new System.Drawing.Size(478, 424);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel5);

@@ -144,7 +144,35 @@ namespace WindowsFormsApp1
 
                 label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
                 label51.Text = total2.ToString("N0");
+                Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
+                Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
+
+                if (total > 0)
+                {
+                    Hands2.BackColor = Color.Green;
+                    Hands2.BackColor = Color.DarkGreen;
+                    Hands2.BackColor = Color.DarkGreen;
+
+                    Stakes2.BackColor = Color.Green;
+                    Stakes2.BackColor = Color.DarkGreen;
+                    Stakes2.BackColor = Color.DarkGreen;
+
+                }
+                else if(total < 0)
+                {
+                    Stakes2.BackColor = Color.Maroon;
+                    Stakes2.BackColor = Color.DarkRed;
+                    Stakes2.BackColor = Color.DarkRed;
+
+                    Hands2.BackColor = Color.Maroon;
+                    Hands2.BackColor = Color.DarkRed;
+                    Hands2.BackColor = Color.DarkRed;
+                }
+
+
                 Thread.Sleep(2000);
+
+
             }
         }
 
