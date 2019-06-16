@@ -129,9 +129,9 @@ namespace WindowsFormsApp1
                     total = total + res;
                     if(res > 0)
                     {
-                        Stake.BackColor = Color.Green;
-                        Hands.BackColor = Color.DarkGreen;
-                        Result.BackColor = Color.DarkGreen;
+                        Stake.BackColor = Color.DarkGreen;
+                        Hands.BackColor = Color.Green;
+                        Result.BackColor = Color.Green;
 
                     }
                     else if(res < 0)
@@ -150,23 +150,12 @@ namespace WindowsFormsApp1
                 if (total > 0)
                 {
                     Hands2.BackColor = Color.Green;
-                    Hands2.BackColor = Color.DarkGreen;
-                    Hands2.BackColor = Color.DarkGreen;
-
                     Stakes2.BackColor = Color.Green;
-                    Stakes2.BackColor = Color.DarkGreen;
-                    Stakes2.BackColor = Color.DarkGreen;
-
                 }
                 else if(total < 0)
                 {
                     Stakes2.BackColor = Color.Maroon;
-                    Stakes2.BackColor = Color.DarkRed;
-                    Stakes2.BackColor = Color.DarkRed;
-
                     Hands2.BackColor = Color.Maroon;
-                    Hands2.BackColor = Color.DarkRed;
-                    Hands2.BackColor = Color.DarkRed;
                 }
 
 
