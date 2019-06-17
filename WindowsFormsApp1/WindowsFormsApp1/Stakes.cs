@@ -183,7 +183,7 @@ namespace WindowsFormsApp1
 
         private void Label1_Click_2(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         public void Label1_MouseEnter(object sender, EventArgs e)

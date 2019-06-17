@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
             public MyApplicationContext()
             {
                 var forms = new List<Form>() {
-                    //new Form1(),
+                    new GameDesire.Authentication(),
                     new Analyzer()
                 };
 
