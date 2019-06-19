@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameDesire
@@ -16,11 +9,40 @@ namespace GameDesire
         public Authentication()
         {
             InitializeComponent();
+            InitializeElements();
         }
 
-        private void Authentication_Load(object sender, EventArgs e)
+        private void InitializeElements()
         {
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
 
+                this.textBox1.TextChanged -= new System.EventHandler(this.TextBox1_TextChanged);
+                this.textBox2.TextChanged -= new System.EventHandler(this.TextBox2_TextChanged);
+                this.textBox3.TextChanged -= new System.EventHandler(this.TextBox3_TextChanged);
+                this.checkBox1.CheckedChanged -= new System.EventHandler(this.CheckBox1_CheckedChanged);
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Authentication";
+                    SQLiteDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        textBox1.Text = r.GetString(0);
+                        textBox2.Text = r.GetString(1);
+                        checkBox1.Checked = Convert.ToBoolean(Convert.ToInt32(r.GetString(2)));
+                        textBox3.Text = r.GetString(3);
+                    }
+                }
+                con.Close();
+            }
+
+            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            this.textBox3.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
         }
 
         private void Label5_Click(object sender, EventArgs e)
@@ -93,6 +115,20 @@ namespace GameDesire
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                Title = "Browse for poker launcher",
+                Filter = "Executable files (*.exe)|*.exe"
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox3.Text = openFileDialog1.FileName;
             }
         }
     }

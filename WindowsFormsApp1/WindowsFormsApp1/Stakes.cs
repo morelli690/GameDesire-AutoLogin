@@ -84,7 +84,6 @@ namespace WindowsFormsApp1
                     cmd.Parameters.Add(new SQLiteParameter("@Stake", Stake));
                     Int64 count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count.ToString("N0");
-
                 }
                 con.Close();
             }
@@ -94,73 +93,80 @@ namespace WindowsFormsApp1
 
         public async void Refresh()
         {
-            while (true)
+            try
             {
-                ArrayList Views = new ArrayList();
-                Views.Add(new View("5_10", "label20", "label49", "label50"));
-                Views.Add(new View("10_20", "label19", "label47", "label48"));
-                Views.Add(new View("25_50", "label18", "label45", "label46"));
-                Views.Add(new View("50_100", "label16", "label43", "label44"));
-                Views.Add(new View("100_200", "label17", "label41", "label42"));
-                Views.Add(new View("250_500", "label15", "label39", "label40"));
-                Views.Add(new View("500_1K", "label14", "label37", "label38"));
-                Views.Add(new View("1K_2K", "label13", "label35", "label36"));
-                Views.Add(new View("2.5K_5K", "label12", "label33", "label34"));
-                Views.Add(new View("5K_10K", "label11", "label31", "label32"));
-                Views.Add(new View("10K_20K", "label10", "label29", "label30"));
-                Views.Add(new View("25K_50K","label9", "label27", "label28"));
-                Views.Add(new View("50K_100K", "label8", "label25", "label26"));
-                Views.Add(new View("100K_200K", "label7", "label23", "label24"));
-                Views.Add(new View("250K_500K", "label6", "label21", "label22"));
-                Int64 total = 0;
-                Int64 total2 = 0;
-                foreach (View v in Views)
+                while (true)
                 {
-                    Label Stake = this.Controls.Find(v.StakeLabel, true).FirstOrDefault() as Label;
-
-                    Label Hands = this.Controls.Find(v.Hands, true).FirstOrDefault() as Label;
-                    Hands.Text = getHands(v.Stake);
-                    total2 = total2 + Convert.ToInt64(Hands.Text.Replace(",", ""));
-
-                    Label Result = this.Controls.Find(v.Result, true).FirstOrDefault() as Label;
-                    Result.Text = getResult(v.Stake);
-
-                    Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
-                    total = total + res;
-                    if(res > 0)
+                    ArrayList Views = new ArrayList();
+                    Views.Add(new View("5_10", "label20", "label49", "label50"));
+                    Views.Add(new View("10_20", "label19", "label47", "label48"));
+                    Views.Add(new View("25_50", "label18", "label45", "label46"));
+                    Views.Add(new View("50_100", "label16", "label43", "label44"));
+                    Views.Add(new View("100_200", "label17", "label41", "label42"));
+                    Views.Add(new View("250_500", "label15", "label39", "label40"));
+                    Views.Add(new View("500_1K", "label14", "label37", "label38"));
+                    Views.Add(new View("1K_2K", "label13", "label35", "label36"));
+                    Views.Add(new View("2.5K_5K", "label12", "label33", "label34"));
+                    Views.Add(new View("5K_10K", "label11", "label31", "label32"));
+                    Views.Add(new View("10K_20K", "label10", "label29", "label30"));
+                    Views.Add(new View("25K_50K", "label9", "label27", "label28"));
+                    Views.Add(new View("50K_100K", "label8", "label25", "label26"));
+                    Views.Add(new View("100K_200K", "label7", "label23", "label24"));
+                    Views.Add(new View("250K_500K", "label6", "label21", "label22"));
+                    Int64 total = 0;
+                    Int64 total2 = 0;
+                    foreach (View v in Views)
                     {
-                        Stake.BackColor = Color.DarkGreen;
-                        Hands.BackColor = Color.Green;
-                        Result.BackColor = Color.Green;
+                        Label Stake = this.Controls.Find(v.StakeLabel, true).FirstOrDefault() as Label;
 
+                        Label Hands = this.Controls.Find(v.Hands, true).FirstOrDefault() as Label;
+                        Hands.Text = getHands(v.Stake);
+                        total2 = total2 + Convert.ToInt64(Hands.Text.Replace(",", ""));
+
+                        Label Result = this.Controls.Find(v.Result, true).FirstOrDefault() as Label;
+                        Result.Text = getResult(v.Stake);
+
+                        Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
+                        total = total + res;
+                        if (res > 0)
+                        {
+                            Stake.BackColor = Color.DarkGreen;
+                            Hands.BackColor = Color.Green;
+                            Result.BackColor = Color.Green;
+
+                        }
+                        else if (res < 0)
+                        {
+                            Stake.BackColor = Color.Maroon;
+                            Hands.BackColor = Color.DarkRed;
+                            Result.BackColor = Color.DarkRed;
+                        }
                     }
-                    else if(res < 0)
+
+                    label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
+                    label51.Text = total2.ToString("N0");
+                    Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
+                    Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
+
+                    if (total > 0)
                     {
-                        Stake.BackColor = Color.Maroon;
-                        Hands.BackColor = Color.DarkRed;
-                        Result.BackColor = Color.DarkRed;
+                        Hands2.BackColor = Color.Green;
+                        Stakes2.BackColor = Color.Green;
                     }
+                    else if (total < 0)
+                    {
+                        Stakes2.BackColor = Color.Maroon;
+                        Hands2.BackColor = Color.Maroon;
+                    }
+
+
+                    Thread.Sleep(2000);
+
+
                 }
-
-                label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
-                label51.Text = total2.ToString("N0");
-                Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
-                Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
-
-                if (total > 0)
-                {
-                    Hands2.BackColor = Color.Green;
-                    Stakes2.BackColor = Color.Green;
-                }
-                else if(total < 0)
-                {
-                    Stakes2.BackColor = Color.Maroon;
-                    Hands2.BackColor = Color.Maroon;
-                }
-
-
-                Thread.Sleep(2000);
-
+            }
+            catch(Exception ex)
+            {
 
             }
         }

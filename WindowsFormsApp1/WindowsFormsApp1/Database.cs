@@ -25,7 +25,6 @@ namespace WindowsFormsApp1
                         cmd.CommandText = sql;
                         cmd.ExecuteNonQuery();
 
-
                         string sql2 = "CREATE TABLE Authentication (Login TEXT, Password TEXT, Install TEXT, PokerLauncherPath TEXT)";
                         cmd.CommandText = sql2;
                         cmd.ExecuteNonQuery();
