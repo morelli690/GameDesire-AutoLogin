@@ -23,13 +23,9 @@ namespace WindowsFormsApp1
             {
                 var forms = new List<Form>() {
                     new GameDesire.Authentication(),
-                    new Analyzer()
+                    new Analyzer(),
+                    new GameDesire.Bankroll()
                 };
-
-                foreach (var form in forms)
-                {
-                    //form.FormClosed += onFormClosed;
-                }
 
                 foreach (var form in forms)
                 {
