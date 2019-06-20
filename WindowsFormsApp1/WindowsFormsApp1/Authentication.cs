@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace GameDesire
@@ -48,6 +50,18 @@ namespace GameDesire
         private void Label5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void Label5_MouseEnter(object sender, EventArgs e)
+        {
+            label5.BackColor = Color.Red;
+            label5.ForeColor = Color.White;
+        }
+
+        public void Label5_MouseLeave(object sender, EventArgs e)
+        {
+            label5.BackColor = Color.FromArgb(35, 84, 84);
+            label5.ForeColor = Color.FromArgb(175, 191, 191);
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -129,6 +143,22 @@ namespace GameDesire
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox3.Text = openFileDialog1.FileName;
+            }
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void label6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
     }
