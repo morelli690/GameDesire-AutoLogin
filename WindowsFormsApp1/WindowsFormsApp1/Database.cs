@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
                         cmd.CommandText = "INSERT INTO Authentication (Login, Password, Install, PokerLauncherPath) values (@Login, @Password, @Install, @PokerLauncherPath)";
                         cmd.Parameters.Add(new SQLiteParameter("@Login", ""));
                         cmd.Parameters.Add(new SQLiteParameter("@Password", ""));
-                        cmd.Parameters.Add(new SQLiteParameter("@Install", ""));
+                        cmd.Parameters.Add(new SQLiteParameter("@Install", "1"));
                         cmd.Parameters.Add(new SQLiteParameter("@PokerLauncherPath", ""));
                         cmd.ExecuteNonQuery();
 
