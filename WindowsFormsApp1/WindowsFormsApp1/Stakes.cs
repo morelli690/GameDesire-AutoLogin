@@ -26,14 +26,16 @@ namespace WindowsFormsApp1
 
             public string Hands { get; set; }
             public string Result { get; set; }
+            public string Eligible { get; set; }
 
 
-            public View(string s, string sl, string h, string r)
+            public View(string s, string sl, string h, string r, string el)
             {
                 Stake = s;
                 StakeLabel = sl;
                 Hands = h;
                 Result = r;
+                Eligible = el;
             }
         }
 
@@ -91,6 +93,209 @@ namespace WindowsFormsApp1
             return "0";
         }
 
+        private Int64 getBigBlind(string stake)
+        {
+            if (stake == "250K_500K")
+            {
+                return 500000;
+            }
+
+            else if (stake == "100K_200K")
+            {
+                return 200000;
+            }
+            else if (stake == "50K_100K")
+            {
+                return 100000;
+            }
+            else if (stake == "25K_50K")
+            {
+                return 50000;
+            }
+            else if (stake == "10K_20K")
+            {
+                return 20000;
+            }
+            else if (stake == "5K_10K")
+            {
+                return 10000;
+            }
+            else if (stake == "2.5K_5K")
+            {
+                return 5000;
+            }
+            else if (stake == "1K_2K")
+            {
+                return 2000;
+            }
+            else if (stake == "500_1K")
+            {
+                return 1000;
+            }
+            else if (stake == "250_500")
+            {
+                return 500;
+            }
+            else if (stake == "100_200")
+            {
+                return 200;
+            }
+            else if (stake == "50_100")
+            {
+                return 100;
+            }
+            else if (stake == "25_50")
+            {
+                return 50;
+            }
+            else if (stake == "10_20")
+            {
+                return 20;
+            }
+            else if (stake == "5_10")
+            {
+                return 10;
+            }
+            return -1;
+        }
+
+        private string ConvertStake(string stake)
+        {
+            if (stake == "250K_500K")
+            {
+                return "250K/500K";
+            }
+            else if (stake == "100K_200K")
+            {
+                return "100K/200K";
+            }
+            else if (stake == "50K_100K")
+            {
+                return "50K/100K";
+            }
+            else if (stake == "25K_50K")
+            {
+                return "25K/50K";
+            }
+            else if (stake == "10K_20K")
+            {
+                return "10K/20K";
+            }
+            else if (stake == "5K_10K")
+            {
+                return "5K/10K";
+            }
+            else if (stake == "2.5K_5K")
+            {
+                return "2.5K/5K";
+            }
+            else if (stake == "1K_2K")
+            {
+                return "1K/2K";
+            }
+            else if (stake == "500_1K")
+            {
+                return "500/1K";
+            }
+            else if (stake == "250_500")
+            {
+                return "250/500";
+            }
+            else if (stake == "100_200")
+            {
+                return "100/200";
+            }
+            else if (stake == "50_100")
+            {
+                return "50/100";
+            }
+            else if (stake == "25_50")
+            {
+                return "25/50";
+            }
+            else if (stake == "10_20")
+            {
+                return "10/20";
+            }
+            else if (stake == "5_10")
+            {
+                return "5/10";
+            }
+            return "";
+        }
+
+        public string getEligible(string stake, Int64 total)
+        {
+            Int64 BB = Convert.ToInt64(getBigBlind(stake).ToString());
+            Int64 buyinbb = 0;
+            Int64 above = 0;
+            string stake2 = ConvertStake(stake);
+            Int64 offset = 0;
+
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT BuyInBB, Above FROM Bankroll WHERE Stake = @Stake";
+                    cmd.Parameters.Add(new SQLiteParameter("@Stake", stake2));
+
+                    SQLiteDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        buyinbb = Convert.ToInt64(r.GetString(0));
+                        above = Convert.ToInt64(r.GetString(1));
+                    }
+                }
+                con.Close();
+            }
+
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Type, Offset FROM ResultOffset";
+
+                    SQLiteDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+                        string type = r.GetString(0);
+                        string offs = r.GetString(1);
+
+                        if(offs == "")
+                        {
+                            offset = 0;
+                        }
+                        else if(type == "-")
+                        {
+                            offset = offset - Convert.ToInt64(offs);
+                        }
+                        else
+                        {
+                            offset = offset + Convert.ToInt64(offs);
+                        }
+                    }
+                }
+                con.Close();
+            }
+
+            Int64 RequiredForThisStake = BB * buyinbb * above;
+
+            if((total+offset) >= RequiredForThisStake)
+            {
+                return "✓";
+            }
+            else
+            {
+                return "✖ (" + (RequiredForThisStake-(total+offset)).ToString("N0") + ")";
+            }
+        }
+
         public async void Refresh()
         {
             try
@@ -98,21 +303,21 @@ namespace WindowsFormsApp1
                 while (true)
                 {
                     ArrayList Views = new ArrayList();
-                    Views.Add(new View("5_10", "label20", "label49", "label50"));
-                    Views.Add(new View("10_20", "label19", "label47", "label48"));
-                    Views.Add(new View("25_50", "label18", "label45", "label46"));
-                    Views.Add(new View("50_100", "label16", "label43", "label44"));
-                    Views.Add(new View("100_200", "label17", "label41", "label42"));
-                    Views.Add(new View("250_500", "label15", "label39", "label40"));
-                    Views.Add(new View("500_1K", "label14", "label37", "label38"));
-                    Views.Add(new View("1K_2K", "label13", "label35", "label36"));
-                    Views.Add(new View("2.5K_5K", "label12", "label33", "label34"));
-                    Views.Add(new View("5K_10K", "label11", "label31", "label32"));
-                    Views.Add(new View("10K_20K", "label10", "label29", "label30"));
-                    Views.Add(new View("25K_50K", "label9", "label27", "label28"));
-                    Views.Add(new View("50K_100K", "label8", "label25", "label26"));
-                    Views.Add(new View("100K_200K", "label7", "label23", "label24"));
-                    Views.Add(new View("250K_500K", "label6", "label21", "label22"));
+                    Views.Add(new View("5_10", "label20", "label49", "label50", "label68"));
+                    Views.Add(new View("10_20", "label19", "label47", "label48", "label67"));
+                    Views.Add(new View("25_50", "label18", "label45", "label46", "label66"));
+                    Views.Add(new View("50_100", "label16", "label43", "label44", "label65"));
+                    Views.Add(new View("100_200", "label17", "label41", "label42", "label64"));
+                    Views.Add(new View("250_500", "label15", "label39", "label40", "label63"));
+                    Views.Add(new View("500_1K", "label14", "label37", "label38", "label62"));
+                    Views.Add(new View("1K_2K", "label13", "label35", "label36", "label61"));
+                    Views.Add(new View("2.5K_5K", "label12", "label33", "label34", "label60"));
+                    Views.Add(new View("5K_10K", "label11", "label31", "label32", "label59"));
+                    Views.Add(new View("10K_20K", "label10", "label29", "label30", "label58"));
+                    Views.Add(new View("25K_50K", "label9", "label27", "label28", "label57"));
+                    Views.Add(new View("50K_100K", "label8", "label25", "label26", "label56"));
+                    Views.Add(new View("100K_200K", "label7", "label23", "label24", "label55"));
+                    Views.Add(new View("250K_500K", "label6", "label21", "label22", "label54"));
                     Int64 total = 0;
                     Int64 total2 = 0;
                     foreach (View v in Views)
@@ -133,7 +338,6 @@ namespace WindowsFormsApp1
                             Stake.BackColor = Color.DarkGreen;
                             Hands.BackColor = Color.Green;
                             Result.BackColor = Color.Green;
-
                         }
                         else if (res < 0)
                         {
@@ -142,6 +346,7 @@ namespace WindowsFormsApp1
                             Result.BackColor = Color.DarkRed;
                         }
                     }
+
 
                     label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
                     label51.Text = total2.ToString("N0");
@@ -158,6 +363,14 @@ namespace WindowsFormsApp1
                         Stakes2.BackColor = Color.Maroon;
                         Hands2.BackColor = Color.Maroon;
                     }
+
+                    foreach (View v in Views)
+                    {
+                        Label Eligible = this.Controls.Find(v.Eligible, true).FirstOrDefault() as Label;
+                        Eligible.Text = getEligible(v.Stake, total);
+
+                    }
+
 
 
                     Thread.Sleep(2000);
