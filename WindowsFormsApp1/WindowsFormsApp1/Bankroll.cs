@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace GameDesire
@@ -177,6 +179,12 @@ namespace GameDesire
             return "";
         }
 
+        public int getBuyInBB()
+        {
+            int t = Convert.ToInt32(comboBox1.Text.Split(' ')[0]);
+            return 84;
+        }
+
         private void initializeOther()
         {
             this.comboBox6.SelectedIndexChanged -= new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
@@ -189,20 +197,15 @@ namespace GameDesire
             checkBox1.Checked = isChecked();
             comboBox7.SelectedItem = getActiveLeave();
 
-
             comboBox10.Items.Clear();
             int bb = (int)Convert.ToInt64(comboBox1.SelectedItem.ToString().Split(' ')[0]);
-            for(int i = bb; i>=1; i--)
+            for(int i = 200; i>=1; i--)
             {
                 comboBox10.Items.Add(i + " BB (" + (i * getBigBlind(activeStake)).ToString("N0") + ") ".ToString());
             }
 
             int getRebuyB = (int)Convert.ToInt16(getRebuyBelow());
             comboBox10.SelectedItem = getRebuyB + " BB (" + (getRebuyB * getBigBlind(activeStake)).ToString("N0") + ") ".ToString();
-
-
-
-
 
             comboBox11.Items.Clear();
             for (int i = 200;  i >= getRebuyB; i--)
@@ -215,7 +218,6 @@ namespace GameDesire
 
             if (g <= getRebuyB)
             {
-                Console.WriteLine("iss");
                 comboBox11.SelectedItem = getRebuyB + " BB (" + (getRebuyB * getBigBlind(activeStake)).ToString("N0") + ") ".ToString();
             }
 
@@ -235,7 +237,7 @@ namespace GameDesire
             textBox1.Text = getOffset();
             comboBox5.SelectedItem = getType();
 
-            this.comboBox6.SelectedIndexChanged -= new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
             this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
         }
@@ -321,7 +323,6 @@ namespace GameDesire
                 }
                 con.Close();
             }
-
             return 0;
         }
 
@@ -672,6 +673,44 @@ namespace GameDesire
                 con.Close();
             }
             initializeOther();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            comboBox10.SelectedIndex = 0;
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void Label5_MouseEnter(object sender, EventArgs e)
+        {
+            label5.BackColor = Color.Red;
+            label5.ForeColor = Color.White;
+        }
+
+        public void Label5_MouseLeave(object sender, EventArgs e)
+        {
+            label5.BackColor = Color.FromArgb(35, 84, 84);
+            label5.ForeColor = Color.FromArgb(175, 191, 191);
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void label6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }
