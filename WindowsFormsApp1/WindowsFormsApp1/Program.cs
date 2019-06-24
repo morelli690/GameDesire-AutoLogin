@@ -22,9 +22,10 @@ namespace WindowsFormsApp1
             public MyApplicationContext()
             {
                 var forms = new List<Form>() {
-                    new GameDesire.Authentication(),
-                    new Analyzer(),
-                    new GameDesire.Bankroll()
+                    new GameDesire.Cards()
+                    //new GameDesire.Authentication(),
+                    //new Analyzer(),
+                    //new GameDesire.Bankroll()
                 };
 
                 foreach (var form in forms)

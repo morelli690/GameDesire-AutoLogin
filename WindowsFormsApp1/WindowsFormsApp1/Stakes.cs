@@ -333,18 +333,6 @@ namespace WindowsFormsApp1
 
                         Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
                         total = total + res;
-                        if (res > 0)
-                        {
-                            Stake.BackColor = Color.DarkGreen;
-                            Hands.BackColor = Color.Green;
-                            Result.BackColor = Color.Green;
-                        }
-                        else if (res < 0)
-                        {
-                            Stake.BackColor = Color.Maroon;
-                            Hands.BackColor = Color.DarkRed;
-                            Result.BackColor = Color.DarkRed;
-                        }
                     }
 
 
@@ -352,17 +340,6 @@ namespace WindowsFormsApp1
                     label51.Text = total2.ToString("N0");
                     Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
                     Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
-
-                    if (total > 0)
-                    {
-                        Hands2.BackColor = Color.Green;
-                        Stakes2.BackColor = Color.Green;
-                    }
-                    else if (total < 0)
-                    {
-                        Stakes2.BackColor = Color.Maroon;
-                        Hands2.BackColor = Color.Maroon;
-                    }
 
                     foreach (View v in Views)
                     {
