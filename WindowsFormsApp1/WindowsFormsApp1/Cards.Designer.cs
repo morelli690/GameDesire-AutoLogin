@@ -937,6 +937,7 @@
             this.label50.TabIndex = 5;
             this.label50.Text = ">";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label50.Click += new System.EventHandler(this.Label50_Click);
             // 
             // comboBox1
             // 

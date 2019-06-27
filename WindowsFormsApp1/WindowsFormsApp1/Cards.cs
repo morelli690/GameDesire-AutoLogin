@@ -166,7 +166,6 @@ namespace GameDesire
             Ranges.Add(new Range("A10o"));
             Ranges.Add(new Range("K10o"));
             Ranges.Add(new Range("Q10o"));
-            Ranges.Add(new Range("QQo"));
             Ranges.Add(new Range("J10o"));
             Ranges.Add(new Range("1010"));
             Ranges.Add(new Range("109s"));
@@ -293,13 +292,6 @@ namespace GameDesire
 
         }
 
-        public void InitializeElements()
-        {
-            foreach (Range r in Ranges)
-            {
-            }
-        }
-
         public void InitilaizePages()
         {
             List<IEnumerable<Range>> listOfLists = new List<IEnumerable<Range>>();
@@ -403,7 +395,6 @@ namespace GameDesire
                     con.Close();
                 }
 
-                InitializeElements();
                 activatePage(ActivePage);
 
                 foreach (Range r in Ranges)
@@ -596,6 +587,15 @@ namespace GameDesire
             if(ActivePage != 1)
             {
                 ActivePage = ActivePage - 1;
+                comboBox1.SelectedItem = ActivePage.ToString();
+            }
+        }
+
+        private void Label50_Click(object sender, EventArgs e)
+        {
+            if (ActivePage != 13)
+            {
+                ActivePage = ActivePage + 1;
                 comboBox1.SelectedItem = ActivePage.ToString();
             }
         }
