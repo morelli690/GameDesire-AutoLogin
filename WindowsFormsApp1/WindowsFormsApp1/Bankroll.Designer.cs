@@ -81,10 +81,11 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(176)))), ((int)(((byte)(178)))));
-            this.checkBox1.Location = new System.Drawing.Point(107, 341);
+            this.checkBox1.Location = new System.Drawing.Point(105, 337);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 17);
+            this.checkBox1.Size = new System.Drawing.Size(68, 21);
             this.checkBox1.TabIndex = 51;
             this.checkBox1.Text = "Rebuy";
             this.checkBox1.UseVisualStyleBackColor = true;

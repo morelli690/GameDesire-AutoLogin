@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +14,20 @@ namespace GameDesire
     public partial class Cards : Form
     {
         public static List<Range> Ranges = new List<Range>();
+        public static List<Page> Pages = new List<Page>();
+        public static int ActivePage = 1;
+        public static bool ShouldRefresh = false;
+
+        public class Page
+        {
+            public int PageID { get; set; }
+            public List<Range> Ranges = new List<Range>();
+
+            public Page(int pid)
+            {
+                PageID = pid;
+            }
+        }
 
         public class Range
         {
@@ -45,27 +57,22 @@ namespace GameDesire
             else if (card.Contains("K"))
             {
                 return "13";
-
             }
             else if (card.Contains("Q"))
             {
                 return "12";
-
             }
             else if (card.Contains("J"))
             {
                 return "11";
-
             }
             else if (card.Contains("T"))
             {
                 return "10";
-
             }
             else if (card.Contains("9"))
             {
                 return "9";
-
             }
             else if (card.Contains("8"))
             {
@@ -74,33 +81,27 @@ namespace GameDesire
             else if (card.Contains("7"))
             {
                 return "7";
-
             }
             else if (card.Contains("6"))
             {
                 return "6";
-
             }
             else if (card.Contains("5"))
             {
                 return "5";
-
             }
             else if (card.Contains("4"))
             {
                 return "4";
-
             }
             else if (card.Contains("3"))
             {
                 return "3";
-
             }
             else if (card.Contains("2"))
             {
                 return "2";
             }
-
             return "";
         }
 
@@ -293,16 +294,41 @@ namespace GameDesire
         {
             foreach (Range r in Ranges)
             {
-                Console.WriteLine(r.ID + ":" + r.Result);
+            }
+        }
+
+        public void InitilaizePages()
+        {
+            List<IEnumerable<Range>> listOfLists = new List<IEnumerable<Range>>();
+
+            for (int i = 0; i < Ranges.Count(); i += 13)
+            {
+                listOfLists.Add(Ranges.Skip(i).Take(13));
+            }
+
+            for (int i = 0; i < listOfLists.Count(); i++)
+            {
+                Page p = new Page(i + 1);
+
+                foreach(Range r in listOfLists[i])
+                {
+                    p.Ranges.Add(r);
+                }
+
+                Pages.Add(p);
             }
         }
 
         public async void Refresh()
         {
             InitializeRanges();
+            comboBox1.SelectedItem = "1";
+            InitilaizePages();
 
             while (true)
             {
+                ShouldRefresh = false;
+
                 using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
                 {
                     con.Open();
@@ -358,14 +384,7 @@ namespace GameDesire
                             range = range.Replace("d", "");
                             range = range.Replace("T", "10");
 
-                            if (isSuited)
-                            {
-                                range = range + "s";
-                            }
-                            else
-                            {
-                                range = range + "o";
-                            }
+                            range = isSuited ? (range + "s") : (range + "o");
 
                             if (c1 == c2)
                             {
@@ -381,6 +400,7 @@ namespace GameDesire
                 }
 
                 InitializeElements();
+                activatePage(ActivePage);
 
                 foreach (Range r in Ranges)
                 {
@@ -388,7 +408,143 @@ namespace GameDesire
                     r.Hands = 0;
                 }
 
-                Thread.Sleep(50000);
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
+
+                bool wait = true;
+
+                while (wait) {
+                    if(stopWatch.Elapsed.TotalSeconds > 5 || ShouldRefresh)
+                    {
+                        wait = false;
+                    }
+                }
+            }
+        }
+
+        private void InitializeRangeElements(int rangeLine, Range r)
+        {
+            Label Cart = new Label();
+            Label Hands = new Label();
+            Label Result = new Label();
+
+            if (rangeLine == 1)
+            {
+                Cart = this.Controls.Find("label1", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label21", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label22", true).FirstOrDefault() as Label;
+            }
+            else if(rangeLine == 2)
+            {
+                Cart = this.Controls.Find("label7", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label9", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label20", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 3)
+            {
+                Cart = this.Controls.Find("label17", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label23", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label24", true).FirstOrDefault() as Label;
+
+            }
+            else if (rangeLine == 4)
+            {
+                Cart = this.Controls.Find("label18", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label25", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label26", true).FirstOrDefault() as Label;
+
+            }
+            else if (rangeLine == 5)
+            {
+                Cart = this.Controls.Find("label16", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label27", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label28", true).FirstOrDefault() as Label;
+
+            }
+            else if (rangeLine == 6)
+            {
+                Cart = this.Controls.Find("label15", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label29", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label30", true).FirstOrDefault() as Label;
+
+            }
+            else if (rangeLine == 7)
+            {
+                Cart = this.Controls.Find("label14", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label31", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label32", true).FirstOrDefault() as Label;
+
+            }
+            else if (rangeLine == 8)
+            {
+                Cart = this.Controls.Find("label13", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label33", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label34", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 9)
+            {
+                Cart = this.Controls.Find("label12", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label35", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label36", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 10)
+            {
+                Cart = this.Controls.Find("label11", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label37", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label38", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 11)
+            {
+                Cart = this.Controls.Find("label10", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label39", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label40", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 12)
+            {
+                Cart = this.Controls.Find("label8", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label41", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label42", true).FirstOrDefault() as Label;
+            }
+            else if (rangeLine == 13)
+            {
+                Cart = this.Controls.Find("label9", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label43", true).FirstOrDefault() as Label;
+                Result = this.Controls.Find("label44", true).FirstOrDefault() as Label;
+            }
+
+            try
+            {
+                Cart.Text = r.ID;
+                Hands.Text = r.Hands.ToString("N0");
+                Result.Text = r.Result.ToString("N0");
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void activatePage(int PageID)
+        {
+            foreach(Page p in Pages)
+            {
+                if(p.PageID == PageID) {
+                    int Counter = 1;
+
+                    foreach(Range r in p.Ranges)
+                    {
+                        foreach(Range rk in Ranges)
+                        {
+                            if(rk.ID == r.ID)
+                            {
+                                InitializeRangeElements(Counter, rk);
+                                Counter = Counter + 1;
+                                break;
+                            }
+                        }
+                    }
+                    return;
+                }
             }
         }
 
@@ -425,5 +581,19 @@ namespace GameDesire
             label5.ForeColor = Color.FromArgb(175, 191, 191);
         }
 
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActivePage = Convert.ToInt32(comboBox1.SelectedItem.ToString());
+            ShouldRefresh = true;
+        }
+
+        private void Label46_Click(object sender, EventArgs e)
+        {
+            if(ActivePage != 1)
+            {
+                ActivePage = ActivePage - 1;
+                comboBox1.SelectedItem = ActivePage.ToString();
+            }
+        }
     }
 }
