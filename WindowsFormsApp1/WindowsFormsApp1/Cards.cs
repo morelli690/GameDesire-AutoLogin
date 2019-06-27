@@ -165,6 +165,7 @@ namespace GameDesire
 
             Ranges.Add(new Range("A10o"));
             Ranges.Add(new Range("K10o"));
+            Ranges.Add(new Range("Q10o"));
             Ranges.Add(new Range("QQo"));
             Ranges.Add(new Range("J10o"));
             Ranges.Add(new Range("1010"));
@@ -288,6 +289,8 @@ namespace GameDesire
             Ranges.Add(new Range("42o"));
             Ranges.Add(new Range("32o"));
             Ranges.Add(new Range("22"));
+
+
         }
 
         public void InitializeElements()
@@ -390,6 +393,7 @@ namespace GameDesire
                             {
                                 range = range.Replace("o", "");
                             }
+
 
                             Range result = Ranges.First(s => s.ID == range);
                             result.Result = result.Result + Result;
