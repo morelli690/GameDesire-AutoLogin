@@ -554,7 +554,7 @@ namespace GameDesire
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        private void label6_MouseMove(object sender, MouseEventArgs e)
+        private void label45_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -707,7 +707,18 @@ namespace GameDesire
             if (formToShow != null)
             {
                 formToShow.Show();
+
+                formToShow.Left = this.Location.X;
+                formToShow.Top = this.Location.Y;
+                formToShow.Show();
             }
         }
+
+        private void Label45_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -432,6 +432,8 @@ namespace WindowsFormsApp1
             if (formToShow != null)
             {
                 formToShow.FormClosed += onFormClosed;
+                formToShow.Left = this.Location.X;
+                formToShow.Top = this.Location.Y;
                 formToShow.Show();
             }
             else
