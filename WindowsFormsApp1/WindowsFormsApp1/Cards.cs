@@ -42,8 +42,14 @@ namespace GameDesire
             }
         }
 
-        public Cards()
+        public Cards(int x , int y)
         {
+            this.StartPosition = FormStartPosition.Manual;
+
+            this.Left = x;
+            this.Top = y;
+            CheckForIllegalCrossThreadCalls = false;
+
             InitializeComponent();
             Task.Factory.StartNew(this.Refresh);
         }
@@ -432,7 +438,7 @@ namespace GameDesire
             else if(rangeLine == 2)
             {
                 Cart = this.Controls.Find("label7", true).FirstOrDefault() as Label;
-                Hands = this.Controls.Find("label9", true).FirstOrDefault() as Label;
+                Hands = this.Controls.Find("label19", true).FirstOrDefault() as Label;
                 Result = this.Controls.Find("label20", true).FirstOrDefault() as Label;
             }
             else if (rangeLine == 3)
@@ -507,16 +513,9 @@ namespace GameDesire
                 Result = this.Controls.Find("label44", true).FirstOrDefault() as Label;
             }
 
-            try
-            {
                 Cart.Text = r.ID;
                 Hands.Text = r.Hands.ToString("N0");
                 Result.Text = r.Result.ToString("N0");
-            }
-            catch(Exception ex)
-            {
-
-            }
         }
 
         private void activatePage(int PageID)
@@ -545,7 +544,7 @@ namespace GameDesire
 
         private void Label5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -597,6 +596,117 @@ namespace GameDesire
             {
                 ActivePage = ActivePage + 1;
                 comboBox1.SelectedItem = ActivePage.ToString();
+            }
+        }
+
+        private void TableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void activateStrategyForm(int rangeRow)
+        {
+            string range = Pages[ActivePage - 1].Ranges[rangeRow - 1].ID;
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(1);
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(2);
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(3);
+
+        }
+
+        private void PictureBox4_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(4);
+
+        }
+
+        private void PictureBox5_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(5);
+
+        }
+
+        private void PictureBox6_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(6);
+
+        }
+
+        private void PictureBox7_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(7);
+
+        }
+
+        private void PictureBox8_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(8);
+
+        }
+
+        private void PictureBox9_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(9);
+
+        }
+
+        private void PictureBox10_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(10);
+
+        }
+
+        private void PictureBox11_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(11);
+
+        }
+
+        private void PictureBox13_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(12);
+
+        }
+
+        private void PictureBox12_Click(object sender, EventArgs e)
+        {
+            activateStrategyForm(13);
+
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void PictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = true;
+        }
+        public void PictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = false;
+        }
+
+        private void PictureBox2_Click_2(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is WindowsFormsApp1.Analyzer);
+
+            if (formToShow != null)
+            {
+                formToShow.Show();
             }
         }
     }

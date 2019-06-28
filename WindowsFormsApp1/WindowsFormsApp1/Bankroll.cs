@@ -10,13 +10,15 @@ namespace GameDesire
     public partial class Bankroll : Form
     {
         public static string activeStake = "250K/500K";
-        public Bankroll()
+        public Bankroll(int x, int y)
         {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Left = x;
+            this.Top = y;
+
             InitializeComponent();
             InitializeElements();
             comboBox4.SelectedItem = "250K/500K";
-            InitializeOffset();
-            initializeOther();
         }
 
         private string getOffset()
@@ -183,63 +185,6 @@ namespace GameDesire
         {
             int t = Convert.ToInt32(comboBox1.Text.Split(' ')[0]);
             return 84;
-        }
-
-        private void initializeOther()
-        {
-            this.comboBox6.SelectedIndexChanged -= new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
-            this.checkBox1.CheckedChanged -= new System.EventHandler(this.CheckBox1_CheckedChanged);
-            this.comboBox7.SelectedIndexChanged -= new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
-            this.comboBox10.SelectedIndexChanged -= new System.EventHandler(this.ComboBox10_SelectedIndexChanged);
-            this.comboBox11.SelectedIndexChanged -= new System.EventHandler(this.ComboBox11_SelectedIndexChanged);
-
-            comboBox6.SelectedItem = getActivePlayersSit();
-            checkBox1.Checked = isChecked();
-            comboBox7.SelectedItem = getActiveLeave();
-
-            comboBox10.Items.Clear();
-            int bb = (int)Convert.ToInt64(comboBox1.SelectedItem.ToString().Split(' ')[0]);
-            for(int i = 200; i>=1; i--)
-            {
-                comboBox10.Items.Add(i + " BB (" + (i * getBigBlind(activeStake)).ToString("N0") + ") ".ToString());
-            }
-
-            int getRebuyB = (int)Convert.ToInt16(getRebuyBelow());
-            comboBox10.SelectedItem = getRebuyB + " BB (" + (getRebuyB * getBigBlind(activeStake)).ToString("N0") + ") ".ToString();
-
-            comboBox11.Items.Clear();
-            for (int i = 200;  i >= getRebuyB; i--)
-            {
-                comboBox11.Items.Add(i + " BB (" + (i * getBigBlind(activeStake)).ToString("N0") + ") ".ToString());
-            }
-
-            int g = (int)Convert.ToInt16(getRebuyUpto());
-            comboBox11.SelectedItem = g + " BB (" + (g * getBigBlind(activeStake)).ToString("N0") + ") ".ToString();
-
-            if (g <= getRebuyB)
-            {
-                comboBox11.SelectedItem = getRebuyB + " BB (" + (getRebuyB * getBigBlind(activeStake)).ToString("N0") + ") ".ToString();
-            }
-
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
-            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.ComboBox10_SelectedIndexChanged);
-            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.ComboBox11_SelectedIndexChanged);
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
-        }
-
-        public void InitializeOffset()
-        {
-            this.comboBox5.SelectedIndexChanged -= new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
-            this.textBox1.TextChanged -= new System.EventHandler(this.TextBox1_TextChanged);
-            this.comboBox6.SelectedIndexChanged -= new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
-
-            textBox1.Text = getOffset();
-            comboBox5.SelectedItem = getType();
-
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
         }
 
         public void Deactivate()
@@ -440,7 +385,6 @@ namespace GameDesire
                     Below.SelectedItem = i + " BI (" + (i * BigBlind * bb).ToString("N0") + ") ".ToString();
                 }
             }
-            initializeOther();
             Activate();
         }
 
@@ -546,7 +490,6 @@ namespace GameDesire
         {
             activeStake = comboBox4.SelectedItem.ToString();
             InitializeElements();
-            initializeOther();
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -559,7 +502,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE ResultOffset SET Offset=@Logi";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", textBox1.Text));
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
@@ -576,7 +518,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE ResultOffset SET Type=@Logi";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", comboBox5.SelectedItem.ToString()));
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
@@ -593,7 +534,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET ActivePlayer1=@Logi WHERE Stake = @sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", comboBox6.SelectedItem.ToString()));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }
@@ -611,7 +551,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET ActivePlayersLeave=@Logi WHERE Stake = @sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", comboBox7.SelectedItem.ToString()));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }
@@ -629,7 +568,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET Rebuy=@Logi WHERE Stake = @sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", (checkBox1.Checked ? "1" : "0")));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }
@@ -647,13 +585,11 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET MyStackBelowRebuy=@Logi WHERE Stake = @sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", comboBox10.SelectedItem.ToString().Split(' ')[0] ));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
             }
-            initializeOther();
         }
 
         private void ComboBox11_SelectedIndexChanged(object sender, EventArgs e)
@@ -666,23 +602,16 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET Rebuyupto=@Logi WHERE Stake = @sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", comboBox11.SelectedItem.ToString().Split(' ')[0]));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
             }
-            initializeOther();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            comboBox10.SelectedIndex = 0;
         }
 
         private void Label5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         public void Label5_MouseEnter(object sender, EventArgs e)
@@ -711,6 +640,11 @@ namespace GameDesire
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void TableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -20,17 +20,6 @@ namespace WindowsFormsApp1
                         cmd.CommandText = sql;
                         cmd.ExecuteNonQuery();
 
-                        string sql2 = "CREATE TABLE Authentication (Login TEXT, Password TEXT, Install TEXT, PokerLauncherPath TEXT)";
-                        cmd.CommandText = sql2;
-                        cmd.ExecuteNonQuery();
-
-                        cmd.CommandText = "INSERT INTO Authentication (Login, Password, Install, PokerLauncherPath) values (@Login, @Password, @Install, @PokerLauncherPath)";
-                        cmd.Parameters.Add(new SQLiteParameter("@Login", ""));
-                        cmd.Parameters.Add(new SQLiteParameter("@Password", ""));
-                        cmd.Parameters.Add(new SQLiteParameter("@Install", "1"));
-                        cmd.Parameters.Add(new SQLiteParameter("@PokerLauncherPath", ""));
-                        cmd.ExecuteNonQuery();
-
                         string sql3 = "CREATE TABLE Bankroll (Stake TEXT, BuyInBB TEXT, Above TEXT, Below TEXT, ActivePlayer1 TEXT, ActivePlayersLeave TEXT, Rebuy TEXT, MyStackBelowRebuy TEXT, RebuyUpto TEXT)";
                         cmd.CommandText = sql3;
                         cmd.ExecuteNonQuery();
@@ -52,7 +41,6 @@ namespace WindowsFormsApp1
 
                             cmd.ExecuteNonQuery();
                         }
-
 
                         string sql4 = "CREATE TABLE ResultOffset (Type TEXT, Offset TEXT)";
                         cmd.CommandText = sql4;

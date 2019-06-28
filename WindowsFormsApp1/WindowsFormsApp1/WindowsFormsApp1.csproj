@@ -60,6 +60,7 @@
     <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,12 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Authentication.Designer.cs">
-      <DependentUpon>Authentication.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bankroll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +88,11 @@
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Stakes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,9 +100,6 @@
       <DependentUpon>Stakes.cs</DependentUpon>
     </Compile>
     <Compile Include="Statistics.cs" />
-    <EmbeddedResource Include="Authentication.resx">
-      <DependentUpon>Authentication.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Bankroll.resx">
       <DependentUpon>Bankroll.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,14 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Stakes.resx">
       <DependentUpon>Stakes.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,9 +129,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\poker_gd_sa_install_1_0_3_18.exe" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -152,13 +141,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-hand-filled-50.png" />
+    <None Include="Resources\icons8-cards-filled-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-hand-filled-501.png" />
+    <None Include="Resources\icons8-menu-filled-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-hand-filled-502.png" />
+    <None Include="Resources\icons8-cards-filled-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-graph-report-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-graph-report-filled-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-right-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-graph-report-filled-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-settings-filled-50 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

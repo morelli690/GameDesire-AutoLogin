@@ -63,9 +63,9 @@ namespace GameDesire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_hand_filled_50 {
+        internal static System.Drawing.Bitmap icons8_arrow_right_64 {
             get {
-                object obj = ResourceManager.GetObject("icons8-hand-filled-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-arrow-right-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace GameDesire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_hand_filled_501 {
+        internal static System.Drawing.Bitmap icons8_cards_filled_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8-hand-filled-501", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-cards-filled-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,20 +83,60 @@ namespace GameDesire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_hand_filled_502 {
+        internal static System.Drawing.Bitmap icons8_cards_filled_50__1_ {
             get {
-                object obj = ResourceManager.GetObject("icons8-hand-filled-502", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-cards-filled-50 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] poker_gd_sa_install_1_0_3_18 {
+        internal static System.Drawing.Bitmap icons8_graph_report_filled_50 {
             get {
-                object obj = ResourceManager.GetObject("poker_gd_sa_install_1_0_3_18", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("icons8-graph-report-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_graph_report_filled_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-graph-report-filled-50 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_graph_report_filled_501 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-graph-report-filled-501", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_menu_filled_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-menu-filled-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_settings_filled_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-settings-filled-50 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -375,11 +375,20 @@ namespace WindowsFormsApp1
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
+
+            if (formToShow != null)
+            {
+                formToShow.Left = this.Location.X;
+                formToShow.Top = this.Location.Y + 100;
+                formToShow.BringToFront();
+            }
         }
 
         private void Label1_Click_2(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         public void Label1_MouseEnter(object sender, EventArgs e)
@@ -392,6 +401,81 @@ namespace WindowsFormsApp1
         {
             label1.BackColor = Color.FromArgb(35, 84, 84);
             label1.ForeColor = Color.FromArgb(175, 191, 191);
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        public void PictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = true;
+        }
+
+        public void PictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = false;
+        }
+        private void onFormClosed(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Cards);
+
+            if (formToShow != null)
+            {
+                formToShow.FormClosed += onFormClosed;
+                formToShow.Show();
+            }
+            else
+            {
+                new GameDesire.Cards(this.Location.X, this.Location.Y).Show();
+            }
+
+            var formToShow2 = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
+
+            if (formToShow2 != null)
+            {
+                formToShow2.Hide();
+            }
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
+
+            if (formToShow != null)
+            {
+                formToShow.Left = this.Location.X;
+                formToShow.Top = this.Location.Y+100;
+                formToShow.Show();
+                formToShow.BringToFront();
+            }
+            else
+            {
+                new GameDesire.Bankroll(this.Location.X, this.Location.Y+100).Show();
+                formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
+
+                if (formToShow != null)
+                {
+                    formToShow.Left = this.Location.X;
+                    formToShow.Top = this.Location.Y + 100;
+                    formToShow.Show();
+                    formToShow.BringToFront();
+                }
+            }
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

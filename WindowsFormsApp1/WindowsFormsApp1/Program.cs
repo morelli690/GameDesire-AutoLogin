@@ -21,14 +21,12 @@ namespace WindowsFormsApp1
             public MyApplicationContext()
             {
                 var forms = new List<Form>() {
-                    new GameDesire.Cards(),
-                    new GameDesire.Authentication(),
-                    new Analyzer(),
-                    new GameDesire.Bankroll()
+                    new Analyzer()
                 };
 
                 foreach (var form in forms)
                 {
+                    form.FormClosed += onFormClosed;
                     form.Show();
                 }
             }
