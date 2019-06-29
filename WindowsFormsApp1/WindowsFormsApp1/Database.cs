@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿
+using System.Data.SQLite;
 using System.IO;
 
 namespace WindowsFormsApp1
@@ -20,13 +21,24 @@ namespace WindowsFormsApp1
                         cmd.CommandText = sql;
                         cmd.ExecuteNonQuery();
 
+                        string sql2 = "CREATE TABLE Authentication (Login TEXT, Password TEXT, Install TEXT, PokerLauncherPath TEXT)";
+                        cmd.CommandText = sql2;
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "INSERT INTO Authentication (Login, Password, Install, PokerLauncherPath) values (@Login, @Password, @Install, @PokerLauncherPath)";
+                        cmd.Parameters.Add(new SQLiteParameter("@Login", ""));
+                        cmd.Parameters.Add(new SQLiteParameter("@Password", ""));
+                        cmd.Parameters.Add(new SQLiteParameter("@Install", "1"));
+                        cmd.Parameters.Add(new SQLiteParameter("@PokerLauncherPath", ""));
+                        cmd.ExecuteNonQuery();
+
                         string sql3 = "CREATE TABLE Bankroll (Stake TEXT, BuyInBB TEXT, Above TEXT, Below TEXT, ActivePlayer1 TEXT, ActivePlayersLeave TEXT, Rebuy TEXT, MyStackBelowRebuy TEXT, RebuyUpto TEXT)";
                         cmd.CommandText = sql3;
                         cmd.ExecuteNonQuery();
 
-                        string[] stakes = { "250K/500K", "100K/200K", "50K/100K", "25K/50K","10K/20K","5K/10K","2.5K/5K","1K/2K","500/1K","250/500","100/200","50/100","25/50","10/20","5/10" };
+                        string[] stakes = { "250K/500K", "100K/200K", "50K/100K", "25K/50K", "10K/20K", "5K/10K", "2.5K/5K", "1K/2K", "500/1K", "250/500", "100/200", "50/100", "25/50", "10/20", "5/10" };
 
-                        foreach(string stake in stakes)
+                        foreach (string stake in stakes)
                         {
                             cmd.CommandText = "INSERT INTO Bankroll (Stake, BuyInBB, Above, Below, ActivePlayer1, ActivePlayersLeave, Rebuy, MyStackBelowRebuy, RebuyUpto) values (@Stake, @BuyInBB, @Above, @Below, @ActivePlayer1, @ActivePlayersLeave, @Rebuy, @MyStackBelowRebuy, @RebuyUpto)";
                             cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
@@ -41,6 +53,7 @@ namespace WindowsFormsApp1
 
                             cmd.ExecuteNonQuery();
                         }
+
 
                         string sql4 = "CREATE TABLE ResultOffset (Type TEXT, Offset TEXT)";
                         cmd.CommandText = sql4;
