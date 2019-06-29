@@ -98,22 +98,6 @@ namespace GameDesire
             }
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Authentication SET Install=@Logi";
-                    cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
         private void TextBox3_TextChanged(object sender, EventArgs e)
         {
             using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
@@ -161,6 +145,8 @@ namespace GameDesire
             }
         }
 
+
+        // Keeps the main lobby open
         public void LoginToPoker()
         {
             while(true)
