@@ -151,17 +151,16 @@ namespace GameDesire
             // "Main Lobby"
         public bool isLoggedIn()
         {
-            Console.Clear();
-
             string[] titles = OpenWindows.GetDesktopWindowsCaptions();
 
-            Console.WriteLine("Open: ");
             foreach(string title in titles)
             {
-                Console.WriteLine(title);
+                if(title.Contains("Main Lobby") && title.Contains("Poker Texas Hold'em"))
+                {
+                    return true;
+                }
             }
 
-            Console.ReadLine();
             return false;
         }
 
@@ -172,7 +171,7 @@ namespace GameDesire
             {
                 if (!isLoggedIn())
                 {
-
+                    Console.WriteLine("MAIN LOBBY IS NOT OPEN");
                 }
 
                 Thread.Sleep(5000);
