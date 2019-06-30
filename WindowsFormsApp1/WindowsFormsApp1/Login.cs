@@ -146,12 +146,35 @@ namespace GameDesire
         }
 
 
+        // if Window that contains below strings is open return true else return false
+            // "Poker Texas Hold'em" 
+            // "Main Lobby"
+        public bool isLoggedIn()
+        {
+            Console.Clear();
+
+            string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+
+            Console.WriteLine("Open: ");
+            foreach(string title in titles)
+            {
+                Console.WriteLine(title);
+            }
+
+            Console.ReadLine();
+            return false;
+        }
+
         // Keeps the main lobby open
         public void LoginToPoker()
         {
             while(true)
             {
-                Console.WriteLine("Login To Poker Function.");
+                if (!isLoggedIn())
+                {
+
+                }
+
                 Thread.Sleep(5000);
             }
         }
@@ -162,7 +185,6 @@ namespace GameDesire
             {
                 LoginThread = new Thread(LoginToPoker);
                 LoginThread.Start();
-                Console.WriteLine("After starting");
             }
             else
             {
