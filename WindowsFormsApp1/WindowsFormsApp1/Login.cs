@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Accord.Imaging;
+using Accord.Imaging.Filters;
+using System;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -10,6 +14,8 @@ namespace GameDesire
     public partial class Login : Form
     {
         public static Thread LoginThread;
+        public static ScreenCapture sc = new ScreenCapture();
+        public static Bitmap LoginHeader = TemplateMatching.generateFormattedBitmap(new Bitmap("LoginHeader.png"));
 
         public Login()
         {
@@ -145,10 +151,6 @@ namespace GameDesire
             }
         }
 
-
-        // if Window that contains below strings is open return true else return false
-            // "Poker Texas Hold'em" 
-            // "Main Lobby"
         public bool isLoggedIn()
         {
             string[] titles = OpenWindows.GetDesktopWindowsCaptions();
@@ -164,14 +166,86 @@ namespace GameDesire
             return false;
         }
 
+        public bool waitForWindowToAppear(string windowText, int seconds)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            while (true)
+            {
+                if( (stopWatch.Elapsed.TotalSeconds > seconds )  )
+                {
+                    return false;
+                }
+
+                string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+
+                foreach (string title in titles)
+                {
+                    if (title == windowText)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        [DllImport("User32.dll")]
+        public static extern Int32 SetForegroundWindow(int hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        public IntPtr GetHandleWindow(string title)
+        {
+            return FindWindow(null, title);
+        }
+
+        [DllImport("User32.Dll", EntryPoint = "PostMessageA")]
+        static extern bool PostMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        static extern byte VkKeyScan(char ch);
+
+        public void sendKeys(IntPtr H, string keys)
+        {
+            foreach (char c in keys)
+            {
+                if(Char.IsUpper(c)) {
+                    PostMessage(H, 0x0104, 0x10, 0);
+                }
+
+                const uint WM_KEYDOWN = 0x100;
+                bool sent = PostMessage(H, WM_KEYDOWN, VkKeyScan(c), 0);
+
+                PostMessage(H, 0x0105, 0x10, 0);
+            }
+        }
+
         // Keeps the main lobby open
         public void LoginToPoker()
         {
-            while(true)
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+            string path = textBox3.Text;
+
+            while (true)
             {
                 if (!isLoggedIn())
                 {
-                    Console.WriteLine("MAIN LOBBY IS NOT OPEN");
+                    Process login = Process.Start(path);
+
+                    waitForWindowToAppear("Poker", 60);
+                    IntPtr hWnd = GetHandleWindow("Poker");
+
+                    Bitmap bitmap = sc.GetScreenshot(hWnd);
+
+                    TemplateMatching.WaitForElement(bitmap, LoginHeader, 60);
+
+                    sendKeys(hWnd, username);
+
+                    Console.ReadLine();
+                    login.Kill();
                 }
 
                 Thread.Sleep(5000);
