@@ -201,24 +201,19 @@ namespace GameDesire
             return FindWindow(null, title);
         }
 
-        [DllImport("User32.Dll", EntryPoint = "PostMessageA")]
-        static extern bool PostMessage(IntPtr hWnd, uint msg, int wParam, int lParam);
-
         [DllImport("user32.dll")]
         static extern byte VkKeyScan(char ch);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+
         public void sendKeys(IntPtr H, string keys)
         {
+            const Int32 WM_CHAR = 0x0102;
+
             foreach (char c in keys)
             {
-                if(Char.IsUpper(c)) {
-                    PostMessage(H, 0x0104, 0x10, 0);
-                }
-
-                const uint WM_KEYDOWN = 0x100;
-                bool sent = PostMessage(H, WM_KEYDOWN, VkKeyScan(c), 0);
-
-                PostMessage(H, 0x0105, 0x10, 0);
+                PostMessage(H, WM_CHAR, (IntPtr)c, IntPtr.Zero);
             }
         }
 
