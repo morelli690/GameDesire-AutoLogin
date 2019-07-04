@@ -219,41 +219,9 @@ namespace GameDesire
             return FindWindow(null, title);
         }
 
-        [DllImport("user32.dll")]
-        static extern byte VkKeyScan(char ch);
-
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 
-        public void sendKeys(IntPtr H, string keys)
-        {
-            const Int32 WM_CHAR = 0x0102;
-
-            foreach (char c in keys)
-            {
-                PostMessage(H, WM_CHAR, (IntPtr)c, IntPtr.Zero);
-            }
-        }
-
-        public void sendTab(IntPtr H)
-        {
-            const uint WM_KEYDOWN = 0x0100;
-            const uint WM_KEYUP = 0x0101;
-            const int VK_TAB = 0x09;
-
-            PostMessage(H, (int)WM_KEYDOWN, (IntPtr)VK_TAB, IntPtr.Zero);
-            PostMessage(H, (int)WM_KEYUP, (IntPtr)VK_TAB, IntPtr.Zero);
-        }
-
-        public void sendEnter(IntPtr H)
-        {
-            const uint WM_KEYDOWN = 0x0100;
-            const uint WM_KEYUP = 0x0101;
-            const int VK_TAB = 0x0D;
-
-            PostMessage(H, (int)WM_KEYDOWN, (IntPtr)VK_TAB, IntPtr.Zero);
-            PostMessage(H, (int)WM_KEYUP, (IntPtr)VK_TAB, IntPtr.Zero);
-        }
 
         public int MakeLParam(int LoWord, int HiWord)
         {
@@ -310,12 +278,10 @@ namespace GameDesire
             File.WriteAllText(path + "\\config.xml", Properties.Resources.config);
         }
 
-        // Keeps the main lobby open
         public void LoginToPoker()
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
-            string path = textBox3.Text;
 
             copyXML();
 
@@ -333,10 +299,10 @@ namespace GameDesire
 
                     TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
 
-                    sendKeys(hWnd, username);
-                    sendTab(hWnd);
-                    sendKeys(hWnd, password);
-                    sendEnter(hWnd);
+                    Keyboard.sendKeys(hWnd, username);
+                    Keyboard.sendTab(hWnd);
+                    Keyboard.sendKeys(hWnd, password);
+                    Keyboard.sendEnter(hWnd);
 
                     TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
                     TemplateMatching.WaitForElement(hWnd, Players, 60);
@@ -363,10 +329,9 @@ namespace GameDesire
                         }
                     }
 
-                    sendEnter(hWnd);
+                    Keyboard.sendEnter(hWnd);
 
-                    bool b = isLoggedIn(30);
-
+                    isLoggedIn(30);
                 }
             }
         }

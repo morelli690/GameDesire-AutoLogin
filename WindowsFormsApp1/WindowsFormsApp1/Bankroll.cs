@@ -28,7 +28,6 @@ namespace GameDesire
             this.comboBox3.SelectedIndexChanged -= new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
 
             this.checkBox1.CheckedChanged -= new System.EventHandler(this.CheckBox1_CheckedChanged_1);
-            this.checkBox2.CheckedChanged -= new System.EventHandler(this.CheckBox2_CheckedChanged);
         }
 
         public void Activate()
@@ -38,7 +37,6 @@ namespace GameDesire
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
 
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged_1);
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
         }
 
         private Int64 getBB(string stake)
@@ -237,15 +235,14 @@ namespace GameDesire
 
                 using (SQLiteCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT IAR, IR FROM Bankroll WHERE Stake=@stak";
+                    cmd.CommandText = "SELECT IR FROM Bankroll WHERE Stake=@stak";
                     cmd.Parameters.Add(new SQLiteParameter("@stak", activeStake));
 
                     using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
                         if (r.Read())
                         {
-                            checkBox2.Checked = r.GetString(0) == "1" ? true : false;
-                            checkBox1.Checked = r.GetString(1) == "1" ? true : false;
+                            checkBox1.Checked = r.GetString(0) == "1" ? true : false;
                         }
                     }
 
@@ -406,7 +403,6 @@ namespace GameDesire
                 {
                     string sql = "UPDATE Bankroll SET IAR=@Logi WHERE Stake=@sta";
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Logi", checkBox2.Checked));
                     cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
                     cmd.ExecuteNonQuery();
                 }

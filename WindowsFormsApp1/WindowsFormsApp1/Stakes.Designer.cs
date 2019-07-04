@@ -430,7 +430,7 @@
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(83, 17);
             this.label55.TabIndex = 53;
-            this.label55.Text = "✖";
+            this.label55.Text = "✔";
             this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label50

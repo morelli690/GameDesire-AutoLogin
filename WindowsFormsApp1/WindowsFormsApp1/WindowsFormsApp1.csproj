@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="ClickableCoordinate.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Keyboard.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
