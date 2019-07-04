@@ -276,10 +276,13 @@ namespace GameDesire
 
         public void StartPoker()
         {
+            int w = 5;
+
             while (true)
             {
                 Process p = Process.Start(textBox3.Text);
-                bool wait = waitForWindowToAppear("Poker", 20);
+
+                bool wait = waitForWindowToAppear("Poker", w);
 
                 if (wait)
                 {
@@ -291,10 +294,12 @@ namespace GameDesire
                     {
                         p.Kill();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine("exception #1 " + ex.StackTrace);
+                        Console.WriteLine("Exception #1 " + ex.StackTrace);
                     }
+
+                    w = w + 5;
                 }
             }
         }
@@ -312,7 +317,6 @@ namespace GameDesire
                 {
                     Stopwatch s = new Stopwatch();
                     s.Start();
-                    Console.WriteLine("Starting logging in... ");
 
                     StartPoker();
 
@@ -354,8 +358,6 @@ namespace GameDesire
 
                     bool b = isLoggedIn(30);
 
-                    Console.WriteLine(b ? "Logged in successfully." : "Did not login successfully");
-                    Console.WriteLine("Finished logging in... in: " + s.Elapsed.TotalSeconds);
                 }
             }
         }
