@@ -29,7 +29,6 @@ namespace GameDesire
 
             this.checkBox1.CheckedChanged -= new System.EventHandler(this.CheckBox1_CheckedChanged_1);
             this.checkBox2.CheckedChanged -= new System.EventHandler(this.CheckBox2_CheckedChanged);
-
         }
 
         public void Activate()
@@ -40,7 +39,6 @@ namespace GameDesire
 
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged_1);
             this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
-
         }
 
         private Int64 getBB(string stake)
@@ -362,7 +360,6 @@ namespace GameDesire
             activeStake = comboBox4.SelectedItem.ToString();
             InitializeElements();
         }
-
 
         private void Label5_Click(object sender, EventArgs e)
         {

@@ -254,12 +254,10 @@ namespace GameDesire
             PostMessage(H, (int)WM_KEYUP, (IntPtr)VK_TAB, IntPtr.Zero);
         }
 
-
         public int MakeLParam(int LoWord, int HiWord)
         {
             return (int)((HiWord << 16) | (LoWord & 0xFFFF));
         }
-
 
         [DllImport("user32.dll")]
         static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
@@ -300,6 +298,9 @@ namespace GameDesire
             }
         }
 
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
         // Keeps the main lobby open
         public void LoginToPoker()
         {
@@ -317,24 +318,25 @@ namespace GameDesire
                     StartPoker();
 
                     IntPtr hWnd = GetHandleWindow("Poker");
+                    MoveWindow(hWnd, 0, 0, 0, 0, true);
 
-                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60, new Rectangle(new Point(133-5, 192-5), new Size(294+6, 38+6)));
+                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
 
                     sendKeys(hWnd, username);
                     sendTab(hWnd);
                     sendKeys(hWnd, password);
                     sendEnter(hWnd);
 
-                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60, new Rectangle(new Point(16 - 5, 129 - 5), new Size(101 + 6, 26 + 6)));
-                    TemplateMatching.WaitForElement(hWnd, Players, 60, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
+                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
+                    TemplateMatching.WaitForElement(hWnd, Players, 60);
 
-                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
+                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
                     leftClick(hWnd, login2);
 
-                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
+                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
                     leftClick(hWnd, login2);
 
-                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0, new Rectangle(new Point(16 - 5, 129 - 5), new Size(178 + 6 + 60, 17 + 6 + 200)));
+                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0);
 
                     if (dark != null)
                     {
@@ -342,7 +344,7 @@ namespace GameDesire
                     }
                     else
                     {
-                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0, new Rectangle(new Point(16 - 5, 129 - 5), new Size(178 + 6 + 60, 17 + 6 + 200)));
+                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0);
 
                         if (light != null)
                         {
