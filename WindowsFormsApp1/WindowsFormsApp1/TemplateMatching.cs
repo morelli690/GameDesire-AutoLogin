@@ -21,7 +21,7 @@ namespace GameDesire
             return filter.Apply(b);
         }
 
-        public static bool WaitForElement(IntPtr Handle, Bitmap Template, int Seconds)
+        public static bool WaitForElement(IntPtr Handle, Bitmap Template, int Seconds, Rectangle searchZone = new Rectangle())
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -33,11 +33,22 @@ namespace GameDesire
                 Bitmap Source = sc.GetScreenshot(Handle);
                 Bitmap Source2 = generateFormattedBitmap(Source);
 
-                TemplateMatch[] matchings = tm.ProcessImage(Source2, Template);
+                TemplateMatch[] matchings;
+
+                if (searchZone.IsEmpty)
+                {
+                    matchings = tm.ProcessImage(Source2, Template);
+                }
+                else
+                {
+                    Console.WriteLine("WITH Search Zone");
+                    matchings = tm.ProcessImage(Source2, Template, searchZone);
+                }
 
                 if (matchings[0].Similarity > 0.95f)
                 {
                     Console.WriteLine("Found a match at: " + matchings[0].Rectangle.X + ":" + matchings[0].Rectangle.Y + " | " + matchings[0].Similarity + "\n Elapsed: " + stopWatch.Elapsed.TotalSeconds);
+                    Console.WriteLine("Size: " + matchings[0].Rectangle.Width + ":" + matchings[0].Rectangle.Height);
                     return true;
                 }
 
@@ -48,7 +59,7 @@ namespace GameDesire
             }
         }
 
-        public static ClickableCoordinate getClickableCoordinate(IntPtr Handle, Bitmap Template, int Seconds=0, int xOffset=0, int yOffset = 0)
+        public static ClickableCoordinate getClickableCoordinate(IntPtr Handle, Bitmap Template, int Seconds=0, int xOffset=0, int yOffset = 0, Rectangle searchZone = new Rectangle())
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -60,11 +71,22 @@ namespace GameDesire
                 Bitmap Source = sc.GetScreenshot(Handle);
                 Bitmap Source2 = generateFormattedBitmap(Source);
 
-                TemplateMatch[] matchings = tm.ProcessImage(Source2, Template);
+                TemplateMatch[] matchings;
+
+                if (searchZone.IsEmpty)
+                {
+                    matchings = tm.ProcessImage(Source2, Template);
+                }
+                else
+                {
+                    Console.WriteLine("WITH Search Zone");
+                    matchings = tm.ProcessImage(Source2, Template, searchZone);
+                }
 
                 if (matchings[0].Similarity > 0.95f)
                 {
                     Console.WriteLine("Found a match at: " + matchings[0].Rectangle.X + ":" + matchings[0].Rectangle.Y + " | " + matchings[0].Similarity + "\n Elapsed: " + stopWatch.Elapsed.TotalSeconds);
+                    Console.WriteLine("Size: " + matchings[0].Rectangle.Width + ":" + matchings[0].Rectangle.Height);
                     return new ClickableCoordinate(xOffset + matchings[0].Rectangle.X + (matchings[0].Rectangle.Width/2), yOffset + matchings[0].Rectangle.Y + (matchings[0].Rectangle.Height / 2));
                 }
 

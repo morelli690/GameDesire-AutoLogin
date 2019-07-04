@@ -310,29 +310,31 @@ namespace GameDesire
             {
                 if (!isLoggedIn())
                 {
+                    Stopwatch s = new Stopwatch();
+                    s.Start();
                     Console.WriteLine("Starting logging in... ");
 
                     StartPoker();
 
                     IntPtr hWnd = GetHandleWindow("Poker");
 
-                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
+                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60, new Rectangle(new Point(133-5, 192-5), new Size(294+6, 38+6)));
 
                     sendKeys(hWnd, username);
                     sendTab(hWnd);
                     sendKeys(hWnd, password);
                     sendEnter(hWnd);
 
-                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
-                    TemplateMatching.WaitForElement(hWnd, Players, 60);
+                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60, new Rectangle(new Point(16 - 5, 129 - 5), new Size(101 + 6, 26 + 6)));
+                    TemplateMatching.WaitForElement(hWnd, Players, 60, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
 
-                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
                     leftClick(hWnd, login2);
 
-                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0, new Rectangle(new Point(469 - 5, 149 - 5), new Size(50 + 6, 27 + 6)));
                     leftClick(hWnd, login2);
 
-                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0);
+                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0, new Rectangle(new Point(16 - 5, 129 - 5), new Size(178 + 6 + 60, 17 + 6 + 200)));
 
                     if (dark != null)
                     {
@@ -340,7 +342,7 @@ namespace GameDesire
                     }
                     else
                     {
-                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0);
+                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0, new Rectangle(new Point(16 - 5, 129 - 5), new Size(178 + 6 + 60, 17 + 6 + 200)));
 
                         if (light != null)
                         {
@@ -353,7 +355,7 @@ namespace GameDesire
                     bool b = isLoggedIn(30);
 
                     Console.WriteLine(b ? "Logged in successfully." : "Did not login successfully");
-                    Console.WriteLine("Finished logging in... ");
+                    Console.WriteLine("Finished logging in... in: " + s.Elapsed.TotalSeconds);
                 }
             }
         }
