@@ -21,8 +21,6 @@ namespace GameDesire
         public static Bitmap Dark = TemplateMatching.generateFormattedBitmap(new Bitmap("DarkMainlobby.png"));
         public static Bitmap Light = TemplateMatching.generateFormattedBitmap(new Bitmap("LightMainLobby.png"));
 
-
-
         public const int WM_LBUTTONDOWN = 0x0201;
         public const int WM_LBUTTONUP = 0x0202;
 
@@ -271,8 +269,6 @@ namespace GameDesire
             PostMessage(Handle, WM_LBUTTONDOWN, 1, MakeLParam(cc.X, cc.Y));
             PostMessage(Handle, WM_LBUTTONUP, 0, MakeLParam(cc.X, cc.Y));
         }
-
-
 
         public void StartPoker()
         {

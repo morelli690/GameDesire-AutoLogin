@@ -338,64 +338,65 @@ namespace GameDesire
                     {
                         cmd.CommandText = "SELECT Card1, Card2, Result FROM Hands";
 
-                        SQLiteDataReader r = cmd.ExecuteReader();
-
-                        while (r.Read())
+                        using (SQLiteDataReader r = cmd.ExecuteReader())
                         {
-                            string card1 = r.GetString(0);
-                            string card2 = r.GetString(1);
-
-                            Int64 Result = Convert.ToInt64(r.GetString(2));
-                            bool isSuited = false;
-
-                            if ((card1 + card2).Count(ch => ch == 's') == 2)
+                            while (r.Read())
                             {
-                                isSuited = true;
+                                string card1 = r.GetString(0);
+                                string card2 = r.GetString(1);
+
+                                Int64 Result = Convert.ToInt64(r.GetString(2));
+                                bool isSuited = false;
+
+                                if ((card1 + card2).Count(ch => ch == 's') == 2)
+                                {
+                                    isSuited = true;
+                                }
+                                else if ((card1 + card2).Count(ch => ch == 'h') == 2)
+                                {
+                                    isSuited = true;
+                                }
+                                else if ((card1 + card2).Count(ch => ch == 'd') == 2)
+                                {
+                                    isSuited = true;
+                                }
+                                else if ((card1 + card2).Count(ch => ch == 'c') == 2)
+                                {
+                                    isSuited = true;
+                                }
+
+                                string c1 = ConvertCard(card1);
+                                string c2 = ConvertCard(card2);
+
+                                string range = "";
+
+                                if (Convert.ToInt64(c1) >= Convert.ToInt64(c2))
+                                {
+                                    range = card1 + card2;
+                                }
+                                else
+                                {
+                                    range = card2 + card1;
+                                }
+
+                                range = range.Replace("s", "");
+                                range = range.Replace("c", "");
+                                range = range.Replace("h", "");
+                                range = range.Replace("d", "");
+                                range = range.Replace("T", "10");
+
+                                range = isSuited ? (range + "s") : (range + "o");
+
+                                if (c1 == c2)
+                                {
+                                    range = range.Replace("o", "");
+                                }
+
+
+                                Range result = Ranges.First(s => s.ID == range);
+                                result.Result = result.Result + Result;
+                                result.Hands = result.Hands + 1;
                             }
-                            else if ((card1 + card2).Count(ch => ch == 'h') == 2)
-                            {
-                                isSuited = true;
-                            }
-                            else if ((card1 + card2).Count(ch => ch == 'd') == 2)
-                            {
-                                isSuited = true;
-                            }
-                            else if ((card1 + card2).Count(ch => ch == 'c') == 2)
-                            {
-                                isSuited = true;
-                            }
-
-                            string c1 = ConvertCard(card1);
-                            string c2 = ConvertCard(card2);
-
-                            string range = "";
-
-                            if (Convert.ToInt64(c1) >= Convert.ToInt64(c2))
-                            {
-                                range = card1 + card2;
-                            }
-                            else
-                            {
-                                range = card2 + card1;
-                            }
-
-                            range = range.Replace("s", "");
-                            range = range.Replace("c", "");
-                            range = range.Replace("h", "");
-                            range = range.Replace("d", "");
-                            range = range.Replace("T", "10");
-
-                            range = isSuited ? (range + "s") : (range + "o");
-
-                            if (c1 == c2)
-                            {
-                                range = range.Replace("o", "");
-                            }
-
-
-                            Range result = Ranges.First(s => s.ID == range);
-                            result.Result = result.Result + Result;
-                            result.Hands = result.Hands + 1;
                         }
                     }
                     con.Close();

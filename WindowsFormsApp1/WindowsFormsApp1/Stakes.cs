@@ -224,13 +224,39 @@ namespace WindowsFormsApp1
             return "";
         }
 
+        public bool IgnoreResult(string stake)
+        {
+            stake = ConvertStake(stake);
+
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT IR FROM Bankroll WHERE Stake = @stak";
+                    cmd.Parameters.Add(new SQLiteParameter("@stak", stake));
+
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            return r.GetString(0) == "1" ? true : false;
+                        }
+                    }
+                }
+                con.Close();
+            }
+
+            return false;
+        }
+
         public string getEligible(string stake, Int64 total)
         {
             Int64 BB = Convert.ToInt64(getBigBlind(stake).ToString());
             Int64 buyinbb = 0;
             Int64 above = 0;
             string stake2 = ConvertStake(stake);
-            Int64 offset = 0;
 
             using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
             {
@@ -241,123 +267,80 @@ namespace WindowsFormsApp1
                     cmd.CommandText = "SELECT BuyInBB, Above FROM Bankroll WHERE Stake = @Stake";
                     cmd.Parameters.Add(new SQLiteParameter("@Stake", stake2));
 
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        buyinbb = Convert.ToInt64(r.GetString(0));
-                        above = Convert.ToInt64(r.GetString(1));
-                    }
-                }
-                con.Close();
-            }
-
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT Type, Offset FROM ResultOffset";
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        string type = r.GetString(0);
-                        string offs = r.GetString(1);
-
-                        if(offs == "")
+                        while (r.Read())
                         {
-                            offset = 0;
-                        }
-                        else if(type == "-")
-                        {
-                            offset = offset - Convert.ToInt64(offs);
-                        }
-                        else
-                        {
-                            offset = offset + Convert.ToInt64(offs);
+                            buyinbb = Convert.ToInt64(r.GetString(0));
+                            above = Convert.ToInt64(r.GetString(1));
                         }
                     }
                 }
                 con.Close();
             }
-
             Int64 RequiredForThisStake = BB * buyinbb * above;
 
-            if((total+offset) >= RequiredForThisStake)
+            if( IgnoreResult(stake) || total >= RequiredForThisStake )
             {
                 return "✓";
             }
             else
             {
-                return "✖ (" + (RequiredForThisStake-(total+offset)).ToString("N0") + ")";
+                return "✖ (" + (RequiredForThisStake-(total)).ToString("N0") + ")";
             }
         }
 
         public async void Refresh()
         {
-            try
+            while (true)
             {
-                while (true)
+                ArrayList Views = new ArrayList();
+                Views.Add(new View("5_10", "label20", "label49", "label50", "label68"));
+                Views.Add(new View("10_20", "label19", "label47", "label48", "label67"));
+                Views.Add(new View("25_50", "label18", "label45", "label46", "label66"));
+                Views.Add(new View("50_100", "label16", "label43", "label44", "label65"));
+                Views.Add(new View("100_200", "label17", "label41", "label42", "label64"));
+                Views.Add(new View("250_500", "label15", "label39", "label40", "label63"));
+                Views.Add(new View("500_1K", "label14", "label37", "label38", "label62"));
+                Views.Add(new View("1K_2K", "label13", "label35", "label36", "label61"));
+                Views.Add(new View("2.5K_5K", "label12", "label33", "label34", "label60"));
+                Views.Add(new View("5K_10K", "label11", "label31", "label32", "label59"));
+                Views.Add(new View("10K_20K", "label10", "label29", "label30", "label58"));
+                Views.Add(new View("25K_50K", "label9", "label27", "label28", "label57"));
+                Views.Add(new View("50K_100K", "label8", "label25", "label26", "label56"));
+                Views.Add(new View("100K_200K", "label7", "label23", "label24", "label55"));
+                Views.Add(new View("250K_500K", "label6", "label21", "label22", "label54"));
+                Int64 total = 0;
+                Int64 total2 = 0;
+                foreach (View v in Views)
                 {
-                    ArrayList Views = new ArrayList();
-                    Views.Add(new View("5_10", "label20", "label49", "label50", "label68"));
-                    Views.Add(new View("10_20", "label19", "label47", "label48", "label67"));
-                    Views.Add(new View("25_50", "label18", "label45", "label46", "label66"));
-                    Views.Add(new View("50_100", "label16", "label43", "label44", "label65"));
-                    Views.Add(new View("100_200", "label17", "label41", "label42", "label64"));
-                    Views.Add(new View("250_500", "label15", "label39", "label40", "label63"));
-                    Views.Add(new View("500_1K", "label14", "label37", "label38", "label62"));
-                    Views.Add(new View("1K_2K", "label13", "label35", "label36", "label61"));
-                    Views.Add(new View("2.5K_5K", "label12", "label33", "label34", "label60"));
-                    Views.Add(new View("5K_10K", "label11", "label31", "label32", "label59"));
-                    Views.Add(new View("10K_20K", "label10", "label29", "label30", "label58"));
-                    Views.Add(new View("25K_50K", "label9", "label27", "label28", "label57"));
-                    Views.Add(new View("50K_100K", "label8", "label25", "label26", "label56"));
-                    Views.Add(new View("100K_200K", "label7", "label23", "label24", "label55"));
-                    Views.Add(new View("250K_500K", "label6", "label21", "label22", "label54"));
-                    Int64 total = 0;
-                    Int64 total2 = 0;
-                    foreach (View v in Views)
-                    {
-                        Label Stake = this.Controls.Find(v.StakeLabel, true).FirstOrDefault() as Label;
+                    Label Stake = this.Controls.Find(v.StakeLabel, true).FirstOrDefault() as Label;
 
-                        Label Hands = this.Controls.Find(v.Hands, true).FirstOrDefault() as Label;
-                        Hands.Text = getHands(v.Stake);
-                        total2 = total2 + Convert.ToInt64(Hands.Text.Replace(",", ""));
+                    Label Hands = this.Controls.Find(v.Hands, true).FirstOrDefault() as Label;
+                    Hands.Text = getHands(v.Stake);
+                    total2 = total2 + Convert.ToInt64(Hands.Text.Replace(",", ""));
 
-                        Label Result = this.Controls.Find(v.Result, true).FirstOrDefault() as Label;
-                        Result.Text = getResult(v.Stake);
+                    Label Result = this.Controls.Find(v.Result, true).FirstOrDefault() as Label;
+                    Result.Text = getResult(v.Stake);
 
-                        Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
-                        total = total + res;
-                    }
+                    Int64 res = Convert.ToInt64(Result.Text.Replace(",", "").Replace("+", ""));
+                    total = total + res;
+                }
 
 
-                    label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
-                    label51.Text = total2.ToString("N0");
-                    Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
-                    Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
+                label52.Text = total > 0 ? ("+" + total.ToString("N0")) : total.ToString("N0");
+                label51.Text = total2.ToString("N0");
+                Label Stakes2 = this.Controls.Find("label51", true).FirstOrDefault() as Label;
+                Label Hands2 = this.Controls.Find("label52", true).FirstOrDefault() as Label;
 
-                    foreach (View v in Views)
-                    {
-                        Label Eligible = this.Controls.Find(v.Eligible, true).FirstOrDefault() as Label;
-                        Eligible.Text = getEligible(v.Stake, total);
-
-                    }
-
-
-
-                    Thread.Sleep(2000);
-
+                foreach (View v in Views)
+                {
+                    Label Eligible = this.Controls.Find(v.Eligible, true).FirstOrDefault() as Label;
+                    Eligible.Text = getEligible(v.Stake, total);
 
                 }
-            }
-            catch(Exception ex)
-            {
 
+                Thread.Sleep(2000);
             }
         }
 

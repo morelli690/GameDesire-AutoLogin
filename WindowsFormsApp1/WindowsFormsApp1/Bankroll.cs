@@ -21,177 +21,15 @@ namespace GameDesire
             comboBox4.SelectedItem = "250K/500K";
         }
 
-        private string getOffset()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT Offset FROM ResultOffset";
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-
-            return "";
-        }
-
-        private string getType()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT Type FROM ResultOffset";
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-            return "";
-        }
-
-        private string getActivePlayersSit()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT ActivePlayer1 FROM Bankroll WHERE Stake=@Stake";
-                    cmd.Parameters.Add(new SQLiteParameter("@Stake", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-            return "";
-        }
-
-        private bool isChecked()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT Rebuy FROM Bankroll WHERE Stake=@Stake";
-                    cmd.Parameters.Add(new SQLiteParameter("@Stake", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return (r.GetString(0) == "1") ? true : false;
-                    }
-                }
-                con.Close();
-            }
-            return false;
-        }
-
-        public string getActiveLeave()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT ActivePlayersLeave FROM Bankroll WHERE Stake=@Stake";
-                    cmd.Parameters.Add(new SQLiteParameter("@Stake", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-            return "";
-        }
-
-        public string getRebuyBelow()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT MyStackBelowRebuy FROM Bankroll WHERE Stake=@Stake";
-                    cmd.Parameters.Add(new SQLiteParameter("@Stake", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-            return "";
-        }
-
-        public string getRebuyUpto()
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT RebuyUpto FROM Bankroll WHERE Stake=@Stake";
-                    cmd.Parameters.Add(new SQLiteParameter("@Stake", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
-                    {
-                        return r.GetString(0);
-                    }
-                }
-                con.Close();
-            }
-            return "";
-        }
-
-        public int getBuyInBB()
-        {
-            int t = Convert.ToInt32(comboBox1.Text.Split(' ')[0]);
-            return 84;
-        }
-
         public void Deactivate()
         {
             this.comboBox1.SelectedIndexChanged -= new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             this.comboBox2.SelectedIndexChanged -= new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
             this.comboBox3.SelectedIndexChanged -= new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
+
+            this.checkBox1.CheckedChanged -= new System.EventHandler(this.CheckBox1_CheckedChanged_1);
+            this.checkBox2.CheckedChanged -= new System.EventHandler(this.CheckBox2_CheckedChanged);
+
         }
 
         public void Activate()
@@ -199,6 +37,10 @@ namespace GameDesire
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
+
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged_1);
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
+
         }
 
         private Int64 getBB(string stake)
@@ -212,11 +54,12 @@ namespace GameDesire
                     cmd.CommandText = "SELECT BuyInBB FROM Bankroll WHERE Stake = @Stake";
                     cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
 
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        return Convert.ToInt64(r.GetString(0));
+                        if (r.Read())
+                        {
+                            return Convert.ToInt64(r.GetString(0));
+                        }
                     }
                 }
                 con.Close();
@@ -235,11 +78,12 @@ namespace GameDesire
                     cmd.CommandText = "SELECT Above FROM Bankroll WHERE Stake = @Stake";
                     cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
 
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        return Convert.ToInt64(r.GetString(0));
+                        if (r.Read())
+                        {
+                            return Convert.ToInt64(r.GetString(0));
+                        }
                     }
                 }
                 con.Close();
@@ -259,11 +103,12 @@ namespace GameDesire
                     cmd.CommandText = "SELECT Below FROM Bankroll WHERE Stake = @Stake";
                     cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
 
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        return Convert.ToInt64(r.GetString(0));
+                        if (r.Read())
+                        {
+                            return Convert.ToInt64(r.GetString(0));
+                        }
                     }
                 }
                 con.Close();
@@ -385,6 +230,32 @@ namespace GameDesire
                     Below.SelectedItem = i + " BI (" + (i * BigBlind * bb).ToString("N0") + ") ".ToString();
                 }
             }
+
+
+
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT IAR, IR FROM Bankroll WHERE Stake=@stak";
+                    cmd.Parameters.Add(new SQLiteParameter("@stak", activeStake));
+
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            checkBox2.Checked = r.GetString(0) == "1" ? true : false;
+                            checkBox1.Checked = r.GetString(1) == "1" ? true : false;
+                        }
+                    }
+
+                }
+                con.Close();
+            }
+
+
             Activate();
         }
 
@@ -433,31 +304,31 @@ namespace GameDesire
                 {
                     cmd.CommandText = "SELECT Above, Below FROM Bankroll WHERE Stake = @stak";
                     cmd.Parameters.Add(new SQLiteParameter("@stak", activeStake));
-
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        Int64 above = Convert.ToInt64(r.GetString(0));
-                        Int64 below = Convert.ToInt64(r.GetString(1));
-
-                        if(below >= above)
+                        if (r.Read())
                         {
-                            below = above - 1;
+                            Int64 above = Convert.ToInt64(r.GetString(0));
+                            Int64 below = Convert.ToInt64(r.GetString(1));
 
-                            using (SQLiteConnection con2 = new SQLiteConnection("Data Source=Database.sqlite"))
+                            if (below >= above)
                             {
-                                con2.Open();
+                                below = above - 1;
 
-                                using (SQLiteCommand cmd2 = con.CreateCommand())
+                                using (SQLiteConnection con2 = new SQLiteConnection("Data Source=Database.sqlite"))
                                 {
-                                    string sql = "UPDATE Bankroll SET Below=@Logi WHERE Stake = @sta";
-                                    cmd2.CommandText = sql;
-                                    cmd2.Parameters.Add(new SQLiteParameter("@Logi", below.ToString()));
-                                    cmd2.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                                    cmd2.ExecuteNonQuery();
+                                    con2.Open();
+
+                                    using (SQLiteCommand cmd2 = con.CreateCommand())
+                                    {
+                                        string sql = "UPDATE Bankroll SET Below=@Logi WHERE Stake = @sta";
+                                        cmd2.CommandText = sql;
+                                        cmd2.Parameters.Add(new SQLiteParameter("@Logi", below.ToString()));
+                                        cmd2.Parameters.Add(new SQLiteParameter("@sta", activeStake));
+                                        cmd2.ExecuteNonQuery();
+                                    }
+                                    con2.Close();
                                 }
-                                con2.Close();
                             }
                         }
                     }
@@ -492,122 +363,6 @@ namespace GameDesire
             InitializeElements();
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE ResultOffset SET Offset=@Logi";
-                    cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void ComboBox5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE ResultOffset SET Type=@Logi";
-                    cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void ComboBox6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Bankroll SET ActivePlayer1=@Logi WHERE Stake = @sta";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void ComboBox7_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Bankroll SET ActivePlayersLeave=@Logi WHERE Stake = @sta";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Bankroll SET Rebuy=@Logi WHERE Stake = @sta";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void ComboBox10_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Bankroll SET MyStackBelowRebuy=@Logi WHERE Stake = @sta";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
-
-        private void ComboBox11_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE Bankroll SET Rebuyupto=@Logi WHERE Stake = @sta";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-        }
 
         private void Label5_Click(object sender, EventArgs e)
         {
@@ -626,25 +381,40 @@ namespace GameDesire
             label5.ForeColor = Color.FromArgb(175, 191, 191);
         }
 
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-        private void label6_MouseMove(object sender, MouseEventArgs e)
+        private void CheckBox1_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
             {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    string sql = "UPDATE Bankroll SET IR=@Logi WHERE Stake=@sta";
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SQLiteParameter("@Logi", checkBox1.Checked));
+                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
             }
         }
 
-        private void TableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
 
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    string sql = "UPDATE Bankroll SET IAR=@Logi WHERE Stake=@sta";
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SQLiteParameter("@Logi", checkBox2.Checked));
+                    cmd.Parameters.Add(new SQLiteParameter("@sta", activeStake));
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+            }
         }
     }
 }

@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
                         cmd.Parameters.Add(new SQLiteParameter("@PokerLauncherPath", ""));
                         cmd.ExecuteNonQuery();
 
-                        string sql3 = "CREATE TABLE Bankroll (Stake TEXT, BuyInBB TEXT, Above TEXT, Below TEXT, ActivePlayer1 TEXT, ActivePlayersLeave TEXT, Rebuy TEXT, MyStackBelowRebuy TEXT, RebuyUpto TEXT)";
+                        string sql3 = "CREATE TABLE Bankroll (Stake TEXT, BuyInBB TEXT, Above TEXT, Below TEXT, ActivePlayer1 TEXT, ActivePlayersLeave TEXT, Rebuy TEXT, MyStackBelowRebuy TEXT, RebuyUpto TEXT, IAR TEXT, IR TEXT)";
                         cmd.CommandText = sql3;
                         cmd.ExecuteNonQuery();
 
@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
 
                         foreach (string stake in stakes)
                         {
-                            cmd.CommandText = "INSERT INTO Bankroll (Stake, BuyInBB, Above, Below, ActivePlayer1, ActivePlayersLeave, Rebuy, MyStackBelowRebuy, RebuyUpto) values (@Stake, @BuyInBB, @Above, @Below, @ActivePlayer1, @ActivePlayersLeave, @Rebuy, @MyStackBelowRebuy, @RebuyUpto)";
+                            cmd.CommandText = "INSERT INTO Bankroll (Stake, BuyInBB, Above, Below, ActivePlayer1, ActivePlayersLeave, Rebuy, MyStackBelowRebuy, RebuyUpto, IAR, IR) values (@Stake, @BuyInBB, @Above, @Below, @ActivePlayer1, @ActivePlayersLeave, @Rebuy, @MyStackBelowRebuy, @RebuyUpto, @IAR, @IR)";
                             cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
                             cmd.Parameters.Add(new SQLiteParameter("@BuyInBB", 100));
                             cmd.Parameters.Add(new SQLiteParameter("@Above", 20));
@@ -50,19 +50,20 @@ namespace WindowsFormsApp1
                             cmd.Parameters.Add(new SQLiteParameter("@Rebuy", "1"));
                             cmd.Parameters.Add(new SQLiteParameter("@MyStackBelowRebuy", 70));
                             cmd.Parameters.Add(new SQLiteParameter("@RebuyUpto", 100));
+                            cmd.Parameters.Add(new SQLiteParameter("@IAR", 1));
+
+                            if (stake == "5/10")
+                            {
+                                cmd.Parameters.Add(new SQLiteParameter("@IR", "1"));
+                            }
+                            else
+                            {
+                                cmd.Parameters.Add(new SQLiteParameter("@IR", "0"));
+                            }
 
                             cmd.ExecuteNonQuery();
                         }
 
-
-                        string sql4 = "CREATE TABLE ResultOffset (Type TEXT, Offset TEXT)";
-                        cmd.CommandText = sql4;
-                        cmd.ExecuteNonQuery();
-
-                        cmd.CommandText = "INSERT INTO ResultOffset (Type, Offset) values (@Type, @Offset)";
-                        cmd.Parameters.Add(new SQLiteParameter("@Type", "+"));
-                        cmd.Parameters.Add(new SQLiteParameter("@Offset", "0"));
-                        cmd.ExecuteNonQuery();
                     }
                     con.Close();
                 }
