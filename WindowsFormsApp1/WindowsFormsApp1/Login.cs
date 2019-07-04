@@ -16,6 +16,16 @@ namespace GameDesire
         public static Thread LoginThread;
         public static ScreenCapture sc = new ScreenCapture();
         public static Bitmap LoginHeader = TemplateMatching.generateFormattedBitmap(new Bitmap("LoginHeader.png"));
+        public static Bitmap Players = TemplateMatching.generateFormattedBitmap(new Bitmap("Players.png"));
+        public static Bitmap SelectRoomHeader = TemplateMatching.generateFormattedBitmap(new Bitmap("SelectRoomHeader.png"));
+        public static Bitmap Dark = TemplateMatching.generateFormattedBitmap(new Bitmap("DarkMainlobby.png"));
+        public static Bitmap Light = TemplateMatching.generateFormattedBitmap(new Bitmap("LightMainLobby.png"));
+
+
+
+        public const int WM_LBUTTONDOWN = 0x0201;
+        public const int WM_LBUTTONUP = 0x0202;
+
 
         public Login()
         {
@@ -151,19 +161,28 @@ namespace GameDesire
             }
         }
 
-        public bool isLoggedIn()
+        public bool isLoggedIn(int wait=0)
         {
-            string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
 
-            foreach(string title in titles)
+            while (true)
             {
-                if(title.Contains("Main Lobby") && title.Contains("Poker Texas Hold'em"))
+                string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+
+                foreach (string title in titles)
                 {
-                    return true;
+                    if (title.Contains("Main Lobby") && title.Contains("Poker Texas Hold'em"))
+                    {
+                        return true;
+                    }
+                }
+
+                if(stopWatch.Elapsed.TotalSeconds > wait)
+                {
+                    return false;
                 }
             }
-
-            return false;
         }
 
         public bool waitForWindowToAppear(string windowText, int seconds)
@@ -217,6 +236,69 @@ namespace GameDesire
             }
         }
 
+        public void sendTab(IntPtr H)
+        {
+            const uint WM_KEYDOWN = 0x0100;
+            const uint WM_KEYUP = 0x0101;
+            const int VK_TAB = 0x09;
+
+            PostMessage(H, (int)WM_KEYDOWN, (IntPtr)VK_TAB, IntPtr.Zero);
+            PostMessage(H, (int)WM_KEYUP, (IntPtr)VK_TAB, IntPtr.Zero);
+        }
+
+        public void sendEnter(IntPtr H)
+        {
+            const uint WM_KEYDOWN = 0x0100;
+            const uint WM_KEYUP = 0x0101;
+            const int VK_TAB = 0x0D;
+
+            PostMessage(H, (int)WM_KEYDOWN, (IntPtr)VK_TAB, IntPtr.Zero);
+            PostMessage(H, (int)WM_KEYUP, (IntPtr)VK_TAB, IntPtr.Zero);
+        }
+
+
+        public int MakeLParam(int LoWord, int HiWord)
+        {
+            return (int)((HiWord << 16) | (LoWord & 0xFFFF));
+        }
+
+
+        [DllImport("user32.dll")]
+        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+
+        public void leftClick(IntPtr Handle, ClickableCoordinate cc)
+        {
+            PostMessage(Handle, WM_LBUTTONDOWN, 1, MakeLParam(cc.X, cc.Y));
+            PostMessage(Handle, WM_LBUTTONUP, 0, MakeLParam(cc.X, cc.Y));
+        }
+
+
+
+        public void StartPoker()
+        {
+            while (true)
+            {
+                Process p = Process.Start(textBox3.Text);
+                bool wait = waitForWindowToAppear("Poker", 20);
+
+                if (wait)
+                {
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        p.Kill();
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("exception #1 " + ex.StackTrace);
+                    }
+                }
+            }
+        }
+
         // Keeps the main lobby open
         public void LoginToPoker()
         {
@@ -228,22 +310,51 @@ namespace GameDesire
             {
                 if (!isLoggedIn())
                 {
-                    Process login = Process.Start(path);
+                    Console.WriteLine("Starting logging in... ");
 
-                    waitForWindowToAppear("Poker", 60);
+                    StartPoker();
+
                     IntPtr hWnd = GetHandleWindow("Poker");
 
-                    Bitmap bitmap = sc.GetScreenshot(hWnd);
-
-                    TemplateMatching.WaitForElement(bitmap, LoginHeader, 60);
+                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
 
                     sendKeys(hWnd, username);
+                    sendTab(hWnd);
+                    sendKeys(hWnd, password);
+                    sendEnter(hWnd);
 
-                    Console.ReadLine();
-                    login.Kill();
+                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
+                    TemplateMatching.WaitForElement(hWnd, Players, 60);
+
+                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                    leftClick(hWnd, login2);
+
+                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                    leftClick(hWnd, login2);
+
+                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0);
+
+                    if (dark != null)
+                    {
+                        leftClick(hWnd, dark);
+                    }
+                    else
+                    {
+                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0);
+
+                        if (light != null)
+                        {
+                            leftClick(hWnd, light);
+                        }
+                    }
+
+                    sendEnter(hWnd);
+
+                    bool b = isLoggedIn(30);
+
+                    Console.WriteLine(b ? "Logged in successfully." : "Did not login successfully");
+                    Console.WriteLine("Finished logging in... ");
                 }
-
-                Thread.Sleep(5000);
             }
         }
 
