@@ -61,6 +61,38 @@ namespace GameDesire.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;config entries=&quot;74&quot;&gt;
+        ///	&lt;entry name=&quot;GameWinMaximized&quot;&gt;
+        ///		&lt;value&gt;0&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;GameWinSizeX&quot;&gt;
+        ///		&lt;value&gt;760&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;GameWinSizeY&quot;&gt;
+        ///		&lt;value&gt;570&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;NaviWinMaximized&quot;&gt;
+        ///		&lt;value&gt;0&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;NaviWinSizeX&quot;&gt;
+        ///		&lt;value&gt;760&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;NaviWinSizeY&quot;&gt;
+        ///		&lt;value&gt;570&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;entry name=&quot;__tables_layout&quot;&gt;
+        ///		&lt;value&gt;0&lt;/value&gt;
+        ///	&lt;/entry&gt;
+        ///	&lt;e [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string config {
+            get {
+                return ResourceManager.GetString("config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_arrow_right_64 {

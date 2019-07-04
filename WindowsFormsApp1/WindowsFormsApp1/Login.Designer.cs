@@ -173,7 +173,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(398, 41);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Login";
+            this.label6.Text = "Logger";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label6_MouseMove);
             // 

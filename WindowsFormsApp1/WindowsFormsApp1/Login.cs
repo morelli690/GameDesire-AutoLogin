@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -301,12 +302,22 @@ namespace GameDesire
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
+        public void copyXML()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            path = path + "\\GanymedeNet\\Pokers";
+            Directory.CreateDirectory(path);
+            File.WriteAllText(path + "\\config.xml", Properties.Resources.config);
+        }
+
         // Keeps the main lobby open
         public void LoginToPoker()
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
             string path = textBox3.Text;
+
+            copyXML();
 
             while (true)
             {
