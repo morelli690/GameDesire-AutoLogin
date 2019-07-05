@@ -269,7 +269,6 @@ namespace GameDesire
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
-
         public void copyXML()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -297,35 +296,84 @@ namespace GameDesire
                     IntPtr hWnd = GetHandleWindow("Poker");
                     MoveWindow(hWnd, 0, 0, 0, 0, true);
 
-                    TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
+                    bool l = TemplateMatching.WaitForElement(hWnd, LoginHeader, 15, new Rectangle(new Point(133-20, 192-20), new Size(294+35, 38+35)));
+
+                    if (!l)
+                    {
+                        TemplateMatching.WaitForElement(hWnd, LoginHeader, 60);
+                    }
 
                     Keyboard.sendKeys(hWnd, username);
                     Keyboard.sendTab(hWnd);
                     Keyboard.sendKeys(hWnd, password);
                     Keyboard.sendEnter(hWnd);
 
-                    TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
-                    TemplateMatching.WaitForElement(hWnd, Players, 60);
+                    bool srh = TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 15, new Rectangle(new Point(16 - 10, 129 - 20), new Size(101 + 35, 26 + 35)));
 
-                    ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
-                    leftClick(hWnd, login2);
-
-                    login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
-                    leftClick(hWnd, login2);
-
-                    ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0);
-
-                    if (dark != null)
+                    if (!srh)
                     {
-                        leftClick(hWnd, dark);
+                        TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
+                    }
+
+                    Console.WriteLine("Above");
+
+                    ClickableCoordinate ko2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 15, 0, 0, new Rectangle(new Point(469 - 10, 149 - 20), new Size(50 + 12, 27 + 23)));
+
+                    if (ko2 == null)
+                    {
+                        Console.WriteLine("null");
+                        ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                        leftClick(hWnd, login2);
                     }
                     else
                     {
-                        ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0);
+                        leftClick(hWnd, ko2);
+                    }
 
-                        if (light != null)
+                    ClickableCoordinate ko3 = TemplateMatching.getClickableCoordinate(hWnd, Players, 15, 0, 0, new Rectangle(new Point(469 - 10, 149 - 20), new Size(50 + 12, 27 + 23)));
+
+                    if (ko3 == null)
+                    {
+                        ClickableCoordinate login3 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
+                        leftClick(hWnd, login3);
+                    }
+                    else
+                    {
+                        leftClick(hWnd, ko3);
+                    }
+
+
+                    ClickableCoordinate dark2 = TemplateMatching.getClickableCoordinate(hWnd, Dark, 10, 0, 0, new Rectangle(new Point(16 - 12, 129 - 20), new Size(600 + 12, 360 + 23)));
+
+                    if(dark2 != null)
+                    {
+                        leftClick(hWnd, dark2);
+                    }
+                    else
+                    {
+                        ClickableCoordinate dark = TemplateMatching.getClickableCoordinate(hWnd, Dark, 0, 0, 0);
+
+                        if (dark != null)
                         {
-                            leftClick(hWnd, light);
+                            leftClick(hWnd, dark);
+                        }
+                        else
+                        {
+                            ClickableCoordinate light2 = TemplateMatching.getClickableCoordinate(hWnd, Light, 10, 0, 0, new Rectangle(new Point(16 - 12, 129 - 20), new Size(600 + 12, 360 + 23)));
+
+                            if (light2 != null)
+                            {
+                                leftClick(hWnd, light2);
+                            }
+                            else
+                            {
+                                ClickableCoordinate light = TemplateMatching.getClickableCoordinate(hWnd, Light, 0, 0, 0);
+
+                                if (light != null)
+                                {
+                                    leftClick(hWnd, light);
+                                }
+                            }
                         }
                     }
 
