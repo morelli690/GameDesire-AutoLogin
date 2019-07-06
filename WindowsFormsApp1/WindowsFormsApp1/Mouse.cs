@@ -42,5 +42,18 @@ namespace GameDesire
             PostMessage(Handle, WM_LBUTTONUP, 0, MakeLParam(xTo, yTo));
         }
 
+        public static void scrollUp(IntPtr Handle, int xFrom, int yFrom, int times=1)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                Thread.Sleep(100);
+                PostMessage(Handle, (int)WM_MOUSEMOVE, 0, MakeLParam(xFrom, yFrom));
+                Thread.Sleep(100);
+                PostMessage(Handle, (int)WM_MOUSEWHEEL, 0x00780000, MakeLParam(xFrom, yFrom));
+                Thread.Sleep(100);
+            }
+            // down for 0xff880000 
+
+        }
     }
 }

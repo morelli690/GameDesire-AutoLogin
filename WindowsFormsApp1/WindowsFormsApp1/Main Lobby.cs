@@ -18,6 +18,7 @@ namespace GameDesire
         public static Thread OpenTableThread;
         public static IntPtr MainLobbyHandle;
         public static Bitmap HorizontalScrollbar = TemplateMatching.generateFormattedBitmap(new Bitmap("ScrollbarHorizontal.png"));
+        public static Bitmap VerticalScrollbar = TemplateMatching.generateFormattedBitmap(new Bitmap("VerticalScrollbar.png"));
 
         public Main_Lobby()
         {
@@ -276,9 +277,17 @@ namespace GameDesire
             Mouse.dragAndDrop(MainLobbyHandle, k.X, k.Y, 295, 511);
         }
 
+        public void moveVerticalScrollbarToTop()
+        {
+            ClickableCoordinate k = TemplateMatching.getClickableCoordinate(MainLobbyHandle, VerticalScrollbar, 0, 0, 0);
+            Mouse.dragAndDrop(MainLobbyHandle, k.X, k.Y, 295, 50);
+        }
+
         public void goToTop()
         {
             moveHorizontalScroolbarToBottom();
+            moveVerticalScrollbarToTop();
+
 
         }
 
@@ -286,6 +295,9 @@ namespace GameDesire
         {
             changeType(getType(Stake));
             goToTop();
+
+
+
 
 
             // if we opened return true, else return false...
@@ -332,6 +344,7 @@ namespace GameDesire
 
                         if(opened == true)
                         {
+                            // maybe wait and see if correct? :)
                             break;
                         }
                     }
