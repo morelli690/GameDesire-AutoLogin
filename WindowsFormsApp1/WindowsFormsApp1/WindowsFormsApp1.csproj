@@ -117,6 +117,13 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Lobby.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Lobby.Designer.cs">
+      <DependentUpon>Main Lobby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mouse.cs" />
     <Compile Include="OpenWindows.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
@@ -143,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Lobby.resx">
+      <DependentUpon>Main Lobby.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

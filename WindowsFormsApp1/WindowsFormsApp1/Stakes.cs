@@ -282,11 +282,34 @@ namespace WindowsFormsApp1
 
             if( IgnoreResult(stake) || total >= RequiredForThisStake )
             {
+                updateEligible(stake, "1");
                 return "✓";
             }
             else
             {
+                updateEligible(stake, "0");
                 return "✖ (" + (RequiredForThisStake-(total)).ToString("N0") + ")";
+            }
+        }
+
+        public void updateEligible(string Stake, string Eligible)
+        {
+            Stake = ConvertStake(Stake);
+
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
+            {
+                con.Open();
+
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    string sql = "UPDATE OpenTables SET Eligible=@Eli WHERE Stake=@stak";
+                    cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SQLiteParameter("@Eli", Eligible));
+                    cmd.Parameters.Add(new SQLiteParameter("@stak", Stake));
+
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
             }
         }
 
@@ -384,10 +407,6 @@ namespace WindowsFormsApp1
         {
             label1.BackColor = Color.FromArgb(35, 84, 84);
             label1.ForeColor = Color.FromArgb(175, 191, 191);
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
         }
 
         public void PictureBox1_MouseEnter(object sender, EventArgs e)

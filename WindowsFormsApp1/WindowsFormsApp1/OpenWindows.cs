@@ -20,7 +20,7 @@ namespace GameDesire
     {
         const int MAXTITLE = 255;
 
-        private static ArrayList mTitlesList;
+        private ArrayList mTitlesList;
 
         private delegate bool EnumDelegate(IntPtr hWnd, int lParam);
 
@@ -34,7 +34,7 @@ namespace GameDesire
         private static extern int _GetWindowText(IntPtr hWnd,
         StringBuilder lpWindowText, int nMaxCount);
 
-        private static bool EnumWindowsProc(IntPtr hWnd, int lParam)
+        private bool EnumWindowsProc(IntPtr hWnd, int lParam)
         {
             string title = GetWindowText(hWnd);
             mTitlesList.Add(title);
@@ -44,7 +44,7 @@ namespace GameDesire
         /// <summary>
         /// Returns the caption of a windows by given HWND identifier.
         /// </summary>
-        public static string GetWindowText(IntPtr hWnd)
+        public string GetWindowText(IntPtr hWnd)
         {
             StringBuilder title = new StringBuilder(MAXTITLE);
             int titleLength = _GetWindowText(hWnd, title, title.Capacity + 1);
@@ -56,7 +56,7 @@ namespace GameDesire
         /// <summary>
         /// Returns the caption of all desktop windows.
         /// </summary>
-        public static string[] GetDesktopWindowsCaptions()
+        public string[] GetDesktopWindowsCaptions()
         {
             mTitlesList = new ArrayList();
             EnumDelegate enumfunc = new EnumDelegate(EnumWindowsProc);
@@ -80,14 +80,5 @@ namespace GameDesire
                 throw new Exception(errorMessage);
             }
         }
-        /*
-        static void Main()
-        {
-            string[] desktopWindowsCaptions = GetDesktopWindowsCaptions();
-            foreach (string caption in desktopWindowsCaptions)
-            {
-                Console.WriteLine(caption);
-            }
-        }*/
     }
 }

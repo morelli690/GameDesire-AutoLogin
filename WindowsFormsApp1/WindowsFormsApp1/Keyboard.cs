@@ -12,6 +12,13 @@ namespace GameDesire
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 
+        public static void SendClose(IntPtr hWnd)
+        {
+            const UInt32 WM_CLOSE = 0x0010;
+
+            PostMessage(hWnd, (int)WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+        }
+
         public static void sendKeys(IntPtr H, string keys)
         {
             const Int32 WM_CHAR = 0x0102;

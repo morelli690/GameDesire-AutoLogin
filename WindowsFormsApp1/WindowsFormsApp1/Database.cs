@@ -36,6 +36,10 @@ namespace WindowsFormsApp1
                         cmd.CommandText = sql3;
                         cmd.ExecuteNonQuery();
 
+                        string sql4 = "CREATE TABLE OpenTables (Stake TEXT, Players TEXT, Eligible TEXT)";
+                        cmd.CommandText = sql4;
+                        cmd.ExecuteNonQuery();
+
                         string[] stakes = { "250K/500K", "100K/200K", "50K/100K", "25K/50K", "10K/20K", "5K/10K", "2.5K/5K", "1K/2K", "500/1K", "250/500", "100/200", "50/100", "25/50", "10/20", "5/10" };
 
                         foreach (string stake in stakes)
@@ -46,7 +50,12 @@ namespace WindowsFormsApp1
                             cmd.Parameters.Add(new SQLiteParameter("@Above", 20));
                             cmd.Parameters.Add(new SQLiteParameter("@Below", 17));
                             cmd.Parameters.Add(new SQLiteParameter("@IR", stake == "5/10" ? "1" : "0" ));
+                            cmd.ExecuteNonQuery();
 
+                            cmd.CommandText = "INSERT INTO OpenTables (Stake, Players, Eligible) values (@Stake, @Players, @Eligible)";
+                            cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
+                            cmd.Parameters.Add(new SQLiteParameter("@Players", "5"));
+                            cmd.Parameters.Add(new SQLiteParameter("@Eligible", "0"));
                             cmd.ExecuteNonQuery();
                         }
                     }

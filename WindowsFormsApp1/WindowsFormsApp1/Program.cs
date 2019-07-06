@@ -22,7 +22,8 @@ namespace WindowsFormsApp1
             {
                 var forms = new List<Form>() {
                     new Analyzer(),
-                    new GameDesire.Login()
+                    new GameDesire.Login(),
+                    new GameDesire.Main_Lobby()
                 };
 
                 foreach (var form in forms)

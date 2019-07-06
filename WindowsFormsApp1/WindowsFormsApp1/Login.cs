@@ -45,13 +45,14 @@ namespace GameDesire
                 using (SQLiteCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "SELECT * FROM Authentication";
-                    SQLiteDataReader r = cmd.ExecuteReader();
-
-                    while (r.Read())
+                    using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
-                        textBox1.Text = r.GetString(0);
-                        textBox2.Text = r.GetString(1);
-                        textBox3.Text = r.GetString(3);
+                        while (r.Read())
+                        {
+                            textBox1.Text = r.GetString(0);
+                            textBox2.Text = r.GetString(1);
+                            textBox3.Text = r.GetString(3);
+                        }
                     }
                 }
                 con.Close();
@@ -167,7 +168,8 @@ namespace GameDesire
 
             while (true)
             {
-                string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+                OpenWindows so = new OpenWindows();
+                string[] titles = so.GetDesktopWindowsCaptions();
 
                 foreach (string title in titles)
                 {
@@ -196,7 +198,8 @@ namespace GameDesire
                     return false;
                 }
 
-                string[] titles = OpenWindows.GetDesktopWindowsCaptions();
+                OpenWindows so = new OpenWindows();
+                string[] titles = so.GetDesktopWindowsCaptions();
 
                 foreach (string title in titles)
                 {
@@ -208,9 +211,6 @@ namespace GameDesire
             }
         }
 
-        [DllImport("User32.dll")]
-        public static extern Int32 SetForegroundWindow(int hWnd);
-
         [DllImport("user32.dll")]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
@@ -219,22 +219,9 @@ namespace GameDesire
             return FindWindow(null, title);
         }
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
-
-
         public int MakeLParam(int LoWord, int HiWord)
         {
             return (int)((HiWord << 16) | (LoWord & 0xFFFF));
-        }
-
-        [DllImport("user32.dll")]
-        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
-
-        public void leftClick(IntPtr Handle, ClickableCoordinate cc)
-        {
-            PostMessage(Handle, WM_LBUTTONDOWN, 1, MakeLParam(cc.X, cc.Y));
-            PostMessage(Handle, WM_LBUTTONUP, 0, MakeLParam(cc.X, cc.Y));
         }
 
         public void StartPoker()
@@ -277,12 +264,31 @@ namespace GameDesire
             File.WriteAllText(path + "\\config.xml", Properties.Resources.config);
         }
 
+        public void killPrevious()
+        {
+            while (true)
+            {
+                IntPtr hWnd = GetHandleWindow("Poker");
+
+                if (hWnd == IntPtr.Zero)
+                {
+                    return;
+                }
+                else
+                {
+                    Keyboard.SendClose(hWnd);
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
         public void LoginToPoker()
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
 
             copyXML();
+            killPrevious();
 
             while (true)
             {
@@ -315,19 +321,16 @@ namespace GameDesire
                         TemplateMatching.WaitForElement(hWnd, SelectRoomHeader, 60);
                     }
 
-                    Console.WriteLine("Above");
-
                     ClickableCoordinate ko2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 15, 0, 0, new Rectangle(new Point(469 - 10, 149 - 20), new Size(50 + 12, 27 + 23)));
 
                     if (ko2 == null)
                     {
-                        Console.WriteLine("null");
                         ClickableCoordinate login2 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
-                        leftClick(hWnd, login2);
+                        Mouse.leftClick(hWnd, login2);
                     }
                     else
                     {
-                        leftClick(hWnd, ko2);
+                        Mouse.leftClick(hWnd, ko2);
                     }
 
                     ClickableCoordinate ko3 = TemplateMatching.getClickableCoordinate(hWnd, Players, 15, 0, 0, new Rectangle(new Point(469 - 10, 149 - 20), new Size(50 + 12, 27 + 23)));
@@ -335,19 +338,18 @@ namespace GameDesire
                     if (ko3 == null)
                     {
                         ClickableCoordinate login3 = TemplateMatching.getClickableCoordinate(hWnd, Players, 60, 0, 0);
-                        leftClick(hWnd, login3);
+                        Mouse.leftClick(hWnd, login3);
                     }
                     else
                     {
-                        leftClick(hWnd, ko3);
+                        Mouse.leftClick(hWnd, ko3);
                     }
-
 
                     ClickableCoordinate dark2 = TemplateMatching.getClickableCoordinate(hWnd, Dark, 10, 0, 0, new Rectangle(new Point(16 - 12, 129 - 20), new Size(600 + 12, 360 + 23)));
 
                     if(dark2 != null)
                     {
-                        leftClick(hWnd, dark2);
+                        Mouse.leftClick(hWnd, dark2);
                     }
                     else
                     {
@@ -355,7 +357,7 @@ namespace GameDesire
 
                         if (dark != null)
                         {
-                            leftClick(hWnd, dark);
+                            Mouse.leftClick(hWnd, dark);
                         }
                         else
                         {
@@ -363,7 +365,7 @@ namespace GameDesire
 
                             if (light2 != null)
                             {
-                                leftClick(hWnd, light2);
+                                Mouse.leftClick(hWnd, light2);
                             }
                             else
                             {
@@ -371,7 +373,7 @@ namespace GameDesire
 
                                 if (light != null)
                                 {
-                                    leftClick(hWnd, light);
+                                    Mouse.leftClick(hWnd, light);
                                 }
                             }
                         }
@@ -395,6 +397,11 @@ namespace GameDesire
             {
                 LoginThread.Abort();
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
