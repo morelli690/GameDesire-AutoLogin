@@ -61,7 +61,7 @@
 		<value>0</value>
 	</entry>
 	<entry name="game_auto_muck_cards">
-		<value>0</value>
+		<value>1</value>
 	</entry>
 	<entry name="game_plane_compact_mode">
 		<value>1</value>

@@ -11,11 +11,18 @@ namespace GameDesire
         public int X { get; set; }
         public int Y { get; set; }
 
-        public ClickableCoordinate(int x, int y)
+        public ClickableCoordinate(int x, int y, bool adjust = true)
         {
-            X = x - 8;
-            Y = y - 31;
+            if (adjust)
+            {
+                X = x - 8;
+                Y = y - 31;
+            }
+            else
+            {
+                X = x;
+                Y = y;
+            }
         }
-
     }
 }

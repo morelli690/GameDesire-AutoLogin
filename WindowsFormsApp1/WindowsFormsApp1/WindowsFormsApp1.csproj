@@ -109,6 +109,7 @@
       <DependentUpon>Cards.cs</DependentUpon>
     </Compile>
     <Compile Include="ClickableCoordinate.cs" />
+    <Compile Include="ClickableCoordinateNoAdjustement.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Keyboard.cs" />
     <Compile Include="Login.cs">

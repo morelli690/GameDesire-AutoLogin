@@ -17,6 +17,7 @@ namespace GameDesire
     {
         public static Thread OpenTableThread;
         public static IntPtr MainLobbyHandle;
+        public static Bitmap HorizontalScrollbar = TemplateMatching.generateFormattedBitmap(new Bitmap("ScrollbarHorizontal.png"));
 
         public Main_Lobby()
         {
@@ -259,13 +260,32 @@ namespace GameDesire
             {
                 Mouse.leftClick(MainLobbyHandle, new ClickableCoordinate(266, 121));
             }
+
+            Thread.Sleep(1000);
+        }
+
+        public void clickArrowDown()
+        {
+
+        }
+
+
+        public void moveHorizontalScroolbarToBottom()
+        {
+            ClickableCoordinate k = TemplateMatching.getClickableCoordinate(MainLobbyHandle, HorizontalScrollbar, 0, 0, 0);
+            Mouse.dragAndDrop(MainLobbyHandle, k.X, k.Y, 295, 511);
+        }
+
+        public void goToTop()
+        {
+            moveHorizontalScroolbarToBottom();
+
         }
 
         public bool open(string Stake)
         {
             changeType(getType(Stake));
-
-
+            goToTop();
 
 
             // if we opened return true, else return false...
@@ -316,11 +336,11 @@ namespace GameDesire
                         }
                     }
 
-                    Thread.Sleep(10000);
+                    Thread.Sleep(3000);
                 }
                 else
                 {
-                    Thread.Sleep(10000);
+                    Thread.Sleep(3000);
                 }
             }
         }
