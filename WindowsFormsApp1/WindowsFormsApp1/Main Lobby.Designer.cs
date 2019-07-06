@@ -910,6 +910,7 @@
             this.MinimumSize = new System.Drawing.Size(318, 459);
             this.Name = "Main_Lobby";
             this.Text = "Main_Lobby";
+            this.Load += new System.EventHandler(this.Main_Lobby_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

@@ -67,7 +67,7 @@
 		<value>1</value>
 	</entry>
 	<entry name="other_auto_bring_to_top">
-		<value>1</value>
+		<value>0</value>
 	</entry>
 	<entry name="other_auto_post_blind">
 		<value>1</value>

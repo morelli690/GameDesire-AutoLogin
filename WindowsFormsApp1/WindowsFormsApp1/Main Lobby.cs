@@ -19,6 +19,7 @@ namespace GameDesire
         public static IntPtr MainLobbyHandle;
         public static Bitmap HorizontalScrollbar = TemplateMatching.generateFormattedBitmap(new Bitmap("ScrollbarHorizontal.png"));
         public static Bitmap VerticalScrollbar = TemplateMatching.generateFormattedBitmap(new Bitmap("VerticalScrollbar.png"));
+        public static bool stop = false;
 
         public Main_Lobby()
         {
@@ -265,12 +266,6 @@ namespace GameDesire
             Thread.Sleep(1000);
         }
 
-        public void clickArrowDown()
-        {
-
-        }
-
-
         public void moveHorizontalScroolbarToBottom()
         {
             ClickableCoordinate k = TemplateMatching.getClickableCoordinate(MainLobbyHandle, HorizontalScrollbar, 0, 0, 0);
@@ -283,24 +278,29 @@ namespace GameDesire
             Mouse.dragAndDrop(MainLobbyHandle, k.X, k.Y, 295, 50);
         }
 
-        public void goToTop()
+        public void prepareMainLobby(string Stake)
         {
+            changeType(getType(Stake));
             moveHorizontalScroolbarToBottom();
             moveVerticalScrollbarToTop();
-
-
         }
 
         public bool open(string Stake)
         {
-            changeType(getType(Stake));
-            goToTop();
+            prepareMainLobby(Stake);
+
+
+
+
+            // once opened wait until (table count is 0 or stop is set to true...) and then continue...
 
 
 
 
 
-            // if we opened return true, else return false...
+
+
+
             return false;
         }
 
@@ -344,7 +344,6 @@ namespace GameDesire
 
                         if(opened == true)
                         {
-                            // maybe wait and see if correct? :)
                             break;
                         }
                     }
@@ -495,6 +494,11 @@ namespace GameDesire
         private void ComboBox15_SelectedIndexChanged(object sender, EventArgs e)
         {
             change(((ComboBox)sender).Tag.ToString(), ((ComboBox)sender).SelectedItem.ToString());
+        }
+
+        private void Main_Lobby_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

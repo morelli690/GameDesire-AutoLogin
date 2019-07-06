@@ -21,41 +21,48 @@ namespace GameDesire
             return filter.Apply(b);
         }
 
-        public static bool WaitForElement(IntPtr Handle, Bitmap Template, int Seconds, Rectangle searchZone = new Rectangle())
+        public static bool WaitForElement(IntPtr Handle, Bitmap Template, int Seconds, Rectangle searchZone = new Rectangle(), float similarity = 0.95f)
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
-            while (true)
+            try
             {
-                ExhaustiveTemplateMatching tm = new ExhaustiveTemplateMatching(0);
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
 
-                Bitmap Source = sc.GetScreenshot(Handle);
-                Bitmap Source2 = generateFormattedBitmap(Source);
-
-                TemplateMatch[] matchings;
-
-                if (searchZone.IsEmpty)
+                while (true)
                 {
-                    matchings = tm.ProcessImage(Source2, Template);
-                }
-                else
-                {
-                    Console.WriteLine("WITH Search Zone");
-                    matchings = tm.ProcessImage(Source2, Template, searchZone);
-                }
+                    ExhaustiveTemplateMatching tm = new ExhaustiveTemplateMatching(0);
 
-                if (matchings[0].Similarity > 0.95f)
-                {
-                    Console.WriteLine("Found a match at: " + matchings[0].Rectangle.X + ":" + matchings[0].Rectangle.Y + " | " + matchings[0].Similarity + "\n Elapsed: " + stopWatch.Elapsed.TotalSeconds);
-                    Console.WriteLine("Size: " + matchings[0].Rectangle.Width + ":" + matchings[0].Rectangle.Height);
-                    return true;
-                }
+                    Bitmap Source = sc.GetScreenshot(Handle);
+                    Bitmap Source2 = generateFormattedBitmap(Source);
 
-                if ((stopWatch.Elapsed.TotalSeconds > Seconds))
-                {
-                    return false;
+                    TemplateMatch[] matchings;
+
+                    if (searchZone.IsEmpty)
+                    {
+                        matchings = tm.ProcessImage(Source2, Template);
+                    }
+                    else
+                    {
+                        Console.WriteLine("WITH Search Zone");
+                        matchings = tm.ProcessImage(Source2, Template, searchZone);
+                    }
+
+                    if (matchings[0].Similarity > similarity)
+                    {
+                        Console.WriteLine("Found a match at: " + matchings[0].Rectangle.X + ":" + matchings[0].Rectangle.Y + " | " + matchings[0].Similarity + "\n Elapsed: " + stopWatch.Elapsed.TotalSeconds);
+                        Console.WriteLine("Size: " + matchings[0].Rectangle.Width + ":" + matchings[0].Rectangle.Height);
+                        return true;
+                    }
+
+                    if ((stopWatch.Elapsed.TotalSeconds > Seconds))
+                    {
+                        return false;
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
 

@@ -96,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoBringToTop.cs" />
     <Compile Include="Bankroll.cs">
       <SubType>Form</SubType>
     </Compile>
