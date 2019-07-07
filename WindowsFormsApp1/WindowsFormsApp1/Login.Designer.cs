@@ -38,14 +38,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -136,7 +136,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label5.Size = new System.Drawing.Size(50, 48);
+            this.label5.Size = new System.Drawing.Size(50, 51);
             this.label5.TabIndex = 9;
             this.label5.Text = "✕";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,24 +166,20 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(469, 48);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(469, 51);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
-            // label6
+            // panel1
             // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Silver;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.label6.Size = new System.Drawing.Size(349, 48);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Logger";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label6_MouseMove);
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Location = new System.Drawing.Point(349, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 20, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(50, 48);
+            this.panel1.TabIndex = 13;
             // 
             // pictureBox1
             // 
@@ -210,17 +206,21 @@
             this.pictureBox2.Visible = false;
             this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
-            // panel1
+            // label6
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(349, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(50, 48);
-            this.panel1.TabIndex = 13;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Silver;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.label6.Size = new System.Drawing.Size(349, 51);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Logger";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label6_MouseMove);
             // 
             // Login
             // 
@@ -244,9 +244,9 @@
             this.Text = "Authentication";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
