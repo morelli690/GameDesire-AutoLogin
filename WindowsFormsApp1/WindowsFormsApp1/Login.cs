@@ -292,7 +292,7 @@ namespace GameDesire
                     StartPoker();
 
                     IntPtr hWnd = GetHandleWindow("Poker");
-                    MoveWindow(hWnd, 0, 0, 0, 0, true);
+                    MoveWindow(hWnd, 0, 40, 0, 0, true);
 
                     bool l = TemplateMatching.WaitForElement(hWnd, LoginHeader, 15, new Rectangle(new Point(133 - 20, 192 - 20), new Size(294 + 35, 38 + 35)));
 
@@ -376,7 +376,7 @@ namespace GameDesire
                     bool b = isLoggedIn(30);
 
 
-                    Thread.Sleep(60000);
+                    Thread.Sleep(1000);
                 }
             }
         }
