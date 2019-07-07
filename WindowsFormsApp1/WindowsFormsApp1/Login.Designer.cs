@@ -218,7 +218,7 @@
             this.label6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.label6.Size = new System.Drawing.Size(349, 51);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Logger";
+            this.label6.Text = "Keep me logged in...";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label6_MouseMove);
             // 
@@ -242,7 +242,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Authentication";
+            this.Text = "Keep me logged in...";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
