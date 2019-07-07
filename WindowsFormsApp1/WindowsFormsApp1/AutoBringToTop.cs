@@ -36,7 +36,17 @@ namespace GameDesire
         {
             return FindWindow(null, title);
         }
-
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetWindowRect(IntPtr hWnd, ref RECT lpRect);
+        [StructLayout(LayoutKind.Sequential)]
+        private struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
         public static bool IsYourTurnActiveWindow()
         {
             IntPtr ActiveWindowHandle = GetHandleWindow(GetActiveWindowTitle());
@@ -44,6 +54,18 @@ namespace GameDesire
             if (ActiveWindowHandle != IntPtr.Zero)
             {
                 bool b = TemplateMatching.WaitForElement(ActiveWindowHandle, Fold, 0, similarity: 0.98f);
+                if (b)
+                {
+                    RECT rct = new RECT();
+                    GetWindowRect(ActiveWindowHandle, ref rct);
+
+                    if (rct.Left != 621)
+                    {
+                        Console.WriteLine("Moved");
+                        MoveWindow(ActiveWindowHandle, 621, 0, 0, 0, true);
+                    }
+                }
+
                 return b ? true : false;
             }
             else
@@ -53,8 +75,8 @@ namespace GameDesire
         }
         [DllImport("User32.dll")]
         public static extern Int32 SetForegroundWindow(int hWnd);
-
-
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
         public static void ActivateTableWithMyTurn()
         {
             OpenWindows so = new OpenWindows();
@@ -72,6 +94,14 @@ namespace GameDesire
                     if (b)
                     {
                         SetForegroundWindow(ActiveWindowHandle.ToInt32());
+                        RECT rct = new RECT();
+                        GetWindowRect(ActiveWindowHandle, ref rct);
+
+                        if (rct.Left != 621)
+                        {
+                            Console.WriteLine("Moved");
+                            MoveWindow(ActiveWindowHandle, 621, 0, 0, 0, true);
+                        }
                         return;
                     }
                 }

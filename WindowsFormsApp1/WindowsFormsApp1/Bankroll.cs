@@ -12,9 +12,10 @@ namespace GameDesire
         public static string activeStake = "250K/500K";
         public Bankroll(int x, int y)
         {
+            /*
             this.StartPosition = FormStartPosition.Manual;
             this.Left = x;
-            this.Top = y;
+            this.Top = y;*/
 
             InitializeComponent();
             InitializeElements();

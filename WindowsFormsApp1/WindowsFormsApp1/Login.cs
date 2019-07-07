@@ -1,10 +1,7 @@
-﻿using Accord.Imaging;
-using Accord.Imaging.Filters;
-using System;
+﻿using System;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -24,7 +21,6 @@ namespace GameDesire
 
         public const int WM_LBUTTONDOWN = 0x0201;
         public const int WM_LBUTTONUP = 0x0202;
-
 
         public Login()
         {
@@ -219,11 +215,6 @@ namespace GameDesire
             return FindWindow(null, title);
         }
 
-        public int MakeLParam(int LoWord, int HiWord)
-        {
-            return (int)((HiWord << 16) | (LoWord & 0xFFFF));
-        }
-
         public void StartPoker()
         {
             int w = 5;
@@ -381,7 +372,8 @@ namespace GameDesire
 
                     Keyboard.sendEnter(hWnd);
 
-                    isLoggedIn(30);
+                    bool b = isLoggedIn(30);
+
                 }
             }
         }
@@ -399,9 +391,5 @@ namespace GameDesire
             }
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

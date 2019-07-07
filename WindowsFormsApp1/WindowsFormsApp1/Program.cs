@@ -42,8 +42,6 @@ namespace WindowsFormsApp1
             Task.Factory.StartNew(Parser.Run);
             Task.Factory.StartNew(GameDesire.AutoBringToTop.Run);
 
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MyApplicationContext());

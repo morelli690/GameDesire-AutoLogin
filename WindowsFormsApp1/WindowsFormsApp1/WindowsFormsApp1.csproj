@@ -217,6 +217,12 @@
   <ItemGroup>
     <None Include="Resources\config.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-toggle-off-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-toggle-on-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

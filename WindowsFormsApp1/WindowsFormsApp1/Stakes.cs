@@ -17,6 +17,10 @@ namespace WindowsFormsApp1
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             Task.Factory.StartNew(this.Refresh);
+            /*
+            this.StartPosition = FormStartPosition.Manual;
+            this.Left = 0;
+            this.Top = 175;*/
         }
 
         public class View
