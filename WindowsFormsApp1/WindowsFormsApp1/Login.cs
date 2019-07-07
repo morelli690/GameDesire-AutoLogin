@@ -41,6 +41,7 @@ namespace GameDesire
                 using (SQLiteCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "SELECT * FROM Authentication";
+
                     using (SQLiteDataReader r = cmd.ExecuteReader())
                     {
                         while (r.Read())
@@ -374,22 +375,37 @@ namespace GameDesire
 
                     bool b = isLoggedIn(30);
 
+
+                    Thread.Sleep(60000);
                 }
             }
         }
 
-        private void CheckBox1_CheckedChanged_1(object sender, EventArgs e)
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
-            {
-                LoginThread = new Thread(LoginToPoker);
-                LoginThread.Start();
-            }
-            else
-            {
-                LoginThread.Abort();
-            }
+            LoginThread = new Thread(LoginToPoker);
+            LoginThread.Start();
+
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+            button1.Enabled = false;
+
+            pictureBox2.Visible = true;
+            pictureBox1.Visible = false;
         }
 
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            LoginThread.Abort();
+
+            textBox1.Enabled = true;
+            textBox2.Enabled = true;
+            textBox3.Enabled = true;
+            button1.Enabled = true;
+
+            pictureBox1.Visible = true;
+            pictureBox2.Visible = false;
+        }
     }
 }
