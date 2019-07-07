@@ -17,10 +17,7 @@ namespace WindowsFormsApp1
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             Task.Factory.StartNew(this.Refresh);
-            /*
-            this.StartPosition = FormStartPosition.Manual;
-            this.Left = 0;
-            this.Top = 175;*/
+            this.CenterToParent();
         }
 
         public class View
@@ -286,34 +283,11 @@ namespace WindowsFormsApp1
 
             if( IgnoreResult(stake) || total >= RequiredForThisStake )
             {
-                updateEligible(stake, "1");
                 return "✓";
             }
             else
             {
-                updateEligible(stake, "0");
                 return "✖ (" + (RequiredForThisStake-(total)).ToString("N0") + ")";
-            }
-        }
-
-        public void updateEligible(string Stake, string Eligible)
-        {
-            Stake = ConvertStake(Stake);
-
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=Database.sqlite"))
-            {
-                con.Open();
-
-                using (SQLiteCommand cmd = con.CreateCommand())
-                {
-                    string sql = "UPDATE OpenTables SET Eligible=@Eli WHERE Stake=@stak";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SQLiteParameter("@Eli", Eligible));
-                    cmd.Parameters.Add(new SQLiteParameter("@stak", Stake));
-
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
             }
         }
 
@@ -385,15 +359,6 @@ namespace WindowsFormsApp1
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
-
-            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
-
-            if (formToShow != null)
-            {
-                formToShow.Left = this.Location.X;
-                formToShow.Top = this.Location.Y + 100;
-                formToShow.BringToFront();
-            }
         }
 
         private void Label1_Click_2(object sender, EventArgs e)
@@ -413,71 +378,16 @@ namespace WindowsFormsApp1
             label1.ForeColor = Color.FromArgb(175, 191, 191);
         }
 
-        public void PictureBox1_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox2.Visible = true;
-        }
-
-        public void PictureBox2_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox2.Visible = false;
-        }
-        private void onFormClosed(object sender, EventArgs e)
-        {
-            if (Application.OpenForms.Count == 0)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void PictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Cards);
-
-            if (formToShow != null)
-            {
-                formToShow.FormClosed += onFormClosed;
-                formToShow.Left = this.Location.X;
-                formToShow.Top = this.Location.Y;
-                formToShow.Show();
-            }
-            else
-            {
-                new GameDesire.Cards(this.Location.X, this.Location.Y).Show();
-            }
-
-            var formToShow2 = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
-
-            if (formToShow2 != null)
-            {
-                formToShow2.Hide();
-            }
-        }
-
         private void PictureBox3_Click(object sender, EventArgs e)
         {
-            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is WindowsFormsApp1.Bankroll);
 
-            if (formToShow != null)
+            if (formToShow == null)
             {
-                formToShow.Left = this.Location.X;
-                formToShow.Top = this.Location.Y+100;
-                formToShow.Show();
-                formToShow.BringToFront();
-            }
-            else
-            {
-                new GameDesire.Bankroll(this.Location.X, this.Location.Y+100).Show();
-                formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is GameDesire.Bankroll);
-
-                if (formToShow != null)
-                {
-                    formToShow.Left = this.Location.X;
-                    formToShow.Top = this.Location.Y + 100;
-                    formToShow.Show();
-                    formToShow.BringToFront();
-                }
+                formToShow = new WindowsFormsApp1.Bankroll();
+                formToShow.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                formToShow.Location = new System.Drawing.Point((Analyzer.ActiveForm.Location.X + Analyzer.ActiveForm.Width / 2) - (formToShow.Width / 2), (Analyzer.ActiveForm.Location.Y + Analyzer.ActiveForm.Height / 2) - (formToShow.Height / 2));
+                formToShow.ShowDialog(this);
             }
         }
     }

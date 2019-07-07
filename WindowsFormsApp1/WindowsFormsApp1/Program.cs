@@ -21,9 +21,7 @@ namespace WindowsFormsApp1
             public MyApplicationContext()
             {
                 var forms = new List<Form>() {
-                    new Analyzer(),
-                    new GameDesire.Login()
-                    //new GameDesire.Main_Lobby()
+                    new Analyzer()
                 };
 
                 foreach (var form in forms)
@@ -40,7 +38,6 @@ namespace WindowsFormsApp1
             Database.Create();
 
             Task.Factory.StartNew(Parser.Run);
-            Task.Factory.StartNew(GameDesire.AutoBringToTop.Run);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -5,18 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace GameDesire
+namespace WindowsFormsApp1
 {
     public partial class Bankroll : Form
     {
         public static string activeStake = "250K/500K";
-        public Bankroll(int x, int y)
+        public Bankroll()
         {
-            /*
-            this.StartPosition = FormStartPosition.Manual;
-            this.Left = x;
-            this.Top = y;*/
-
             InitializeComponent();
             InitializeElements();
             comboBox4.SelectedItem = "250K/500K";
@@ -361,7 +356,7 @@ namespace GameDesire
 
         private void Label5_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         public void Label5_MouseEnter(object sender, EventArgs e)
@@ -372,8 +367,8 @@ namespace GameDesire
 
         public void Label5_MouseLeave(object sender, EventArgs e)
         {
-            label5.BackColor = Color.FromArgb(35, 84, 84);
-            label5.ForeColor = Color.FromArgb(175, 191, 191);
+            label5.BackColor = Color.Orange;
+            label5.ForeColor = Color.White;
         }
 
         private void CheckBox1_CheckedChanged_1(object sender, EventArgs e)
