@@ -18,26 +18,15 @@ namespace WindowsFormsApp1
 
                     using (SQLiteCommand cmd = con.CreateCommand())
                     {
-                        string sql = "CREATE TABLE Hands (ID TEXT, Player TEXT, Stake TEXT, TableName TEXT, DateTime TEXT, Card1 TEXT, Card2 TEXT, FlopCard1 TEXT, FlopCard2 TEXT, FlopCard3 TEXT, TurnCard TEXT, RiverCard TEXT, Result TEXT)";
-                        cmd.CommandText = sql;
+                        string sql2 = "CREATE TABLE Authentication (Login TEXT, Password TEXT, PokerLauncherPath TEXT)";
+                        cmd.CommandText = sql2;
                         cmd.ExecuteNonQuery();
 
-                        string sql3 = "CREATE TABLE Bankroll (Stake TEXT, BuyInBB TEXT, Above TEXT, Below TEXT, IR TEXT)";
-                        cmd.CommandText = sql3;
+                        cmd.CommandText = "INSERT INTO Authentication (Login, Password, PokerLauncherPath) values (@Login, @Password, @PokerLauncherPath)";
+                        cmd.Parameters.Add(new SQLiteParameter("@Login", ""));
+                        cmd.Parameters.Add(new SQLiteParameter("@Password", ""));
+                        cmd.Parameters.Add(new SQLiteParameter("@PokerLauncherPath", ""));
                         cmd.ExecuteNonQuery();
-
-                        string[] stakes = { "250K/500K", "100K/200K", "50K/100K", "25K/50K", "10K/20K", "5K/10K", "2.5K/5K", "1K/2K", "500/1K", "250/500", "100/200", "50/100", "25/50", "10/20", "5/10" };
-
-                        foreach (string stake in stakes)
-                        {
-                            cmd.CommandText = "INSERT INTO Bankroll (Stake, BuyInBB, Above, Below, IR) values (@Stake, @BuyInBB, @Above, @Below, @IR)";
-                            cmd.Parameters.Add(new SQLiteParameter("@Stake", stake));
-                            cmd.Parameters.Add(new SQLiteParameter("@BuyInBB", 100));
-                            cmd.Parameters.Add(new SQLiteParameter("@Above", 20));
-                            cmd.Parameters.Add(new SQLiteParameter("@Below", 17));
-                            cmd.Parameters.Add(new SQLiteParameter("@IR", stake == "5/10" ? "1" : "0" ));
-                            cmd.ExecuteNonQuery();
-                        }
                     }
                     con.Close();
                 }

@@ -11,11 +11,9 @@ namespace WindowsFormsApp1
         {
             Database.Create();
 
-            Task.Factory.StartNew(Parser.Run);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Analyzer());
+            Application.Run(new GameDesire.Login());
         }
     }
 }

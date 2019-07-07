@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config entries="74">
+	<entry name="GameWinMaximized">
+		<value>0</value>
+	</entry>
+	<entry name="GameWinSizeX">
+		<value>760</value>
+	</entry>
+	<entry name="GameWinSizeY">
+		<value>570</value>
+	</entry>
+	<entry name="NaviWinMaximized">
+		<value>0</value>
+	</entry>
+	<entry name="NaviWinSizeX">
+		<value>760</value>
+	</entry>
+	<entry name="NaviWinSizeY">
+		<value>570</value>
+	</entry>
+	<entry name="__tables_layout">
+		<value>0</value>
+	</entry>
+	<entry name="cards_back_variant">
+		<value>0</value>
+	</entry>
+	<entry name="cards_front_variant_small">
+		<value>0</value>
+	</entry>
+	<entry name="cards_no_figure_small">
+		<value>1</value>
+	</entry>
+	<entry name="cards_quad_color_small">
+		<value>1</value>
+	</entry>
+	<entry name="cards_symbol_size_weight_small">
+		<value>100</value>
+	</entry>
+	<entry name="cards_symmetry_small">
+		<value>0</value>
+	</entry>
+	<entry name="center_player_slot">
+		<value>1</value>
+	</entry>
+	<entry name="chat_size_game">
+		<value>150</value>
+	</entry>
+	<entry name="chat_size_navi">
+		<value>43</value>
+	</entry>
+	<entry name="checking_for_update_cache">
+		<value>Checking for update</value>
+	</entry>
+	<entry name="correct_close">
+		<value>1</value>
+	</entry>
+	<entry name="dock_plane_visible">
+		<value>0</value>
+	</entry>
+	<entry name="force_skype_disable">
+		<value>0</value>
+	</entry>
+	<entry name="game_auto_muck_cards">
+		<value>1</value>
+	</entry>
+	<entry name="game_plane_compact_mode">
+		<value>1</value>
+	</entry>
+	<entry name="other_auto_bring_to_top">
+		<value>0</value>
+	</entry>
+	<entry name="other_auto_post_blind">
+		<value>1</value>
+	</entry>
+	<entry name="other_auto_rebuy">
+		<value>0</value>
+	</entry>
+	<entry name="other_show_hand_numbers">
+		<value>0</value>
+	</entry>
+	<entry name="other_wait_for_bb">
+		<value>1</value>
+	</entry>
+	<entry name="player_slot_big_photo">
+		<value>0</value>
+	</entry>
+	<entry name="right_column_size">
+		<value>200</value>
+	</entry>
+	<entry name="room_list_collapsed_game">
+		<value>1</value>
+	</entry>
+	<entry name="room_list_collapsed_navi">
+		<value>0</value>
+	</entry>
+	<entry name="room_list_flags">
+		<value>10010011100000000000000000000000</value>
+	</entry>
+	<entry name="room_list_sort_mode">
+		<value>1</value>
+	</entry>
+	<entry name="settings_chat_channel_dealer_other_channel">
+		<value>1</value>
+	</entry>
+	<entry name="settings_chat_channel_friends_other_channel">
+		<value>0</value>
+	</entry>
+	<entry name="settings_chat_channel_show_dealer_channel">
+		<value>1</value>
+	</entry>
+	<entry name="settings_chat_channel_system_other_channel">
+		<value>0</value>
+	</entry>
+	<entry name="settings_chat_filter_reject_ignored">
+		<value>1</value>
+	</entry>
+	<entry name="settings_chat_filter_reject_other_players">
+		<value>0</value>
+	</entry>
+	<entry name="settings_misc_font_size">
+		<value>0</value>
+	</entry>
+	<entry name="settings_sound_game_interface">
+		<value>1</value>
+	</entry>
+	<entry name="settings_sound_interface">
+		<value>1</value>
+	</entry>
+	<entry name="show_cards_animation">
+		<value>1</value>
+	</entry>
+	<entry name="show_chips_animation">
+		<value>1</value>
+	</entry>
+	<entry name="show_player_slot_photo">
+		<value>0</value>
+	</entry>
+	<entry name="skype_first_run">
+		<value>0</value>
+	</entry>
+	<entry name="skype_integration">
+		<value>0</value>
+	</entry>
+	<entry name="table_background">
+		<value>0</value>
+	</entry>
+	<entry name="table_chairs">
+		<value>3</value>
+	</entry>
+	<entry name="table_filter_1_max_check">
+		<value>1</value>
+	</entry>
+	<entry name="table_filter_1_on_1_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_9_10_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_access_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_disconnect_protection_choice">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_fast_choice">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_friends_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_limit_fl_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_limit_nl_check">
+		<value>1</value>
+	</entry>
+	<entry name="table_filter_limit_pl_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_show_empty_check">
+		<value>0</value>
+	</entry>
+	<entry name="table_filter_show_full_check">
+		<value>1</value>
+	</entry>
+	<entry name="table_list_active_tab">
+		<value>0</value>
+	</entry>
+	<entry name="table_list_collapsed_game">
+		<value>0</value>
+	</entry>
+	<entry name="table_list_flags">
+		<value>10010011100000000000000000000000</value>
+	</entry>
+	<entry name="table_list_sort_mode">
+		<value>1</value>
+	</entry>
+	<entry name="table_material">
+		<value>3</value>
+	</entry>
+	<entry name="table_size">
+		<value>0</value>
+	</entry>
+	<entry name="table_sort">
+		<value>6</value>
+	</entry>
+	<entry name="table_wood">
+		<value>1</value>
+	</entry>
+	<entry name="tournament_filter">
+		<value>0</value>
+	</entry>
+	<entry name="tournament_filter_upcoming_only">
+		<value>0</value>
+	</entry>
+	<entry name="tournament_player_list_sort_mode">
+		<value>9</value>
+	</entry>
+	<entry name="tournament_sort">
+		<value>5</value>
+	</entry>
+	<entry name="tournament_table_list_sort_mode">
+		<value>3</value>
+	</entry>
+</config>
